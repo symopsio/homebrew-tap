@@ -1,9 +1,7 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
 class Sym < Formula
   include Language::Python::Virtualenv
 
-  desc "Sym CLI"
+  desc "The Sym CLI allows you to perform privileged operations with Sym."
   homepage "https://symops.com/"
   url "https://files.pythonhosted.org/packages/77/9f/eeda5f28b08f2dcd6b95991920dc0f00b515d55eef66b2977dda083900b9/sym-cli-0.0.2.tar.gz"
   sha256 "dbaf3b2f549776517947806acb05d557ebee4156f167d6bf97cb00dfb53915bf"
