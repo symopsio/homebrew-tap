@@ -4,8 +4,8 @@ class Sym < Formula
   desc "The Sym CLI allows you to perform privileged operations with Sym."
   homepage "https://symops.com/"
 
-  url "https://files.pythonhosted.org/packages/3f/19/e3768aa6e38993b066c74f8319f7e35b7f15970e3de995702420c0213800/sym-cli-0.0.5.tar.gz"
-  sha256 "ef1362ec97ef8497661a3e256eafc4b798b020b0e8b61dacb8d2ef0cf16b5839"
+  url "https://files.pythonhosted.org/packages/4c/cb/3d0a4c5ca111a0474f010294b3f4b582e3c715bf772d55561cf7f7edcc61/sym-cli-0.0.6.tar.gz"
+  sha256 "bfe43413f4dbad688173fd5b0606fc2d26688a4326eec0d7eecd10adfc4bc808"
 
   depends_on "python@3.8"
 
