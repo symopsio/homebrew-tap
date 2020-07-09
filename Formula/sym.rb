@@ -24,6 +24,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.3", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.5", shell_output("#{bin}/sym version").strip
   end
 end
