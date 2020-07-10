@@ -7,7 +7,7 @@ class Sym < Formula
   url "https://files.pythonhosted.org/packages/4c/cb/3d0a4c5ca111a0474f010294b3f4b582e3c715bf772d55561cf7f7edcc61/sym-cli-0.0.6.tar.gz"
   sha256 "bfe43413f4dbad688173fd5b0606fc2d26688a4326eec0d7eecd10adfc4bc808"
 
-  depends_on "python"
+  depends_on "python@3.8"
 
   resource "click" do
     url "https://files.pythonhosted.org/packages/27/6f/be940c8b1f1d69daceeb0032fee6c34d7bd70e3e649ccac0951500b4720e/click-7.1.2.tar.gz"
@@ -24,6 +24,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.5", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.6", shell_output("#{bin}/sym version").strip
   end
 end
