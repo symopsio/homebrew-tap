@@ -18,3 +18,10 @@ jobs:
           rm -rf "$HOMEBREW_TAP_DIR"
           ln -s "$PWD" "$HOMEBREW_TAP_DIR"
           brew test-bot
+      - name: Publish bottles
+        env:
+          HOMEBREW_BINTRAY_USER: ${{secrets.HOMEBREW_BINTRAY_USER}}
+          HOMEBREW_BINTRAY_KEY: ${{secrets.HOMEBREW_BINTRAY_KEY}}
+        run: ./scripts/bottles.sh
+      - name: Push commits
+        uses: Homebrew/actions/git-try-push@master
