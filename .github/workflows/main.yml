@@ -10,6 +10,9 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Run brew test-bot
+        env:
+          HOMEBREW_BINTRAY_USER: ${{secrets.HOMEBREW_BINTRAY_USER}}
+          HOMEBREW_BINTRAY_KEY: ${{secrets.HOMEBREW_BINTRAY_KEY}}
         run: |
           set -e
           brew update
@@ -17,11 +20,6 @@ jobs:
           mkdir -p "$HOMEBREW_TAP_DIR"
           rm -rf "$HOMEBREW_TAP_DIR"
           ln -s "$PWD" "$HOMEBREW_TAP_DIR"
-          brew test-bot
-      - name: Publish bottles
-        env:
-          HOMEBREW_BINTRAY_USER: ${{secrets.HOMEBREW_BINTRAY_USER}}
-          HOMEBREW_BINTRAY_KEY: ${{secrets.HOMEBREW_BINTRAY_KEY}}
-        run: ./scripts/bottles.sh
+          ./scripts/bottles.sh
       - name: Push commits
         uses: Homebrew/actions/git-try-push@master
