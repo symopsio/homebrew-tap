@@ -7,6 +7,12 @@ class Sym < Formula
   url "https://files.pythonhosted.org/packages/4c/cb/3d0a4c5ca111a0474f010294b3f4b582e3c715bf772d55561cf7f7edcc61/sym-cli-0.0.6.tar.gz"
   sha256 "bfe43413f4dbad688173fd5b0606fc2d26688a4326eec0d7eecd10adfc4bc808"
 
+  bottle do
+    root_url "https://dl.bintray.com/symopsio/bottles-tap"
+    cellar :any
+    sha256 "c0e274c92a7418feee8c4789d56491f2b1f69e80db3ace9d414bb6f92b111bbc" => :mojave
+  end
+
   depends_on "python@3.8"
 
   resource "click" do
