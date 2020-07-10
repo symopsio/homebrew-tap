@@ -132,11 +132,13 @@ function installWithPipx() {
   ensurePipx
   pipx ensurepath >/dev/null 2>&1
   pipx install sym-cli --python "$(getPythonPath)"
+  pipx upgrade sym-cli >/dev/null 2>&1
 }
 
 function installWithBrew() {
   ensureBrew
   brew install symopsio/tap/sym
+  brew upgrade symopsio/tap/sym >/dev/null 2>&1
 }
 
 installWithPipx || installWithBrew
