@@ -92,6 +92,12 @@ function semverLT() {
 
 }
 
+# Sym Stuff
+
+function getPythonPath() {
+  command -v python3.8 || command -v python3 || command -v python
+}
+
 function ensureBrew() {
   if ! [ -x "$(command -v brew)" ]; then
     $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)
@@ -100,13 +106,13 @@ function ensureBrew() {
 
 function ensurePipx() {
   if ! [ -x "$(command -v pipx)" ]; then
-    ensureBrew
-    brew install pipx
+    if [ -x "$(command -v brew)" ]; then
+      brew install pipx
+    else
+      $(getPythonPath) -m pip install --user pipx
+      $(getPythonPath) -m pipx ensurepath
+    fi
   fi
-}
-
-function getPythonPath() {
-  command -v python3.8 || command -v python3 || command -v python
 }
 
 function ensurePython38() {
