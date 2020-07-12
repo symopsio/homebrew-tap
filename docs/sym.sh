@@ -113,6 +113,9 @@ function ensurePipx() {
       $(getPythonPath) -m pipx ensurepath
     fi
   fi
+
+  pipx ensurepath >/dev/null 2>&1
+  export PATH="$PATH:~/.local/bin"
 }
 
 function ensurePython38() {
@@ -130,7 +133,7 @@ function ensurePython38() {
 function installWithPipx() {
   ensurePython38
   ensurePipx
-  pipx ensurepath >/dev/null 2>&1
+
   pipx install sym-cli --python "$(getPythonPath)"
   pipx upgrade sym-cli >/dev/null 2>&1
 }
