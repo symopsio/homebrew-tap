@@ -100,7 +100,7 @@ function getPythonPath() {
 
 function ensureBrew() {
   if ! [ -x "$(command -v brew)" ]; then
-    $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)
+    eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   fi
 }
 
