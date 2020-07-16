@@ -101,6 +101,8 @@ function getPythonPath() {
 function ensureBrew() {
   if ! [ -x "$(command -v brew)" ]; then
     eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    set +u    # Undo `set -u` that install.sh does.
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   fi
 }
 
