@@ -94,12 +94,16 @@ semverLT() {
 
 # Sym Stuff
 
+hasCommand() {
+  [ -x "$(command -v "$1")" ]
+}
+
 getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
 ensureBrew() {
-  if ! [ -x "$(command -v brew)" ]; then
+  if ! hasCommand brew; then
     eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     set +u    # Undo `set -u` that install.sh does.
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
@@ -107,8 +111,8 @@ ensureBrew() {
 }
 
 ensurePipx() {
-  if ! [ -x "$(command -v pipx)" ]; then
-    if [ -x "$(command -v brew)" ]; then
+  if ! hasCommand pipx; then
+    if hasCommand brew; then
       brew install pipx
     else
       $(getPythonPath) -m pip install --user pipx
@@ -119,7 +123,7 @@ ensurePipx() {
 
 ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
-    if [ -x "$(command -v pyenv)" ]; then
+    if hasCommand pyenv; then
       pyenv install 3.8.2
       pyenv shell 3.8.2
     else
