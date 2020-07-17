@@ -94,6 +94,11 @@ semverLT() {
 
 # Sym Stuff
 
+die() {
+  printf "%s\n" "$@" >&2
+  exit 1
+}
+
 hasCommand() {
   [ -x "$(command -v "$1")" ]
 }
@@ -147,5 +152,18 @@ installWithBrew() {
   brew upgrade symopsio/tap/sym >/dev/null 2>&1
 }
 
-installWithPipx || installWithBrew
+installSessionManagerPlugin() {
+  if ! hasCommand session-manager-plugin; then
+    if hasCommand brew; then
+      brew install session-manager-plugin
+    fi
+  fi
+}
 
+installWithPipx || installWithBrew ||
+  die 'Could not install sym-cli; please send us any error messages printed above.'
+
+installSessionManagerPlugin ||
+  die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+
+echo 'Successfully installed sym-cli.'
