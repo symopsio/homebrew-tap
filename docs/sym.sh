@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://github.com/cloudflare/semver_bash/blob/master/semver.sh
-function semverParseInto() {
+semverParseInto() {
     local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
     #MAJOR
     eval $2=`echo $1 | sed -e "s#$RE#\1#"`
@@ -13,7 +13,7 @@ function semverParseInto() {
     eval $5=`echo $1 | sed -e "s#$RE#\4#"`
 }
 
-function semverEQ() {
+semverEQ() {
     local MAJOR_A=0
     local MINOR_A=0
     local PATCH_A=0
@@ -48,7 +48,7 @@ function semverEQ() {
 
 }
 
-function semverLT() {
+semverLT() {
     local MAJOR_A=0
     local MINOR_A=0
     local PATCH_A=0
@@ -94,21 +94,30 @@ function semverLT() {
 
 # Sym Stuff
 
-function getPythonPath() {
+die() {
+  printf "\e[31m%s\e[0m\n" "$@" >&2
+  exit 1
+}
+
+hasCommand() {
+  [ -x "$(command -v "$1")" ]
+}
+
+getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
-function ensureBrew() {
-  if ! [ -x "$(command -v brew)" ]; then
+ensureBrew() {
+  if ! hasCommand brew; then
     eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     set +u    # Undo `set -u` that install.sh does.
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   fi
 }
 
-function ensurePipx() {
-  if ! [ -x "$(command -v pipx)" ]; then
-    if [ -x "$(command -v brew)" ]; then
+ensurePipx() {
+  if ! hasCommand pipx; then
+    if hasCommand brew; then
       brew install pipx
     else
       $(getPythonPath) -m pip install --user pipx
@@ -117,9 +126,9 @@ function ensurePipx() {
   fi
 }
 
-function ensurePython38() {
+ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
-    if [ -x "$(command -v pyenv)" ]; then
+    if hasCommand pyenv; then
       pyenv install 3.8.2
       pyenv shell 3.8.2
     else
@@ -129,7 +138,7 @@ function ensurePython38() {
   fi
 }
 
-function installWithPipx() {
+installWithPipx() {
   ensurePython38
   ensurePipx
   pipx ensurepath >/dev/null 2>&1
@@ -137,11 +146,22 @@ function installWithPipx() {
   pipx upgrade sym-cli >/dev/null 2>&1
 }
 
-function installWithBrew() {
+installWithBrew() {
   ensureBrew
   brew install symopsio/tap/sym
   brew upgrade symopsio/tap/sym >/dev/null 2>&1
 }
 
-installWithPipx || installWithBrew
+installSessionManagerPlugin() {
+  if ! hasCommand session-manager-plugin; then
+    hasCommand brew && brew install session-manager-plugin
+  fi
+}
 
+installWithPipx || installWithBrew ||
+  die 'Could not install sym-cli; please send us any error messages printed above.'
+
+installSessionManagerPlugin ||
+  die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+
+printf '\e[32mSuccessfully installed sym-cli.\e[0m\n'
