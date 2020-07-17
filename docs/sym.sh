@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://github.com/cloudflare/semver_bash/blob/master/semver.sh
-function semverParseInto() {
+semverParseInto() {
     local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
     #MAJOR
     eval $2=`echo $1 | sed -e "s#$RE#\1#"`
@@ -13,7 +13,7 @@ function semverParseInto() {
     eval $5=`echo $1 | sed -e "s#$RE#\4#"`
 }
 
-function semverEQ() {
+semverEQ() {
     local MAJOR_A=0
     local MINOR_A=0
     local PATCH_A=0
@@ -48,7 +48,7 @@ function semverEQ() {
 
 }
 
-function semverLT() {
+semverLT() {
     local MAJOR_A=0
     local MINOR_A=0
     local PATCH_A=0
@@ -94,11 +94,11 @@ function semverLT() {
 
 # Sym Stuff
 
-function getPythonPath() {
+getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
-function ensureBrew() {
+ensureBrew() {
   if ! [ -x "$(command -v brew)" ]; then
     eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     set +u    # Undo `set -u` that install.sh does.
@@ -106,7 +106,7 @@ function ensureBrew() {
   fi
 }
 
-function ensurePipx() {
+ensurePipx() {
   if ! [ -x "$(command -v pipx)" ]; then
     if [ -x "$(command -v brew)" ]; then
       brew install pipx
@@ -117,7 +117,7 @@ function ensurePipx() {
   fi
 }
 
-function ensurePython38() {
+ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
     if [ -x "$(command -v pyenv)" ]; then
       pyenv install 3.8.2
@@ -129,7 +129,7 @@ function ensurePython38() {
   fi
 }
 
-function installWithPipx() {
+installWithPipx() {
   ensurePython38
   ensurePipx
   pipx ensurepath >/dev/null 2>&1
@@ -137,7 +137,7 @@ function installWithPipx() {
   pipx upgrade sym-cli >/dev/null 2>&1
 }
 
-function installWithBrew() {
+installWithBrew() {
   ensureBrew
   brew install symopsio/tap/sym
   brew upgrade symopsio/tap/sym >/dev/null 2>&1
