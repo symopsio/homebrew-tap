@@ -154,9 +154,7 @@ installWithBrew() {
 
 installSessionManagerPlugin() {
   if ! hasCommand session-manager-plugin; then
-    if hasCommand brew; then
-      brew install session-manager-plugin
-    fi
+    hasCommand brew && brew install session-manager-plugin
   fi
 }
 
