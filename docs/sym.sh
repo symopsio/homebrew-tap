@@ -117,12 +117,8 @@ ensureBrew() {
 
 ensurePipx() {
   if ! hasCommand pipx; then
-    if hasCommand brew; then
-      brew install pipx
-    else
-      $(getPythonPath) -m pip install --user pipx
-      $(getPythonPath) -m pipx ensurepath
-    fi
+    $(getPythonPath) -m pip install --user pipx
+    $(getPythonPath) -m pipx ensurepath
   fi
 }
 
@@ -141,7 +137,6 @@ ensurePython38() {
 installWithPipx() {
   ensurePython38
   ensurePipx
-  pipx ensurepath >/dev/null 2>&1
   pipx install sym-cli --python "$(getPythonPath)"
   pipx upgrade sym-cli >/dev/null 2>&1
 }
