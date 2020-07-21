@@ -131,9 +131,11 @@ ensurePython38() {
     if hasCommand pyenv; then
       pyenv install 3.8.2
       pyenv shell 3.8.2
-    else
-      ensureBrew
+    elif hasCommand brew; then
       brew install python@3.8
+    else
+      # TODO use apt-get
+      die 'Please install Python 3.8'
     fi
   fi
 }
@@ -147,7 +149,9 @@ installWithPipx() {
 }
 
 installWithBrew() {
-  ensureBrew
+  if ! hasCommand brew; then
+    return 1
+  fi
   brew install symopsio/tap/sym
   brew upgrade symopsio/tap/sym >/dev/null 2>&1
 }
