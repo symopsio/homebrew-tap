@@ -4,8 +4,8 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/a3/67/b7d9e4c50546e7c5606bfbc632582d7f593f5d6d7e89456b70e4b9e48c12/sym-cli-0.0.11.tar.gz"
-  sha256 "606546572fba788f22eb092dd6ed37ae2f6f399b789a70bc3036aab4cf7a61c8"
+  url "https://files.pythonhosted.org/packages/1a/0e/5d15442612385706dedf0742e42318139db73f8f66880ec23aabfb02ca52/sym-cli-0.0.12.tar.gz"
+  sha256 "0395c417265c1b5a69751f3f1106540b844049bf0818a1f55b6a13b924acf1ec"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
