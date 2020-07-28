@@ -144,7 +144,7 @@ installWithPipx() {
   ensurePython38
   ensurePipx
   pipx ensurepath >/dev/null 2>&1
-  pipx install --force sym-cli --python "$(getPythonPath)"
+  pipx install sym-cli --force --python "$(getPythonPath)"
   pipx upgrade sym-cli >/dev/null 2>&1
 }
 
