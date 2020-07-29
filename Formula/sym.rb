@@ -4,19 +4,19 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/a3/67/b7d9e4c50546e7c5606bfbc632582d7f593f5d6d7e89456b70e4b9e48c12/sym-cli-0.0.11.tar.gz"
-  sha256 "606546572fba788f22eb092dd6ed37ae2f6f399b789a70bc3036aab4cf7a61c8"
+  url "https://files.pythonhosted.org/packages/1a/0e/5d15442612385706dedf0742e42318139db73f8f66880ec23aabfb02ca52/sym-cli-0.0.12.tar.gz"
+  sha256 "0395c417265c1b5a69751f3f1106540b844049bf0818a1f55b6a13b924acf1ec"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
-    sha256 "29b3479e09c165e27506d29ca233afd5cf6eb24ad9a2e312ac547a2c73b6af4c" => :mojave
-    sha256 "c921c1fa31e08ec9f8526a4c563e5f846c0c60145e142487fdbf53e7ba9f509e" => :catalina
+    sha256 "046f487e8847184eddc768aed1ff50c7c8d0ab167774bca83a7efc005a887664" => :mojave
+    sha256 "03a7784de07bf31e69342fb86063888078cd473c61ce4eb3b959283f656fd233" => :catalina
   end
 
   depends_on "python@3.8"
 
-resource "certifi" do
+  resource "certifi" do
     url "https://files.pythonhosted.org/packages/40/a7/ded59fa294b85ca206082306bba75469a38ea1c7d44ea7e1d64f5443d67a/certifi-2020.6.20.tar.gz"
     sha256 "5930595817496dd21bb8dc35dad090f1c2cd0adfaf21204bf6732ca5d8ee34d3"
   end
@@ -46,6 +46,6 @@ resource "certifi" do
   end
 
   test do
-    assert_equal "0.0.11", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.12", shell_output("#{bin}/sym version").strip
   end
 end
