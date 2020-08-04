@@ -4,14 +4,14 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/43/c5/39e04dec80e84713ddaa514b0225d10c2dbc201e82b8b23ba3802de3ba10/sym-cli-0.0.14.tar.gz"
-  sha256 "67e2d26e13e49907c4bf88f921b195f05d3c8da9d775ba25352bbe5f861c6a3b"
+  url "https://files.pythonhosted.org/packages/aa/7c/817df6c980ac9004640d5babd07eed0a0b4af82ad41003ffdd36c34f1ebe/sym-cli-0.0.16.tar.gz"
+  sha256 "2a47e5667e4c0491fa0af1b713993160f4bd14d9312177593cc641a8839321a3"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
-    cellar :any_skip_relocation
-    sha256 "6ebb46733fcf1aa9648cccfba06c4a2ce1eb1c80385658494f04aeb9ba4640e5" => :mojave
-    sha256 "5dc87e6c0da536620ce251585fd2b8ad1146544a7a5a657f5a9374d5b9f3efb1" => :catalina
+    cellar :any
+    sha256 "f9982cbb51b22fd5159c710bb79effa2bfc4a186cae02167ac35465a1bb77338" => :mojave
+    sha256 "f0a458405677aa07e85509a0ba7853c306c4e20abe733aec3712400d075ed363" => :catalina
   end
 
   depends_on "python@3.8"
@@ -22,13 +22,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/44/90/45ced98af8786f41d7a93a95562e9c175306a3662fb11649e427460732da/boto3-1.14.34.tar.gz"
-    sha256 "781f5d1bbec6c2fe902e8855c1c8a576845eaa06630e817b0e422afa4788620e"
+    url "https://files.pythonhosted.org/packages/71/ae/98f3cadaa11566e4f81d702157913bffde32dead29d5bafcd6e14a0f2567/boto3-1.14.35.tar.gz"
+    sha256 "df19f35e2d73e77c72f756f98805785f45dd26c608b704b105e9f8fec6992c1e"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/80/8e/644892b4f5ec5c495f20e3d26c9a95aab64058d46b4445f37eac906948c3/botocore-1.17.34.tar.gz"
-    sha256 "ff39ec54893397df3c14dd516aedeaff12bb7c363051d8b9bd5fc86bc3e68231"
+    url "https://files.pythonhosted.org/packages/41/f4/2e18f6346cbdc5bd0e0a7c49f8095d1c99559bb05b6fa9402a3eaa0585e6/botocore-1.17.35.tar.gz"
+    sha256 "0f69698a59e7829d34851ea5025338bddc4352300ba7df619842eac173bc4a4e"
   end
 
   resource "certifi" do
@@ -116,6 +116,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.14", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.16", shell_output("#{bin}/sym version").strip
   end
 end
