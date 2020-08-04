@@ -4,14 +4,12 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/3e/0c/462efa48a58a70692b8d6d9a83a0531f9f8f501b8164d3d02ef47778a083/sym-cli-0.0.13.tar.gz"
-  sha256 "b0cff6deaad712916e0186521be024f2830f3d64515e71fd921095ec0b198614"
+  url "https://files.pythonhosted.org/packages/43/c5/39e04dec80e84713ddaa514b0225d10c2dbc201e82b8b23ba3802de3ba10/sym-cli-0.0.14.tar.gz"
+  sha256 "67e2d26e13e49907c4bf88f921b195f05d3c8da9d775ba25352bbe5f861c6a3b"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
-    cellar :any_skip_relocation
-    rebuild 1
-    sha256 "4d3d5df3d9056798326b3be7e7e07ee354036ee6ff9a0ede286d566beda8c56f" => :catalina
+    cellar :any
   end
 
   depends_on "python@3.8"
@@ -116,6 +114,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.13", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.14", shell_output("#{bin}/sym version").strip
   end
 end
