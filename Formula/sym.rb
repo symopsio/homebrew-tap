@@ -4,14 +4,14 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/42/a6/6d70059416abc13f7fe6a51ed1d41ae2a8d6be8c55928a66e391f73ed0dd/sym-cli-0.0.17.tar.gz"
-  sha256 "d6d37005d4637e05f9b09a44151a9afd851d8d0856501e30412fae113274a418"
+  url "https://files.pythonhosted.org/packages/7d/27/6b8509ce6da50f42f48a824ff28019fe7e5d30638f3def2ae08eb47bea62/sym-cli-0.0.21.tar.gz"
+  sha256 "cd6e47ea9ffc6963110f5442061541fa9a5af274c6a54db55d430bc09ee17109"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any_skip_relocation
-    sha256 "42d3a815dbaacdd9359a6524aeb3e4e6cdb965c5543dbacc061b65044d2a1c49" => :mojave
-    sha256 "0f1765e63b6311abaa580df9ecc68026494ecfb9336469c6428346a8e16327ff" => :catalina
+    sha256 "dea440f3f6de86d0b9a7949e6e31f1febb5320729d6f098d1e5b497972aca0b3" => :mojave
+    sha256 "963b133dcb6407ec4fc92f430cd4b80bccfd66ea580eddce4ee39bd23851efb2" => :catalina
   end
 
   depends_on "python@3.8"
@@ -22,13 +22,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/9f/86/aa3ed18cc3410e5e50f0085ef178eedd9576199484de258e8602572b419b/boto3-1.14.40.tar.gz"
-    sha256 "c9cab4e0ce77a8c54724eadff047adc976e541f912ca15e35bb475f42b344e0c"
+    url "https://files.pythonhosted.org/packages/36/32/933473da579f245a8ddd9c486cc2c9dfa4620418f1be3d04071cb63f16ca/boto3-1.14.43.tar.gz"
+    sha256 "a6c9a3d3abbad2ff2e5751af599492a9271633a7c9fef343482524464c53e451"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/09/fb/d5ab88317d503044715dbb814ca18567d9edf344689ae1fcfc029f7e637c/botocore-1.17.40.tar.gz"
-    sha256 "feb71e0d2e73fed3c35f1ebfc6b9ff6e499dc9c66db60b63c787fffea3b360a5"
+    url "https://files.pythonhosted.org/packages/a7/10/d9bbdbee6d3ea63897e468dddabb3edb7b7360a901e3eee249cdb132a78a/botocore-1.17.43.tar.gz"
+    sha256 "3fb144d2b5d705127f394f7483737ece6fa79577ca7c493e4f42047ac8636200"
   end
 
   resource "certifi" do
@@ -46,6 +46,11 @@ class Sym < Formula
     sha256 "d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"
   end
 
+  resource "click-option-group" do
+    url "https://files.pythonhosted.org/packages/c9/94/cf8b5c2c23f20cb3c900b6b2de0ab727189544155a14e5799ef0803a2461/click-option-group-0.5.1.tar.gz"
+    sha256 "764eb49094dc864e28afbf36c6bb140d09ef714a915c0c5972c982113ed70fab"
+  end
+
   resource "decorator" do
     url "https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz"
     sha256 "e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"
@@ -56,14 +61,14 @@ class Sym < Formula
     sha256 "a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"
   end
 
-  resource "frozendict" do
-    url "https://files.pythonhosted.org/packages/4e/55/a12ded2c426a4d2bee73f88304c9c08ebbdbadb82569ebdd6a0c007cfd08/frozendict-1.2.tar.gz"
-    sha256 "774179f22db2ef8a106e9c38d4d1f8503864603db08de2e33be5b778230f6e45"
-  end
-
   resource "idna" do
     url "https://files.pythonhosted.org/packages/ea/b7/e0e3c1c467636186c39925827be42f16fee389dc404ac29e930e9136be70/idna-2.10.tar.gz"
     sha256 "b307872f855b18632ce0c21c5e45be78c0ea7ae4c15c828c20788b26921eb3f6"
+  end
+
+  resource "immutables" do
+    url "https://files.pythonhosted.org/packages/6b/58/c6be0577cccbe1658fcb1ec3673e9ac7508af26a2f5c814cc041c7d21212/immutables-0.14.tar.gz"
+    sha256 "a0a1cc238b678455145bae291d8426f732f5255537ed6a5b7645949704c70a78"
   end
 
   resource "jmespath" do
@@ -92,8 +97,8 @@ class Sym < Formula
   end
 
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/49/a1/d0eee20d241d29d67d91b5d53577331fd1edccd4970edf5c136a5ba18e37/sentry-sdk-0.16.3.tar.gz"
-    sha256 "21b17d6aa064c0fb703a7c00f77cf6c9c497cf2f83345c28892980a5e742d116"
+    url "https://files.pythonhosted.org/packages/74/e8/6822964a03cebf20953e977934fcd5fe5241b6beefd4f0326aba0cda0fa1/sentry-sdk-0.16.5.tar.gz"
+    sha256 "e12eb1c2c01cd9e9cfe70608dbda4ef451f37ef0b7cbb92e5d43f87c341d6334"
   end
 
   resource "six" do
@@ -116,6 +121,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.17", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.21", shell_output("#{bin}/sym version").strip
   end
 end
