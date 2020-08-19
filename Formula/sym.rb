@@ -4,8 +4,8 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/ac/71/c0e1867d5985b4d32f1e8cc035f7fdf1968ddb4f99f82f3df01c0d316e5b/sym-cli-0.0.22.tar.gz"
-  sha256 "e120ddc6f0c8d3ef928df630c4231069331bc36d057ca2cbd66908dbfac9d686"
+  url "https://files.pythonhosted.org/packages/91/08/ff4d7536e1a07c2c39e065e797e89f4f1cc35900a2f5292fa8d2583dbb9a/sym-cli-0.0.24.tar.gz"
+  sha256 "af5995a8d5a07f871479b77ad44e6f7ad425a4a111b8ed0c3b114ed5b497437f"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
@@ -76,6 +76,11 @@ class Sym < Formula
     sha256 "b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9"
   end
 
+  resource "keyring" do
+    url "https://files.pythonhosted.org/packages/27/57/9ebcc28f43ff77d29a12185eabc5723a2a7d2a88292eb8ba6c142abebc9b/keyring-21.3.0.tar.gz"
+    sha256 "22df6abfed49912fc560806030051067fba9f0069cffa79da72899aeea4ccbd5"
+  end
+
   resource "portalocker" do
     url "https://files.pythonhosted.org/packages/df/48/62cf97ff7d2233e7db29dfb83f1584e26289e88af8af39de1a76629ac487/portalocker-2.0.0.tar.gz"
     sha256 "14487eed81aa914127edf0284e29c7ca8842c05bb33d96dc7e4bdb47282d26e4"
@@ -126,6 +131,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.22", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.24", shell_output("#{bin}/sym version").strip
   end
 end
