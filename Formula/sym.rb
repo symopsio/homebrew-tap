@@ -4,14 +4,12 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/7d/27/6b8509ce6da50f42f48a824ff28019fe7e5d30638f3def2ae08eb47bea62/sym-cli-0.0.21.tar.gz"
-  sha256 "cd6e47ea9ffc6963110f5442061541fa9a5af274c6a54db55d430bc09ee17109"
+  url "https://files.pythonhosted.org/packages/ac/71/c0e1867d5985b4d32f1e8cc035f7fdf1968ddb4f99f82f3df01c0d316e5b/sym-cli-0.0.22.tar.gz"
+  sha256 "e120ddc6f0c8d3ef928df630c4231069331bc36d057ca2cbd66908dbfac9d686"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any_skip_relocation
-    sha256 "dea440f3f6de86d0b9a7949e6e31f1febb5320729d6f098d1e5b497972aca0b3" => :mojave
-    sha256 "963b133dcb6407ec4fc92f430cd4b80bccfd66ea580eddce4ee39bd23851efb2" => :catalina
   end
 
   depends_on "python@3.8"
@@ -22,13 +20,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/36/32/933473da579f245a8ddd9c486cc2c9dfa4620418f1be3d04071cb63f16ca/boto3-1.14.43.tar.gz"
-    sha256 "a6c9a3d3abbad2ff2e5751af599492a9271633a7c9fef343482524464c53e451"
+    url "https://files.pythonhosted.org/packages/48/09/b3f9723838f941171d2d86e207c758d606d339fd87968bd7a29d81ccd632/boto3-1.14.45.tar.gz"
+    sha256 "02ad765927bb46b9f45c3bce65e763960733919eee7883217995c5df5d096695"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/a7/10/d9bbdbee6d3ea63897e468dddabb3edb7b7360a901e3eee249cdb132a78a/botocore-1.17.43.tar.gz"
-    sha256 "3fb144d2b5d705127f394f7483737ece6fa79577ca7c493e4f42047ac8636200"
+    url "https://files.pythonhosted.org/packages/5d/25/27ec260a1a26b73554f5a65ab668e8233bb0cf5e8aadef2309dd5d821a26/botocore-1.17.45.tar.gz"
+    sha256 "bc8b1c83ccc0d77963849b66a94bbb20a666ff0225aff84de7ed0175db1fd6f7"
   end
 
   resource "certifi" do
@@ -76,6 +74,11 @@ class Sym < Formula
     sha256 "b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9"
   end
 
+  resource "portalocker" do
+    url "https://files.pythonhosted.org/packages/df/48/62cf97ff7d2233e7db29dfb83f1584e26289e88af8af39de1a76629ac487/portalocker-2.0.0.tar.gz"
+    sha256 "14487eed81aa914127edf0284e29c7ca8842c05bb33d96dc7e4bdb47282d26e4"
+  end
+
   resource "python-dateutil" do
     url "https://files.pythonhosted.org/packages/be/ed/5bbc91f03fa4c839c4c7360375da77f9659af5f7086b7a7bdda65771c8e0/python-dateutil-2.8.1.tar.gz"
     sha256 "73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"
@@ -121,6 +124,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.21", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.22", shell_output("#{bin}/sym version").strip
   end
 end
