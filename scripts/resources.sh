@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source /usr/local/bin/virtualenvwrapper.sh
+wrapper=/usr/local/bin/virtualenvwrapper.sh
+if ! [[ -f ${wrapper} ]]; then
+  wrapper=$(pyenv prefix)/bin/virtualenvwrapper.sh
+fi
+source ${wrapper}
 
 mktmpenv
 
