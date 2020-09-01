@@ -10,8 +10,8 @@ class Sym < Formula
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any_skip_relocation
-    sha256 "48067dcb3882cb2a962a60f80ae88a5bf18f467542fdad83367382952316e86b" => :mojave
-    sha256 "422e71e5351bc06155d8273ad02347ee08f26421e812b69d649d28afa5cad132" => :catalina
+    sha256 "75d7515b218fd1af4b38176522e54a808b494178811ec9a44bcaa528bd6ad5f8" => :mojave
+    sha256 "e8184955f15f25bb1eafe323fb6fb8b6bae24bc53143587b365ecbcd854a3fe5" => :catalina
   end
 
   depends_on "python@3.8"
