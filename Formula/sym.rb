@@ -4,8 +4,8 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/f4/5b/046c88c9f404df0b40a4a6ffe758e0faa5a78be903ab1afafece5ece8271/sym-cli-0.0.29.tar.gz"
-  sha256 "25f8003e98d68aec70fe5cb8bad41f305d7fe1ce4c952b461f5e77bcfc720e72"
+  url "https://files.pythonhosted.org/packages/53/5c/d707d218e0f631f8a65789a6b4e2579af35a4ad4301ba018c106bb3d7789/sym-cli-0.0.30.tar.gz"
+  sha256 "dd120a697b8d2329cf94776500f61fb17005d5d6e7fdab47ce46e552b81d5656"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
@@ -121,11 +121,12 @@ class Sym < Formula
     sha256 "1a653b33c0ab091790f65f42b61aa191e354ed5fdedfeb17d24a86d0789966d7"
   end
 
+
   def install
     virtualenv_install_with_resources
   end
 
   test do
-    assert_equal "0.0.29", shell_output("#{bin}/sym --saml-client=aws-profile version").strip
+    assert_equal "0.0.30", shell_output("#{bin}/sym version").strip
   end
 end
