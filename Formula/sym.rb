@@ -126,6 +126,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.29", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.29", shell_output("#{bin}/sym --saml-client=aws-profile version").strip
   end
 end
