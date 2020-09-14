@@ -4,8 +4,8 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/18/f1/ea27ca9c64a16c3d1f35bfaa52dafb52d95a85fd1dbbdaf974216da23a3e/sym-cli-0.0.28.tar.gz"
-  sha256 "c8d6075ff838ff0c592bc107bf04f296b6e35064ddf457361bc3d31a5c475b11"
+  url "https://files.pythonhosted.org/packages/53/5c/d707d218e0f631f8a65789a6b4e2579af35a4ad4301ba018c106bb3d7789/sym-cli-0.0.30.tar.gz"
+  sha256 "dd120a697b8d2329cf94776500f61fb17005d5d6e7fdab47ce46e552b81d5656"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
@@ -22,13 +22,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/2f/10/e68cf2b3e0cd4443626ba0132a8959083cfc84a4e516abdd12df8011adc9/boto3-1.14.56.tar.gz"
-    sha256 "bb2222fa02fcd09b39e581e532d4f013ea850742d8cd46e9c10a21028b6d2ef5"
+    url "https://files.pythonhosted.org/packages/55/46/57fb6f17f1209a3c92ee5901f16206ccde005578415d4f75b385ce9109cf/boto3-1.14.60.tar.gz"
+    sha256 "d8ca27ee13deeb1a9e79f2fe5f923effa60947ed49bbdfbc2a9f5790aef64217"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/7d/91/728132e79c018b6d117932239d2df9b9b9557d81c769e83caa795d346ea6/botocore-1.17.56.tar.gz"
-    sha256 "5a72e1758f3c89c663d74eb733d313f69d059ab4fd571ad41829d666e3367392"
+    url "https://files.pythonhosted.org/packages/20/be/a7f89c14e579218869c660b51309ef5c9438467c8fb83727afb2a16e4d84/botocore-1.17.60.tar.gz"
+    sha256 "193f193a66ac79106725e14dd73e28ed36bcec99b37156538a2202d061056a58"
   end
 
   resource "certifi" do
@@ -102,8 +102,8 @@ class Sym < Formula
   end
 
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/64/7e/f1725d8649ef8f7d58cbec582157c454884238e59fef00b1707d555c7bea/sentry-sdk-0.17.3.tar.gz"
-    sha256 "0af429c221670e602f960fca85ca3f607c85510a91f11e8be8f742a978127f78"
+    url "https://files.pythonhosted.org/packages/9c/a6/2db9b02cb28c6f89bed067aa9d946a7f5c4e1fc2354a9bd581de771dca3c/sentry-sdk-0.17.5.tar.gz"
+    sha256 "02f2a72698453f722b102562eb6430d2a82d6c6c40f2b991ed69e7628142de6a"
   end
 
   resource "six" do
@@ -121,11 +121,12 @@ class Sym < Formula
     sha256 "1a653b33c0ab091790f65f42b61aa191e354ed5fdedfeb17d24a86d0789966d7"
   end
 
+
   def install
     virtualenv_install_with_resources
   end
 
   test do
-    assert_equal "0.0.28", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.30", shell_output("#{bin}/sym version").strip
   end
 end
