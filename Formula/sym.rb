@@ -4,14 +4,13 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/53/5c/d707d218e0f631f8a65789a6b4e2579af35a4ad4301ba018c106bb3d7789/sym-cli-0.0.30.tar.gz"
-  sha256 "dd120a697b8d2329cf94776500f61fb17005d5d6e7fdab47ce46e552b81d5656"
+  url "https://files.pythonhosted.org/packages/4a/a2/807d37e39f738501463f2c8968c0fb94dcb4a56c9871eb5cb88276d3fadf/sym-cli-0.0.37.tar.gz"
+  sha256 "09be66bee7837e8d6e51169106be5f80392d95460c0e8f231186afd01da2ac93"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
-    cellar :any_skip_relocation
-    sha256 "75d7515b218fd1af4b38176522e54a808b494178811ec9a44bcaa528bd6ad5f8" => :mojave
-    sha256 "e8184955f15f25bb1eafe323fb6fb8b6bae24bc53143587b365ecbcd854a3fe5" => :catalina
+    cellar :any
+    sha256 "1af6b1061eed06d87031a42d0a6d44715ae17f1f7df359827c0aad3b6a6ef7f5" => :catalina
   end
 
   depends_on "python@3.8"
@@ -22,13 +21,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/55/46/57fb6f17f1209a3c92ee5901f16206ccde005578415d4f75b385ce9109cf/boto3-1.14.60.tar.gz"
-    sha256 "d8ca27ee13deeb1a9e79f2fe5f923effa60947ed49bbdfbc2a9f5790aef64217"
+    url "https://files.pythonhosted.org/packages/70/e1/fcaca1175683dfa7a2912a6a626da111538de471d5900f440c6f2322c1b2/boto3-1.15.0.tar.gz"
+    sha256 "78f3ebcdff149d5327f27a5c461a9e394306b7db9a60e8bd65c9401cc41d99d3"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/20/be/a7f89c14e579218869c660b51309ef5c9438467c8fb83727afb2a16e4d84/botocore-1.17.60.tar.gz"
-    sha256 "193f193a66ac79106725e14dd73e28ed36bcec99b37156538a2202d061056a58"
+    url "https://files.pythonhosted.org/packages/91/4a/05807a7f69d77b588f58bff828904c8528281678a3dda41db5c70c98f771/botocore-1.18.0.tar.gz"
+    sha256 "1dbd37af06432eda8a5736bd82f92ddd1ae8de74e4faa090bd728f8d58d24849"
   end
 
   resource "certifi" do
@@ -54,11 +53,6 @@ class Sym < Formula
   resource "decorator" do
     url "https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz"
     sha256 "e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"
-  end
-
-  resource "docutils" do
-    url "https://files.pythonhosted.org/packages/93/22/953e071b589b0b1fee420ab06a0d15e5aa0c7470eb9966d60393ce58ad61/docutils-0.15.2.tar.gz"
-    sha256 "a2aeea129088da402665e92e0b25b04b073c04b2dce4ab65caaa38b7ce2e1a99"
   end
 
   resource "idna" do
@@ -102,8 +96,8 @@ class Sym < Formula
   end
 
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/9c/a6/2db9b02cb28c6f89bed067aa9d946a7f5c4e1fc2354a9bd581de771dca3c/sentry-sdk-0.17.5.tar.gz"
-    sha256 "02f2a72698453f722b102562eb6430d2a82d6c6c40f2b991ed69e7628142de6a"
+    url "https://files.pythonhosted.org/packages/62/1d/6e995c4490d1038a1ed7a103bd5a2e628e2d5f49539a669064498cd1021d/sentry-sdk-0.17.6.tar.gz"
+    sha256 "1a086486ff9da15791f294f6e9915eb3747d161ef64dee2d038a4d0b4a369b24"
   end
 
   resource "six" do
@@ -127,6 +121,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.30", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.37", shell_output("#{bin}/sym version").strip
   end
 end
