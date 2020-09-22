@@ -4,13 +4,13 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/4a/a2/807d37e39f738501463f2c8968c0fb94dcb4a56c9871eb5cb88276d3fadf/sym-cli-0.0.37.tar.gz"
-  sha256 "09be66bee7837e8d6e51169106be5f80392d95460c0e8f231186afd01da2ac93"
+  url "https://files.pythonhosted.org/packages/66/a1/dea483793f94292f835f93a3f4c63fc56688bbd531ec5884dc3685b83b28/sym-cli-0.0.41.tar.gz"
+  sha256 "ea8c1f83bd1fac48451e90dd04bcf99a998d0aaba63ba30e64866f864d3743b7"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
-    sha256 "1af6b1061eed06d87031a42d0a6d44715ae17f1f7df359827c0aad3b6a6ef7f5" => :catalina
+    sha256 "f9c49d6a8d10d0ce1bd170847111ace6bd732ba9dc3746a98d49ed635af5d398" => :catalina
   end
 
   depends_on "python@3.8"
@@ -21,18 +21,23 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/70/e1/fcaca1175683dfa7a2912a6a626da111538de471d5900f440c6f2322c1b2/boto3-1.15.0.tar.gz"
-    sha256 "78f3ebcdff149d5327f27a5c461a9e394306b7db9a60e8bd65c9401cc41d99d3"
+    url "https://files.pythonhosted.org/packages/80/83/00c4d3f512d63771456dfe8666e9214703235a66fe353f624da6c458c45f/boto3-1.15.2.tar.gz"
+    sha256 "7e22c4e21533d7c532e0136610b9cc45e3f81e57b738ff434a1f3d0a3b16e05e"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/91/4a/05807a7f69d77b588f58bff828904c8528281678a3dda41db5c70c98f771/botocore-1.18.0.tar.gz"
-    sha256 "1dbd37af06432eda8a5736bd82f92ddd1ae8de74e4faa090bd728f8d58d24849"
+    url "https://files.pythonhosted.org/packages/a1/92/5336c9b5beac8bded4c3f6ee408e88c193d3545e3a9a901d8918a533688c/botocore-1.18.2.tar.gz"
+    sha256 "7fcfc20921de61bd015d363226476c6f51f38846c2a93f67ee7c70b66f54e223"
   end
 
   resource "certifi" do
     url "https://files.pythonhosted.org/packages/40/a7/ded59fa294b85ca206082306bba75469a38ea1c7d44ea7e1d64f5443d67a/certifi-2020.6.20.tar.gz"
     sha256 "5930595817496dd21bb8dc35dad090f1c2cd0adfaf21204bf6732ca5d8ee34d3"
+  end
+
+  resource "cffi" do
+    url "https://files.pythonhosted.org/packages/cb/ae/380e33d621ae301770358eb11a896a34c34f30db188847a561e8e39ee866/cffi-1.14.3.tar.gz"
+    sha256 "f92f789e4f9241cd262ad7a555ca2c648a98178a953af117ef7fad46aa1d5591"
   end
 
   resource "chardet" do
@@ -50,6 +55,11 @@ class Sym < Formula
     sha256 "764eb49094dc864e28afbf36c6bb140d09ef714a915c0c5972c982113ed70fab"
   end
 
+  resource "cryptography" do
+    url "https://files.pythonhosted.org/packages/12/be/c9cc7d7ab71dbcc9e4e517ead0cdd48e8c9a48d7b8bdddb738e90d08279a/cryptography-3.1.tar.gz"
+    sha256 "26409a473cc6278e4c90f782cd5968ebad04d3911ed1c402fc86908c17633e08"
+  end
+
   resource "decorator" do
     url "https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz"
     sha256 "e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"
@@ -65,14 +75,29 @@ class Sym < Formula
     sha256 "a0a1cc238b678455145bae291d8426f732f5255537ed6a5b7645949704c70a78"
   end
 
+  resource "jeepney" do
+    url "https://files.pythonhosted.org/packages/74/24/9b720cc6b2a73c908896a0ed64cb49780dcfbf4964e23a725aa6323f4452/jeepney-0.4.3.tar.gz"
+    sha256 "3479b861cc2b6407de5188695fa1a8d57e5072d7059322469b62628869b8e36e"
+  end
+
   resource "jmespath" do
     url "https://files.pythonhosted.org/packages/3c/56/3f325b1eef9791759784aa5046a8f6a1aff8f7c898a2e34506771d3b99d8/jmespath-0.10.0.tar.gz"
     sha256 "b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9"
   end
 
+  resource "keyring" do
+    url "https://files.pythonhosted.org/packages/3e/79/da95ce71b572ce01c268492957cc4c1055da6f683077a6caba10944dc4f2/keyring-21.4.0.tar.gz"
+    sha256 "9aeadd006a852b78f4b4ef7c7556c2774d2432bbef8ee538a3e9089ac8b11466"
+  end
+
   resource "portalocker" do
     url "https://files.pythonhosted.org/packages/df/48/62cf97ff7d2233e7db29dfb83f1584e26289e88af8af39de1a76629ac487/portalocker-2.0.0.tar.gz"
     sha256 "14487eed81aa914127edf0284e29c7ca8842c05bb33d96dc7e4bdb47282d26e4"
+  end
+
+  resource "pycparser" do
+    url "https://files.pythonhosted.org/packages/0f/86/e19659527668d70be91d0369aeaa055b4eb396b0f387a4f92293a20035bd/pycparser-2.20.tar.gz"
+    sha256 "2d475327684562c3a96cc71adf7dc8c4f0565175cf86b6d7a404ff4c771f15f0"
   end
 
   resource "python-dateutil" do
@@ -95,9 +120,14 @@ class Sym < Formula
     sha256 "921a37e2aefc64145e7b73d50c71bb4f26f46e4c9f414dc648c6245ff92cf7db"
   end
 
+  resource "SecretStorage" do
+    url "https://files.pythonhosted.org/packages/fd/9f/36197c75d9a09b1ab63f56cb985af6cd858ca3fc41fd9cd890ce69bae5b9/SecretStorage-3.1.2.tar.gz"
+    sha256 "15da8a989b65498e29be338b3b279965f1b8f09b9668bd8010da183024c8bff6"
+  end
+
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/62/1d/6e995c4490d1038a1ed7a103bd5a2e628e2d5f49539a669064498cd1021d/sentry-sdk-0.17.6.tar.gz"
-    sha256 "1a086486ff9da15791f294f6e9915eb3747d161ef64dee2d038a4d0b4a369b24"
+    url "https://files.pythonhosted.org/packages/66/35/bb5fa7614279b30db605e82ac048055bcff50194a9269e87e54bc4311317/sentry-sdk-0.17.7.tar.gz"
+    sha256 "a698993f3abbe06e88e8a3c8b61c8a79c12f62e503f1a23eda30c3921f0525a9"
   end
 
   resource "six" do
@@ -115,12 +145,11 @@ class Sym < Formula
     sha256 "1a653b33c0ab091790f65f42b61aa191e354ed5fdedfeb17d24a86d0789966d7"
   end
 
-
   def install
     virtualenv_install_with_resources
   end
 
   test do
-    assert_equal "0.0.37", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.41", shell_output("#{bin}/sym version").strip
   end
 end
