@@ -10,6 +10,7 @@ class Sym < Formula
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
+    sha256 "f9c49d6a8d10d0ce1bd170847111ace6bd732ba9dc3746a98d49ed635af5d398" => :catalina
   end
 
   depends_on "python@3.8"
