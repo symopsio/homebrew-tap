@@ -4,8 +4,8 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/66/a1/dea483793f94292f835f93a3f4c63fc56688bbd531ec5884dc3685b83b28/sym-cli-0.0.41.tar.gz"
-  sha256 "ea8c1f83bd1fac48451e90dd04bcf99a998d0aaba63ba30e64866f864d3743b7"
+  url "https://files.pythonhosted.org/packages/a5/07/361d52afa1acc218a4f014be09783da80ab96de7fd6f2a27e72657d3464f/sym-cli-0.0.47.tar.gz"
+  sha256 "382741d3b49383ff719413d6c3bdfa62c6c4705cfcb3cb196b8c949a101f9110"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
@@ -21,13 +21,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/80/83/00c4d3f512d63771456dfe8666e9214703235a66fe353f624da6c458c45f/boto3-1.15.2.tar.gz"
-    sha256 "7e22c4e21533d7c532e0136610b9cc45e3f81e57b738ff434a1f3d0a3b16e05e"
+    url "https://files.pythonhosted.org/packages/b8/7a/330b454710a8e472ea0acb7e3cd756ba5120316a00f1cf3335d691134833/boto3-1.15.11.tar.gz"
+    sha256 "713da2b28e9e4cd77e922690c97935dd2316ab27635b6bab4745a2d42bd887ec"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/a1/92/5336c9b5beac8bded4c3f6ee408e88c193d3545e3a9a901d8918a533688c/botocore-1.18.2.tar.gz"
-    sha256 "7fcfc20921de61bd015d363226476c6f51f38846c2a93f67ee7c70b66f54e223"
+    url "https://files.pythonhosted.org/packages/f1/59/4da88f91473d2fdc287749fa5f9fdd5186e2069f405e2db2d16aeb6c2769/botocore-1.18.11.tar.gz"
+    sha256 "1531ee5d7f7d0f0d9a12ea829ef046ac52063a1948409ae19a452a3f47a07937"
   end
 
   resource "certifi" do
@@ -56,8 +56,8 @@ class Sym < Formula
   end
 
   resource "cryptography" do
-    url "https://files.pythonhosted.org/packages/12/be/c9cc7d7ab71dbcc9e4e517ead0cdd48e8c9a48d7b8bdddb738e90d08279a/cryptography-3.1.tar.gz"
-    sha256 "26409a473cc6278e4c90f782cd5968ebad04d3911ed1c402fc86908c17633e08"
+    url "https://files.pythonhosted.org/packages/5d/4b/7bb135c5787c003cdbc44990c5f41908f0f37135e0bb554e880d90fd5f6f/cryptography-3.1.1.tar.gz"
+    sha256 "9d9fc6a16357965d282dd4ab6531013935425d0dc4950df2e0cf2a1b1ac1017d"
   end
 
   resource "decorator" do
@@ -126,8 +126,8 @@ class Sym < Formula
   end
 
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/66/35/bb5fa7614279b30db605e82ac048055bcff50194a9269e87e54bc4311317/sentry-sdk-0.17.7.tar.gz"
-    sha256 "a698993f3abbe06e88e8a3c8b61c8a79c12f62e503f1a23eda30c3921f0525a9"
+    url "https://files.pythonhosted.org/packages/07/43/a3e5186e9262fc7edfb83a376ba7647b5a776047b5302124130869a7f5a6/sentry-sdk-0.18.0.tar.gz"
+    sha256 "1d91a0059d2d8bb980bec169578035c2f2d4b93cd8a4fb5b85c81904d33e221a"
   end
 
   resource "six" do
@@ -150,6 +150,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.41", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.47", shell_output("#{bin}/sym version").strip
   end
 end
