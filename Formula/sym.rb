@@ -4,13 +4,12 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/a5/07/361d52afa1acc218a4f014be09783da80ab96de7fd6f2a27e72657d3464f/sym-cli-0.0.47.tar.gz"
-  sha256 "382741d3b49383ff719413d6c3bdfa62c6c4705cfcb3cb196b8c949a101f9110"
+  url "https://files.pythonhosted.org/packages/f5/51/02182e823990f9b13310cfbf08b97dca2a33453840f3eeee074f742536ba/sym-cli-0.0.53.tar.gz"
+  sha256 "14e0366791a0d1a137299aec0c1e57102d988b8807f9d20f7b361b005bf4b4ba"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
-    sha256 "f9c49d6a8d10d0ce1bd170847111ace6bd732ba9dc3746a98d49ed635af5d398" => :catalina
   end
 
   depends_on "python@3.8"
@@ -21,13 +20,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/b8/7a/330b454710a8e472ea0acb7e3cd756ba5120316a00f1cf3335d691134833/boto3-1.15.11.tar.gz"
-    sha256 "713da2b28e9e4cd77e922690c97935dd2316ab27635b6bab4745a2d42bd887ec"
+    url "https://files.pythonhosted.org/packages/d0/23/69cc4d4f0534bcce81d9fc84785ead4d9de4b6061219df19f2d157c205de/boto3-1.15.16.tar.gz"
+    sha256 "454a8dfb7b367a058c7967ef6b4e2a192c318f10761769fd1003cf7f2f5a7db9"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/f1/59/4da88f91473d2fdc287749fa5f9fdd5186e2069f405e2db2d16aeb6c2769/botocore-1.18.11.tar.gz"
-    sha256 "1531ee5d7f7d0f0d9a12ea829ef046ac52063a1948409ae19a452a3f47a07937"
+    url "https://files.pythonhosted.org/packages/b1/04/657b179b56e12dfe759979e9736d70dcd5c449e4345c629fd2bede0a3235/botocore-1.18.16.tar.gz"
+    sha256 "f0616d2c719691b94470307cee8adf89ceb1657b7b6f9aa1bf61f9de5543dbbb"
   end
 
   resource "certifi" do
@@ -126,8 +125,8 @@ class Sym < Formula
   end
 
   resource "sentry-sdk" do
-    url "https://files.pythonhosted.org/packages/07/43/a3e5186e9262fc7edfb83a376ba7647b5a776047b5302124130869a7f5a6/sentry-sdk-0.18.0.tar.gz"
-    sha256 "1d91a0059d2d8bb980bec169578035c2f2d4b93cd8a4fb5b85c81904d33e221a"
+    url "https://files.pythonhosted.org/packages/cb/38/7e4b65dbb8267708944ad20fbd063182d83da9d38338f80fbce4ee687bf7/sentry-sdk-0.19.0.tar.gz"
+    sha256 "a3716e98a1285a74eeaea7418a5b8fb2d7568fa11b5fba389946f465876a4d44"
   end
 
   resource "six" do
@@ -150,6 +149,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.47", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.53", shell_output("#{bin}/sym version").strip
   end
 end
