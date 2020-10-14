@@ -117,12 +117,8 @@ ensureBrew() {
 
 ensurePipx() {
   if ! hasCommand pipx; then
-    if hasCommand brew; then
-      brew install pipx
-    else
-      $(getPythonPath) -m pip install --user pipx
-      $(getPythonPath) -m pipx ensurepath
-    fi
+    $(getPythonPath) -m pip install --user pipx
+    $(getPythonPath) -m pipx ensurepath
   fi
 }
 
@@ -135,6 +131,7 @@ ensurePython38() {
       brew install python@3.8
     else
       # TODO use apt-get
+      # TODO install pyenv?
       die 'Please install Python 3.8'
     fi
   fi
