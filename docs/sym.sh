@@ -135,6 +135,7 @@ ensurePython38() {
     elif hasCommand brew; then
       brew install python@3.8
     else
+      # TODO check if asdf is present
       # TODO use apt-get
       # TODO install pyenv?
       die 'Please install Python 3.8'
