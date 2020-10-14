@@ -103,8 +103,13 @@ hasCommand() {
   [ -x "$(command -v "$1")" ]
 }
 
+getBrewPythonPath() {
+  local BREW_PATH="$(brew --prefix)/opt/python/libexec/bin/python"
+  [ -x "$BREW_PATH" ] && echo "$BREW_PATH"
+}
+
 getPythonPath() {
-  command -v python3.8 || command -v python3 || command -v python
+  getBrewPythonPath || command -v python3.8 || command -v python3 || command -v python
 }
 
 ensureBrew() {
@@ -141,6 +146,7 @@ installWithPipx() {
   ensurePython38
   ensurePipx
   pipx ensurepath >/dev/null 2>&1
+  pipx uninstall sym-cli >/dev/null 2>&1
   pipx install sym-cli --force --python "$(getPythonPath)"
   pipx upgrade sym-cli >/dev/null 2>&1
 }
