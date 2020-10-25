@@ -112,14 +112,6 @@ getPythonPath() {
   getBrewPythonPath || command -v python3.8 || command -v python3 || command -v python
 }
 
-ensureBrew() {
-  if ! hasCommand brew; then
-    eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    set +u    # Undo `set -u` that install.sh does.
-    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-  fi
-}
-
 ensurePipx() {
   if ! hasCommand pipx; then
     $(getPythonPath) -m pip install --user pipx
@@ -135,9 +127,6 @@ ensurePython38() {
     elif hasCommand brew; then
       brew install python@3.8
     else
-      # TODO check if asdf is present
-      # TODO use apt-get
-      # TODO install pyenv?
       die 'Please install Python 3.8'
     fi
   fi
@@ -146,18 +135,9 @@ ensurePython38() {
 installWithPipx() {
   ensurePython38
   ensurePipx
-  pipx ensurepath >/dev/null 2>&1
-  pipx uninstall sym-cli >/dev/null 2>&1
-  pipx install sym-cli --force --python "$(getPythonPath)"
-  pipx upgrade sym-cli >/dev/null 2>&1
-}
-
-installWithBrew() {
-  if ! hasCommand brew; then
-    return 1
-  fi
-  brew install symopsio/tap/sym
-  brew upgrade symopsio/tap/sym >/dev/null 2>&1
+  $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
+  $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"
+  $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
 }
 
 installSessionManagerPlugin() {
@@ -166,7 +146,7 @@ installSessionManagerPlugin() {
   fi
 }
 
-installWithPipx || installWithBrew ||
+installWithPipx || 
   die 'Could not install sym-cli; please send us any error messages printed above.'
 
 installSessionManagerPlugin ||
