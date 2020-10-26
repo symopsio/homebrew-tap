@@ -1,9 +1,10 @@
 # Symopsio Tap
 
-## How do I install these formulae?
-`brew install symopsio/tap/<formula>`
+## DEPRECATION NOTICE
 
-Or `brew tap symopsio/tap` and then `brew install <formula>`.
+As of right now, we are primarily support installation via pipx, rather than installing via our homebrew tap. 
+We document and recommend installing Sym with:
 
-## Documentation
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+`curl https://install.symops.io/sym.sh | bash`
+
+That script lives in `docs/sym.sh`. 
