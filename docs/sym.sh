@@ -107,10 +107,6 @@ getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
-ensurePipx() {
-
-}
-
 ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
     if hasCommand pyenv; then
