@@ -108,9 +108,7 @@ getPythonPath() {
 }
 
 ensurePipx() {
-  $(getPythonPath) -m pip install --user pipx
-  # Make sure pipx binaries will be on the PATH 
-  $(getPythonPath) -m pipx ensurepath
+
 }
 
 ensurePython38() {
@@ -129,7 +127,9 @@ ensurePython38() {
 installWithPipx() {
   echo "Using python path $(getPythonPath)"
   ensurePython38
-  ensurePipx
+  $(getPythonPath) -m pip install --user pipx
+  # Make sure pipx binaries will be on the PATH
+  $(getPythonPath) -m pipx ensurepath
   $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
   $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"
   $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
