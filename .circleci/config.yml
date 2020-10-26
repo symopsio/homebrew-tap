@@ -1,0 +1,42 @@
+version: 2.1
+
+executors:
+  python:
+    docker:
+      - image: cimg/python:3.8.5
+  macos:
+    macos:
+      xcode: "12.0.0"
+    environment:
+      LANG: "en_US.UTF-8"
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+
+commands:
+  run_script:
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: Run script
+          command: |
+            cat project/docs/sym.sh | bash
+            sym version
+
+jobs:
+  test_install_script:
+    parameters:
+      executor:
+        type: string
+    executor:
+      name: << parameters.executor >>
+    steps:
+      - run_script
+
+workflows:
+  test:
+    jobs:
+      - test_install_script:
+          matrix:
+            parameters:
+              executor: ["macos", "python"]
