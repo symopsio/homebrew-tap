@@ -21,7 +21,8 @@ commands:
           name: Run script
           command: |
             cat ~/project/docs/sym.sh | bash
-            ~/.local/bin/sym version
+            export PATH="$HOME/.local/bin:$PATH"
+            sym version
 
 jobs:
   test_install_script:
