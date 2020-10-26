@@ -108,9 +108,7 @@ getPythonPath() {
 }
 
 ensurePipx() {
-  if ! hasCommand pipx; then
-    $(getPythonPath) -m pip install --user pipx
-  fi
+  $(getPythonPath) -m pip install --user pipx
   # Make sure pipx binaries will be on the PATH 
   $(getPythonPath) -m pipx ensurepath
 }
