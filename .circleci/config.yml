@@ -20,8 +20,8 @@ commands:
       - run:
           name: Run script
           command: |
-            cat project/docs/sym.sh | bash
-            sym version
+            cat ~/project/docs/sym.sh | bash
+            ~/.local/bin/sym version
 
 jobs:
   test_install_script:
