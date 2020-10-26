@@ -100,7 +100,7 @@ die() {
 }
 
 hasCommand() {
-  [ -x "$(command -v "$1" &> /dev/null)" ]
+  [ -x "$(command -v "$1")" ]
 }
 
 getPythonPath() {
@@ -110,8 +110,9 @@ getPythonPath() {
 ensurePipx() {
   if ! hasCommand pipx; then
     $(getPythonPath) -m pip install --user pipx
-    $(getPythonPath) -m pipx ensurepath
   fi
+  # Make sure pipx binaries will be on the PATH 
+  $(getPythonPath) -m pipx ensurepath
 }
 
 ensurePython38() {
@@ -138,7 +139,12 @@ installWithPipx() {
 
 installSessionManagerPlugin() {
   if ! hasCommand session-manager-plugin; then
-    hasCommand brew && brew cask install session-manager-plugin
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+    unzip sessionmanager-bundle.zip
+    echo 'Installing session-manager-plugin...'
+    sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+    rm sessionmanager-bundle.zip
+    rm -rf ./sessionmanager-bundle
   fi
 }
 
@@ -149,3 +155,8 @@ installSessionManagerPlugin ||
   die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
 
 printf '\e[32mSuccessfully installed sym-cli.\e[0m\n'
+
+if ! hasCommand sym; then 
+  printf '\e[32mPlease restart your terminal, or run the following command to add Sym to your path in this terminal:\e[0m\n'
+  printf '\e[32m\texport PATH="$HOME/.local/bin:$PATH"\e[0m\n'
+fi
