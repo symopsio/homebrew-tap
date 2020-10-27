@@ -133,12 +133,21 @@ installWithPipx() {
 
 installSessionManagerPlugin() {
   if ! hasCommand session-manager-plugin; then
-    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
-    unzip sessionmanager-bundle.zip
-    echo 'Installing session-manager-plugin...'
-    sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
-    rm sessionmanager-bundle.zip
-    rm -rf ./sessionmanager-bundle
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+      wget -q "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm"
+      rpm2cpio session-manager-plugin.rpm | cpio -idmv
+      cp ./usr/local/sessionmanagerplugin/bin/session-manager-plugin /usr/local/bin/session-manager-plugin
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+      curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+      unzip sessionmanager-bundle.zip
+      echo 'Installing session-manager-plugin...'
+      sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+      rm sessionmanager-bundle.zip
+      rm -rf ./sessionmanager-bundle
+    else 
+      echo 'Unable to install session-manager-plugin on this operation system.'
+      return 1
+    fi
   fi
 }
 
