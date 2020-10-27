@@ -134,9 +134,13 @@ installWithPipx() {
 installSessionManagerPlugin() {
   if ! hasCommand session-manager-plugin; then
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-      wget -q "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm"
-      rpm2cpio session-manager-plugin.rpm | cpio -idmv
-      cp ./usr/local/sessionmanagerplugin/bin/session-manager-plugin /usr/local/bin/session-manager-plugin
+      if hasCommand dpkg; then
+        curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+        sudo dpkg -i session-manager-plugin.deb
+        rm session-manager-plugin.deb
+      else 
+        echo 'Unable to install session-manager-plugin on linux without dpkg.'
+      fi 
     elif [[ "$OSTYPE" == "darwin"* ]]; then
       curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
       unzip sessionmanager-bundle.zip
