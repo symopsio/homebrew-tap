@@ -103,28 +103,8 @@ hasCommand() {
   [ -x "$(command -v "$1")" ]
 }
 
-getBrewPythonPath() {
-  local BREW_PATH="$(brew --prefix)/opt/python/libexec/bin/python"
-  [ -x "$BREW_PATH" ] && echo "$BREW_PATH"
-}
-
 getPythonPath() {
-  getBrewPythonPath || command -v python3.8 || command -v python3 || command -v python
-}
-
-ensureBrew() {
-  if ! hasCommand brew; then
-    eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    set +u    # Undo `set -u` that install.sh does.
-    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-  fi
-}
-
-ensurePipx() {
-  if ! hasCommand pipx; then
-    $(getPythonPath) -m pip install --user pipx
-    $(getPythonPath) -m pipx ensurepath
-  fi
+  command -v python3.8 || command -v python3 || command -v python
 }
 
 ensurePython38() {
@@ -135,41 +115,55 @@ ensurePython38() {
     elif hasCommand brew; then
       brew install python@3.8
     else
-      # TODO check if asdf is present
-      # TODO use apt-get
-      # TODO install pyenv?
       die 'Please install Python 3.8'
     fi
   fi
 }
 
 installWithPipx() {
+  echo "Using python path $(getPythonPath)"
   ensurePython38
-  ensurePipx
-  pipx ensurepath >/dev/null 2>&1
-  pipx uninstall sym-cli >/dev/null 2>&1
-  pipx install sym-cli --force --python "$(getPythonPath)"
-  pipx upgrade sym-cli >/dev/null 2>&1
-}
-
-installWithBrew() {
-  if ! hasCommand brew; then
-    return 1
-  fi
-  brew install symopsio/tap/sym
-  brew upgrade symopsio/tap/sym >/dev/null 2>&1
+  $(getPythonPath) -m pip install --user pipx
+  # Make sure pipx binaries will be on the PATH
+  $(getPythonPath) -m pipx ensurepath
+  $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
+  $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"
+  $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
 }
 
 installSessionManagerPlugin() {
   if ! hasCommand session-manager-plugin; then
-    hasCommand brew && brew cask install session-manager-plugin
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+      if hasCommand dpkg; then
+        curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+        sudo dpkg -i session-manager-plugin.deb
+        rm session-manager-plugin.deb
+      else 
+        echo 'Unable to install session-manager-plugin on linux without dpkg.'
+      fi 
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+      curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+      unzip sessionmanager-bundle.zip
+      echo 'Installing session-manager-plugin...'
+      sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+      rm sessionmanager-bundle.zip
+      rm -rf ./sessionmanager-bundle
+    else 
+      echo 'Unable to install session-manager-plugin on this operation system.'
+      return 1
+    fi
   fi
 }
 
-installWithPipx || installWithBrew ||
+installWithPipx || 
   die 'Could not install sym-cli; please send us any error messages printed above.'
 
 installSessionManagerPlugin ||
   die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
 
 printf '\e[32mSuccessfully installed sym-cli.\e[0m\n'
+
+if ! hasCommand sym; then 
+  printf '\e[32mPlease restart your terminal, or run the following command to add Sym to your path in this terminal:\e[0m\n'
+  printf '\e[32m\texport PATH="$HOME/.local/bin:$PATH"\e[0m\n'
+fi
