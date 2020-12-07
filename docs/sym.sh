@@ -127,8 +127,15 @@ installWithPipx() {
   # Make sure pipx binaries will be on the PATH
   $(getPythonPath) -m pipx ensurepath
   $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
-  $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"
-  $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
+  if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"; then
+    $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
+  else
+    if hasCommand sym; then
+      die "Sym has been manually installed to ${which sym}. Please uninstall that version and try again."
+    else
+      die "Installing Sym with pipx failed."
+    fi
+  fi
 }
 
 installSessionManagerPlugin() {
@@ -138,9 +145,9 @@ installSessionManagerPlugin() {
         curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
         sudo dpkg -i session-manager-plugin.deb
         rm session-manager-plugin.deb
-      else 
+      else
         echo 'Unable to install session-manager-plugin on linux without dpkg.'
-      fi 
+      fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
       curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
       unzip sessionmanager-bundle.zip
@@ -148,14 +155,14 @@ installSessionManagerPlugin() {
       sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
       rm sessionmanager-bundle.zip
       rm -rf ./sessionmanager-bundle
-    else 
+    else
       echo 'Unable to install session-manager-plugin on this operation system.'
       return 1
     fi
   fi
 }
 
-installWithPipx || 
+installWithPipx ||
   die 'Could not install sym-cli; please send us any error messages printed above.'
 
 installSessionManagerPlugin ||
@@ -163,7 +170,7 @@ installSessionManagerPlugin ||
 
 printf '\e[32mSuccessfully installed sym-cli.\e[0m\n'
 
-if ! hasCommand sym; then 
+if ! hasCommand sym; then
   printf '\e[32mPlease restart your terminal, or run the following command to add Sym to your path in this terminal:\e[0m\n'
   printf '\e[32m\texport PATH="$HOME/.local/bin:$PATH"\e[0m\n'
 fi
