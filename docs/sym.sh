@@ -131,7 +131,7 @@ installWithPipx() {
     $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
   else
     if hasCommand sym; then
-      die "Sym has been manually installed to ${which sym}. Please uninstall that version and try again."
+      die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
     else
       die "Installing Sym with pipx failed."
     fi
