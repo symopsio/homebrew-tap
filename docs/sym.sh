@@ -133,7 +133,8 @@ installWithPipx() {
     if hasCommand sym; then
       die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
     else
-      die "Installing Sym with pipx failed."
+      echo "Installing Sym with pipx failed."
+      return 1
     fi
   fi
 }
