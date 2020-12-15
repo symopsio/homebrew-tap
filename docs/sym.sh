@@ -128,7 +128,7 @@ installWithPipx() {
   $(getPythonPath) -m pipx ensurepath
   $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
   if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"; then
-    $(getPythonPath) -m pipx upgrade sym-cli >/dev/null 2>&1
+    $(getPythonPath) -m pipx upgrade --force sym-cli >/dev/null 2>&1
   else
     if hasCommand sym; then
       die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
@@ -140,26 +140,24 @@ installWithPipx() {
 }
 
 installSessionManagerPlugin() {
-  if ! hasCommand session-manager-plugin; then
-    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-      if hasCommand dpkg; then
-        curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-        sudo dpkg -i session-manager-plugin.deb
-        rm session-manager-plugin.deb
-      else
-        echo 'Unable to install session-manager-plugin on linux without dpkg.'
-      fi
-    elif [[ "$OSTYPE" == "darwin"* ]]; then
-      curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
-      unzip sessionmanager-bundle.zip
-      echo 'Installing session-manager-plugin...'
-      sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
-      rm sessionmanager-bundle.zip
-      rm -rf ./sessionmanager-bundle
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    if hasCommand dpkg; then
+      curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+      sudo dpkg -i session-manager-plugin.deb
+      rm session-manager-plugin.deb
     else
-      echo 'Unable to install session-manager-plugin on this operation system.'
-      return 1
+      echo 'Unable to install session-manager-plugin on linux without dpkg.'
     fi
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+    unzip sessionmanager-bundle.zip
+    echo 'Installing session-manager-plugin...'
+    sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+    rm sessionmanager-bundle.zip
+    rm -rf ./sessionmanager-bundle
+  else
+    echo 'Unable to install session-manager-plugin on this operation system.'
+    return 1
   fi
 }
 
