@@ -121,14 +121,17 @@ ensurePython38() {
 }
 
 installWithPipx() {
+  LOG_DIR=/tmp/logs/sym-cli
+  mkdir -p "$LOG_DIR"
+
   echo "Using python path $(getPythonPath)"
   ensurePython38
   $(getPythonPath) -m pip install --user pipx
   # Make sure pipx binaries will be on the PATH
   $(getPythonPath) -m pipx ensurepath
-  $(getPythonPath) -m pipx uninstall sym-cli >/dev/null 2>&1
+  $(getPythonPath) -m pipx uninstall sym-cli >"$LOG_DIR/pipx" 2>&1
   if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"; then
-    $(getPythonPath) -m pipx upgrade --force sym-cli >/dev/null 2>&1
+    $(getPythonPath) -m pipx upgrade --force sym-cli >"$LOG_DIR/pipx" 2>&1
   else
     if hasCommand sym; then
       die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
