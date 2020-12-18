@@ -10,7 +10,7 @@ class Sym < Formula
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
-    sha256 "c38afbc73ef039dbff1af360bb610eb26648099a70dcf0675a04bda541cb3e8c" => :big_sur
+    sha256 "098273104f1b46a0cad791b0302614c05bb5d27173ea296cd98f124aca9ba66d" => :big_sur
   end
 
   depends_on "python@3.8"
@@ -160,6 +160,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.66", shell_output("#{bin}/sym version").strip
+    assert_equal "0.0.67", shell_output("#{bin}/sym version").strip
   end
 end
