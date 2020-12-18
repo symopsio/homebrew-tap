@@ -4,12 +4,13 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/6e/c4/b3b1a7e7be2398524f32b5b862176b5f5e9c1aa56f3288e748663e899485/sym-cli-0.0.66.tar.gz"
-  sha256 "5618c1b4dde47784c6764c9c875d2e548f7aa25071987b59d4461a862b8fa964"
+  url "https://files.pythonhosted.org/packages/a6/b6/e2ce455678b301378f4b2ed4f78cf5b7b7fa7d5e7ac4f562dfc659683b54/sym-cli-0.0.67.tar.gz"
+  sha256 "4d6bd8d75b72c831cb2ad3c46906536e212ef8dd08e4aa74170a1303628458de"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
+    sha256 "c38afbc73ef039dbff1af360bb610eb26648099a70dcf0675a04bda541cb3e8c" => :big_sur
   end
 
   depends_on "python@3.8"
@@ -20,13 +21,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/a7/d8/68967f70738ad8565d510ba25eb16828f08a3b7a5028aee787f05b0d8a07/boto3-1.16.37.tar.gz"
-    sha256 "ee86c26b3d457aa4d0256d0535d13107c32aa33bb5eb2a0b2dac9d81c3aca405"
+    url "https://files.pythonhosted.org/packages/a8/61/e2720d714f2c69cfffe4fc9b15c16296b936e8f7f25a7b50ec8f9eaeaa1c/boto3-1.16.39.tar.gz"
+    sha256 "a05614300fd404c7952a55ae92e106b9400ae65886425aaab3104527be833848"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/a9/11/be7bbf039e05ada3bd7e8942394515e78d38cae529a1040377455b2547e9/botocore-1.19.37.tar.gz"
-    sha256 "67bf1285455d79336ce7061da1768206b78f7a0efc13c8b4033fd348a74e7491"
+    url "https://files.pythonhosted.org/packages/89/6e/f4ebd8048f77fb7dd5243b1f2b2f337b42ed84290910b74eb8ac71a1a7c7/botocore-1.19.39.tar.gz"
+    sha256 "e0d0386098a072abd7b6c087e6149d997377c969a823ebe01b3f5bfabe9bfac0"
   end
 
   resource "certifi" do
@@ -40,8 +41,8 @@ class Sym < Formula
   end
 
   resource "chardet" do
-    url "https://files.pythonhosted.org/packages/fc/bb/a5768c230f9ddb03acc9ef3f0d4a3cf93462473795d18e9535498c8f929d/chardet-3.0.4.tar.gz"
-    sha256 "84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+    url "https://files.pythonhosted.org/packages/ee/2d/9cdc2b527e127b4c9db64b86647d567985940ac3698eeabc7ffaccb4ea61/chardet-4.0.0.tar.gz"
+    sha256 "0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"
   end
 
   resource "click" do
@@ -115,8 +116,8 @@ class Sym < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/9f/14/4a6542a078773957aa83101336375c9597e6fe5889d20abda9c38f9f3ff2/requests-2.25.0.tar.gz"
-    sha256 "7f1a0b932f4a60a1a65caa4263921bb7d9ee911957e0ae4a23a6dd08185ad5f8"
+    url "https://files.pythonhosted.org/packages/6b/47/c14abc08432ab22dc18b9892252efaf005ab44066de871e72a38d6af464b/requests-2.25.1.tar.gz"
+    sha256 "27973dd4a904a4f13b263a19c866c13b92a39ed1c964655f025f3f8d3d75b804"
   end
 
   resource "s3transfer" do
