@@ -160,6 +160,6 @@ class Sym < Formula
   end
 
   test do
-    assert_equal "0.0.68", shell_output("#{bin}/sym version").strip
+    assert_match /\d+\.\d+\.\d/, shell_output("#{bin}/sym version").strip
   end
 end
