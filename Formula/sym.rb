@@ -4,13 +4,13 @@ class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://symops.com"
 
-  url "https://files.pythonhosted.org/packages/ac/f5/64f706f120b744d46c3aa41ec65075c00c13fd14fa149e4ed6b8cb4cb289/sym-cli-0.0.68.tar.gz"
-  sha256 "6fe0f8d3b54653f8eeb237d546c09c65af099f46829bad1e3c9c7b9c45e12b43"
+  url "https://files.pythonhosted.org/packages/86/e2/fce82f7d38183102b4e51fd2d092d7e8015e22f114df688ed2e3969a0270/sym-cli-0.1.0.tar.gz"
+  sha256 "e975bcb17797722cc24f718e079c01ed906775573a1009c51f63f525eae4784f"
 
   bottle do
     root_url "https://dl.bintray.com/symopsio/bottles-tap"
     cellar :any
-    sha256 "00ff7a41d724d41e35bcf78a54423610a9b4ffeaa28286b2afb1750d9f5f0160" => :big_sur
+    sha256 "c2a61605f008090879218b47ab4ff8f6ff3e909c60db53dbb38f5900023908a3" => :big_sur
   end
 
   depends_on "python@3.8"
@@ -21,13 +21,13 @@ class Sym < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/a8/61/e2720d714f2c69cfffe4fc9b15c16296b936e8f7f25a7b50ec8f9eaeaa1c/boto3-1.16.39.tar.gz"
-    sha256 "a05614300fd404c7952a55ae92e106b9400ae65886425aaab3104527be833848"
+    url "https://files.pythonhosted.org/packages/b4/5b/4a77062b00b904821289282dd661f4b4582e1870be8ea3f52e66139e9c19/boto3-1.16.40.tar.gz"
+    sha256 "75326882aa68e003452dcd8f0fcee0339ff63624115927fb71a6b5d15535ace5"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/89/6e/f4ebd8048f77fb7dd5243b1f2b2f337b42ed84290910b74eb8ac71a1a7c7/botocore-1.19.39.tar.gz"
-    sha256 "e0d0386098a072abd7b6c087e6149d997377c969a823ebe01b3f5bfabe9bfac0"
+    url "https://files.pythonhosted.org/packages/ad/c1/54f0554f2003bfcf4f8bccfe3a34c611fb0d3213664236da3bd8c2539971/botocore-1.19.40.tar.gz"
+    sha256 "ebfa880ac8cb8132dc6657902bf546f52cf2c43278570f60c8f8a0f894556555"
   end
 
   resource "certifi" do
@@ -53,6 +53,11 @@ class Sym < Formula
   resource "click-option-group" do
     url "https://files.pythonhosted.org/packages/e5/cb/c5698a6434db57236cdab8852d0305ad71a033f29d8a769faabf35f96e29/click-option-group-0.5.2.tar.gz"
     sha256 "743733a0f564438b6b761f49ddf37d845f9a662294ecabe0e832e597208bcf31"
+  end
+
+  resource "colorama" do
+    url "https://files.pythonhosted.org/packages/1f/bb/5d3246097ab77fa083a61bd8d3d527b7ae063c7d8e8671b1cf8c4ec10cbe/colorama-0.4.4.tar.gz"
+    sha256 "5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"
   end
 
   resource "cryptography" do
@@ -151,8 +156,8 @@ class Sym < Formula
   end
 
   resource "validators" do
-    url "https://files.pythonhosted.org/packages/6e/54/8b4292f28b97aaaca03ccc70bf40bbf012a41f2c7887715e613ea805429e/validators-0.18.1.tar.gz"
-    sha256 "1a653b33c0ab091790f65f42b61aa191e354ed5fdedfeb17d24a86d0789966d7"
+    url "https://files.pythonhosted.org/packages/33/1a/4e4c12982b093796c1ceaff49cbc5998fb3a7866da755f8e7a1a40b8fda4/validators-0.18.2.tar.gz"
+    sha256 "37cd9a9213278538ad09b5b9f9134266e7c226ab1fede1d500e29e0a8fbb9ea6"
   end
 
   def install
