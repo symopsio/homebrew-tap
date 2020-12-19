@@ -136,7 +136,7 @@ installWithPipx() {
   # Make sure pipx binaries will be on the PATH
   $(getPythonPath) -m pipx ensurepath >"$LOG_DIR/ensurepath" 2>&1
 
-  echo "Installing sym"
+  echo "Installing sym (takes around a minute)"
   $(getPythonPath) -m pipx uninstall sym-cli >"$LOG_DIR/uninstall" 2>&1
   if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
     $(getPythonPath) -m pipx upgrade --force sym-cli >"$LOG_DIR/upgrade" 2>&1
