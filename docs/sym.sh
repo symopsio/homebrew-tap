@@ -99,6 +99,10 @@ die() {
   exit 1
 }
 
+success() {
+  printf "\e[32m%s\e[0m\n" "$@" >&2
+}
+
 hasCommand() {
   [ -x "$(command -v "$1")" ]
 }
@@ -121,17 +125,22 @@ ensurePython38() {
 }
 
 installWithPipx() {
-  LOG_DIR=/tmp/logs/sym-cli
+  LOG_DIR=/tmp/logs/sym-cli/pipx
   mkdir -p "$LOG_DIR"
 
   echo "Using python path $(getPythonPath)"
   ensurePython38
-  $(getPythonPath) -m pip install --user pipx
+
+  echo "Setting up pipx"
+  $(getPythonPath) -m pip install -U --user pipx >"$LOG_DIR/init" 2>&1
   # Make sure pipx binaries will be on the PATH
-  $(getPythonPath) -m pipx ensurepath
-  $(getPythonPath) -m pipx uninstall sym-cli >"$LOG_DIR/pipx" 2>&1
-  if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)"; then
-    $(getPythonPath) -m pipx upgrade --force sym-cli >"$LOG_DIR/pipx" 2>&1
+  $(getPythonPath) -m pipx ensurepath >"$LOG_DIR/ensurepath" 2>&1
+
+  echo "Installing sym"
+  $(getPythonPath) -m pipx uninstall sym-cli >"$LOG_DIR/uninstall" 2>&1
+  if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
+    $(getPythonPath) -m pipx upgrade --force sym-cli >"$LOG_DIR/upgrade" 2>&1
+    success "sym version $(sym version) installed!"
   else
     if hasCommand sym; then
       die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
@@ -170,9 +179,9 @@ installWithPipx ||
 installSessionManagerPlugin ||
   die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
 
-printf '\e[32mSuccessfully installed sym-cli.\e[0m\n'
+success 'Successfully installed sym-cli.'
 
 if ! hasCommand sym; then
-  printf '\e[32mPlease restart your terminal, or run the following command to add Sym to your path in this terminal:\e[0m\n'
-  printf '\e[32m\texport PATH="$HOME/.local/bin:$PATH"\e[0m\n'
+  success 'Please restart your terminal, or run the following command to add `sym` to your path in this terminal:'
+  echo "\texport PATH='\$HOME/.local/bin:\$PATH'"
 fi

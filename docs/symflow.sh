@@ -92,11 +92,15 @@ semverLT() {
 
 }
 
-# Symflow Stuff
+# Sym Stuff
 
 die() {
   printf "\e[31m%s\e[0m\n" "$@" >&2
   exit 1
+}
+
+success() {
+  printf "\e[32m%s\e[0m\n" "$@" >&2
 }
 
 hasCommand() {
@@ -121,22 +125,38 @@ ensurePython38() {
 }
 
 installWithPipx() {
+  LOG_DIR=/tmp/logs/sym-flow-cli/pipx
+  mkdir -p "$LOG_DIR"
+
   echo "Using python path $(getPythonPath)"
   ensurePython38
-  $(getPythonPath) -m pip install --user pipx
+
+  echo "Setting up pipx"
+  $(getPythonPath) -m pip install -U --user pipx >"$LOG_DIR/init" 2>&1
   # Make sure pipx binaries will be on the PATH
-  $(getPythonPath) -m pipx ensurepath
-  $(getPythonPath) -m pipx uninstall sym-flow-cli >/dev/null 2>&1
-  $(getPythonPath) -m pipx install sym-flow-cli --force --python "$(getPythonPath)"
-  $(getPythonPath) -m pipx upgrade sym-flow-cli >/dev/null 2>&1
+  $(getPythonPath) -m pipx ensurepath >"$LOG_DIR/ensurepath" 2>&1
+
+  echo "Installing symflow"
+  $(getPythonPath) -m pipx uninstall sym-flow-cli >"$LOG_DIR/uninstall" 2>&1
+  if $(getPythonPath) -m pipx install sym-flow-cli --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
+    $(getPythonPath) -m pipx upgrade --force sym-flow-cli >"$LOG_DIR/upgrade" 2>&1
+    success "symflow version $(symflow version) installed!"
+  else
+    if hasCommand sym; then
+      die "Sym has been manually installed to $(which symflow). Please uninstall that version and try again."
+    else
+      echo "Installing Sym with pipx failed."
+      return 1
+    fi
+  fi
 }
 
-installWithPipx || 
-  die 'Could not install sym-flow-cli; please send us any error messages printed above.'
+installWithPipx ||
+  die 'Could not install symflow; please send us any error messages printed above.'
 
-printf '\e[32mSuccessfully installed sym-flow-cli.\e[0m\n'
+success 'Successfully installed symflow.'
 
-if ! hasCommand symflow; then 
-  printf '\e[32mPlease restart your terminal, or run the following command to add Symflow to your path in this terminal:\e[0m\n'
-  printf '\e[32m\texport PATH="$HOME/.local/bin:$PATH"\e[0m\n'
+if ! hasCommand symflow; then
+  success 'Please restart your terminal, or run the following command to add `symflow` to your path in this terminal:'
+  echo "\texport PATH='\$HOME/.local/bin:\$PATH'"
 fi
