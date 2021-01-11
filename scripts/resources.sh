@@ -8,7 +8,7 @@ source ${wrapper}
 
 mktmpenv
 
-pip install sym-cli homebrew-pypi-poet
-poet sym-cli
+pip install $1 homebrew-pypi-poet
+poet $1
 
 deactivate
