@@ -6,9 +6,13 @@ if ! [[ -f ${wrapper} ]]; then
 fi
 source ${wrapper}
 
+# Flush caches
+mktmpenv >/dev/null 2>&1
+pip install --no-cache-dir -U $1 >/dev/null 2>&1
+deactivate >/dev/null 2>&1
+
+# Real Deal
 mktmpenv
-
-pip install $1 homebrew-pypi-poet
+pip install --no-cache-dir -U $1 homebrew-pypi-poet
 poet $1
-
 deactivate
