@@ -140,7 +140,7 @@ installWithPipx() {
   $(getPythonPath) -m pipx uninstall sym-cli >"$LOG_DIR/uninstall" 2>&1
   if $(getPythonPath) -m pipx install sym-cli --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
     $(getPythonPath) -m pipx upgrade --force sym-cli >"$LOG_DIR/upgrade" 2>&1
-    success "sym version $(sym version) installed!"
+    success "sym version $($HOME/.local/bin/sym version) installed!"
   else
     if hasCommand sym; then
       die "Sym has been manually installed to $(which sym). Please uninstall that version and try again."
@@ -183,5 +183,5 @@ success 'Successfully installed sym-cli.'
 
 if ! hasCommand sym; then
   success 'Please restart your terminal, or run the following command to add `sym` to your path in this terminal:'
-  echo "\texport PATH='\$HOME/.local/bin:\$PATH'"
+  echo -e "\texport PATH='\$HOME/.local/bin:\$PATH'"
 fi
