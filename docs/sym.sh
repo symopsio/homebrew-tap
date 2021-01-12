@@ -152,6 +152,7 @@ installWithPipx() {
 
 installWithBrew() {
   if ! hasCommand brew; then
+    echo '`brew` not present, falling back to `pipx`.'
     return 1
   fi
   brew install symopsio/tap/sym
@@ -190,7 +191,7 @@ else
 fi
 
 installSessionManagerPlugin ||
-  die "Successfully installed sym-cli but could not install session-manager-plugin. $(sym ssh) won't work.\nTo fix, please follow the instructions listed at: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
+  die "Successfully installed sym-cli but could not install session-manager-plugin. \`sym ssh\` won't work.\nTo fix, please follow the instructions listed at: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
 
 success 'Successfully installed sym-cli.'
 
