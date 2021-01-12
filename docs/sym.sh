@@ -2,93 +2,92 @@
 
 # https://github.com/cloudflare/semver_bash/blob/master/semver.sh
 semverParseInto() {
-    local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
-    #MAJOR
-    eval $2=`echo $1 | sed -e "s#$RE#\1#"`
-    #MINOR
-    eval $3=`echo $1 | sed -e "s#$RE#\2#"`
-    #MINOR
-    eval $4=`echo $1 | sed -e "s#$RE#\3#"`
-    #SPECIAL
-    eval $5=`echo $1 | sed -e "s#$RE#\4#"`
+  local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
+  #MAJOR
+  eval $2=$(echo $1 | sed -e "s#$RE#\1#")
+  #MINOR
+  eval $3=$(echo $1 | sed -e "s#$RE#\2#")
+  #MINOR
+  eval $4=$(echo $1 | sed -e "s#$RE#\3#")
+  #SPECIAL
+  eval $5=$(echo $1 | sed -e "s#$RE#\4#")
 }
 
 semverEQ() {
-    local MAJOR_A=0
-    local MINOR_A=0
-    local PATCH_A=0
-    local SPECIAL_A=0
+  local MAJOR_A=0
+  local MINOR_A=0
+  local PATCH_A=0
+  local SPECIAL_A=0
 
-    local MAJOR_B=0
-    local MINOR_B=0
-    local PATCH_B=0
-    local SPECIAL_B=0
+  local MAJOR_B=0
+  local MINOR_B=0
+  local PATCH_B=0
+  local SPECIAL_B=0
 
-    semverParseInto $1 MAJOR_A MINOR_A PATCH_A SPECIAL_A
-    semverParseInto $2 MAJOR_B MINOR_B PATCH_B SPECIAL_B
+  semverParseInto $1 MAJOR_A MINOR_A PATCH_A SPECIAL_A
+  semverParseInto $2 MAJOR_B MINOR_B PATCH_B SPECIAL_B
 
-    if [ $MAJOR_A -ne $MAJOR_B ]; then
-        return 1
-    fi
+  if [ $MAJOR_A -ne $MAJOR_B ]; then
+    return 1
+  fi
 
-    if [ $MINOR_A -ne $MINOR_B ]; then
-        return 1
-    fi
+  if [ $MINOR_A -ne $MINOR_B ]; then
+    return 1
+  fi
 
-    if [ $PATCH_A -ne $PATCH_B ]; then
-        return 1
-    fi
+  if [ $PATCH_A -ne $PATCH_B ]; then
+    return 1
+  fi
 
-    if [[ "_$SPECIAL_A" != "_$SPECIAL_B" ]]; then
-        return 1
-    fi
+  if [[ "_$SPECIAL_A" != "_$SPECIAL_B" ]]; then
+    return 1
+  fi
 
-
-    return 0
+  return 0
 
 }
 
 semverLT() {
-    local MAJOR_A=0
-    local MINOR_A=0
-    local PATCH_A=0
-    local SPECIAL_A=0
+  local MAJOR_A=0
+  local MINOR_A=0
+  local PATCH_A=0
+  local SPECIAL_A=0
 
-    local MAJOR_B=0
-    local MINOR_B=0
-    local PATCH_B=0
-    local SPECIAL_B=0
+  local MAJOR_B=0
+  local MINOR_B=0
+  local PATCH_B=0
+  local SPECIAL_B=0
 
-    semverParseInto $1 MAJOR_A MINOR_A PATCH_A SPECIAL_A
-    semverParseInto $2 MAJOR_B MINOR_B PATCH_B SPECIAL_B
+  semverParseInto $1 MAJOR_A MINOR_A PATCH_A SPECIAL_A
+  semverParseInto $2 MAJOR_B MINOR_B PATCH_B SPECIAL_B
 
-    if [ $MAJOR_A -lt $MAJOR_B ]; then
-        return 0
-    fi
+  if [ $MAJOR_A -lt $MAJOR_B ]; then
+    return 0
+  fi
 
-    if [[ $MAJOR_A -le $MAJOR_B  && $MINOR_A -lt $MINOR_B ]]; then
-        return 0
-    fi
+  if [[ $MAJOR_A -le $MAJOR_B && $MINOR_A -lt $MINOR_B ]]; then
+    return 0
+  fi
 
-    if [[ $MAJOR_A -le $MAJOR_B  && $MINOR_A -le $MINOR_B && $PATCH_A -lt $PATCH_B ]]; then
-        return 0
-    fi
+  if [[ $MAJOR_A -le $MAJOR_B && $MINOR_A -le $MINOR_B && $PATCH_A -lt $PATCH_B ]]; then
+    return 0
+  fi
 
-    if [[ "_$SPECIAL_A"  == "_" ]] && [[ "_$SPECIAL_B"  == "_" ]] ; then
-        return 1
-    fi
-    if [[ "_$SPECIAL_A"  == "_" ]] && [[ "_$SPECIAL_B"  != "_" ]] ; then
-        return 1
-    fi
-    if [[ "_$SPECIAL_A"  != "_" ]] && [[ "_$SPECIAL_B"  == "_" ]] ; then
-        return 0
-    fi
-
-    if [[ "_$SPECIAL_A" < "_$SPECIAL_B" ]]; then
-        return 0
-    fi
-
+  if [[ "_$SPECIAL_A" == "_" ]] && [[ "_$SPECIAL_B" == "_" ]]; then
     return 1
+  fi
+  if [[ "_$SPECIAL_A" == "_" ]] && [[ "_$SPECIAL_B" != "_" ]]; then
+    return 1
+  fi
+  if [[ "_$SPECIAL_A" != "_" ]] && [[ "_$SPECIAL_B" == "_" ]]; then
+    return 0
+  fi
+
+  if [[ "_$SPECIAL_A" < "_$SPECIAL_B" ]]; then
+    return 0
+  fi
+
+  return 1
 
 }
 
@@ -151,6 +150,15 @@ installWithPipx() {
   fi
 }
 
+installWithBrew() {
+  if ! hasCommand brew; then
+    echo '`brew` not present, falling back to `pipx`.'
+    return 1
+  fi
+  brew install symopsio/tap/sym
+  brew upgrade symopsio/tap/sym >/dev/null 2>&1
+}
+
 installSessionManagerPlugin() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if hasCommand dpkg; then
@@ -173,11 +181,17 @@ installSessionManagerPlugin() {
   fi
 }
 
-installWithPipx ||
-  die 'Could not install sym-cli; please send us any error messages printed above.'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  installWithBrew ||
+    installWithPipx ||
+    die 'Could not install sym-cli. Please send us any error messages printed above.'
+else
+  installWithPipx ||
+    die 'Could not install sym-cli. Please send us any error messages printed above.'
+fi
 
 installSessionManagerPlugin ||
-  die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+  die "Successfully installed sym-cli but could not install session-manager-plugin. \`sym ssh\` won't work.\nTo fix, please follow the instructions listed at: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
 
 success 'Successfully installed sym-cli.'
 
