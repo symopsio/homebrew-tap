@@ -20,10 +20,11 @@ class FormulaBuilder
       class #{formula.classify} < Formula
         desc "#{FORMULAE[formula]}"
         homepage "https://docs.symops.com"
+        version "#{version}"
 
         if OS.mac?
-          url "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-darwin-x64.tar.gz"
-          version "#{version}"
+          url "#{url}"
+          sha256 "#{sha}"
           bottle :unneeded
 
           def install
@@ -33,10 +34,10 @@ class FormulaBuilder
         else
           include Language::Python::Virtualenv
 
+          #{top_block.strip}
+
           bottle do
           end
-
-          #{top_block.strip}
 
           depends_on "python@3.8"
 
@@ -61,6 +62,14 @@ class FormulaBuilder
       STDERR.puts "Invalid formula #{formula}"
       exit 1
     end
+  end
+
+  def url
+    "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-darwin-x64.tar.gz"
+  end
+
+  def sha
+    `curl -L #{url} | shasum -a 256`.strip.split(/\s/).first
   end
 
   def top_block
