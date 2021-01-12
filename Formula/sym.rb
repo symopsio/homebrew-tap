@@ -1,11 +1,11 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.4a4"
+  version "0.1.4a6"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.4a4/sym-cli-darwin-x64.tar.gz"
-    sha256 "3ad20e17c0f3fc9240746ce310252296411a2362a9457714e909e36d82310f4d"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.4a6/sym-cli-darwin-x64.tar.gz"
+    sha256 "439cf466481ba6e2eb86f24ba0b34c112d36d600d16f888bf7a3c58ec5dbecd1"
     bottle :unneeded
 
     def install
