@@ -151,6 +151,14 @@ installWithPipx() {
   fi
 }
 
+installWithBrew() {
+  if ! hasCommand brew; then
+    return 1
+  fi
+  brew install symopsio/tap/sym
+  brew upgrade symopsio/tap/sym >/dev/null 2>&1
+}
+
 installSessionManagerPlugin() {
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     if hasCommand dpkg; then
@@ -173,11 +181,17 @@ installSessionManagerPlugin() {
   fi
 }
 
-installWithPipx ||
-  die 'Could not install sym-cli; please send us any error messages printed above.'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  installWithBrew ||
+    installWithPipx ||
+    die 'Could not install sym-cli. Please send us any error messages printed above.'
+else
+  installWithPipx ||
+    die 'Could not install sym-cli. Please send us any error messages printed above.'
+fi
 
 installSessionManagerPlugin ||
-  die 'Successfully installed sym-cli but could not install session-manager-plugin;' "sym ssh won't work. To fix, please follow the instructions listed at:" https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+  die "Successfully installed sym-cli but could not install session-manager-plugin. `sym ssh` won't work.\nTo fix, please follow the instructions listed at: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
 
 success 'Successfully installed sym-cli.'
 
