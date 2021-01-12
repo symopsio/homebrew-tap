@@ -3,8 +3,8 @@ class Sym < Formula
   homepage "https://docs.symops.com"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.3/sym-cli-darwin-x64.tar.gz"
-    version "0.1.3"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.4a4/sym-cli-darwin-x64.tar.gz"
+    version "0.1.4a4"
     bottle :unneeded
 
     def install
@@ -28,13 +28,13 @@ class Sym < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/7f/d2/f94d742fda62b5f0dce27fd966cafbdd88bc2691f623b49ba7eac6d94a69/boto3-1.16.51.tar.gz"
-      sha256 "11dc492682cf2a4f8ff397b0a109837340ef93e77ca2e65715ce24ecf043717c"
+      url "https://files.pythonhosted.org/packages/4a/98/67ba637f47ec7462575da356bd8311c66768a1d8218e6c8f95a56546df0d/boto3-1.16.52.tar.gz"
+      sha256 "360a9f805b11f2e468d48815193c55278765fb30b64350893ab63236a5034726"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/0b/31/d4505c314b4d9643f1b32a34c97f6d8fecf20d4f8611520bc07f2747794e/botocore-1.19.51.tar.gz"
-      sha256 "b204c5b477b043c7f61cba5db479c6b25f684f7409b71a8ecdb5a6b3f57b5cb4"
+      url "https://files.pythonhosted.org/packages/60/ac/11043c6ae96212550e1907ab27453c66fb5abf480bdbd7db58f08ea2710b/botocore-1.19.52.tar.gz"
+      sha256 "dc5ec23deadbe9327d3c81d03fddf80805c549059baabd80dea605941fe6a221"
     end
 
     resource "certifi" do
@@ -103,8 +103,8 @@ class Sym < Formula
     end
 
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/14/f3/51533a07773210c66847687c2e1c4f6f5280cea8b8add6be3df3b5972f08/policyuniverse-1.3.2.20210107.tar.gz"
-      sha256 "ff10e8a5bf3b6715dee8f5e9aad6e261799a2fc2e8ac40cd77f4b22663e8e69e"
+      url "https://files.pythonhosted.org/packages/38/39/003c46d4ea907a50f927c3f35bc9ef1f95117e2e225c34bb3890f0e2c975/policyuniverse-1.3.2.20210111.tar.gz"
+      sha256 "f073e4c29baedb12ef20814a2ce0e04e350037bbdbaed8c3288bbe453e4ec76f"
     end
 
     resource "portalocker" do
@@ -133,8 +133,8 @@ class Sym < Formula
     end
 
     resource "s3transfer" do
-      url "https://files.pythonhosted.org/packages/50/de/2b688c062107942486c81a739383b1432a72717d9a85a6a1a692f003c70c/s3transfer-0.3.3.tar.gz"
-      sha256 "921a37e2aefc64145e7b73d50c71bb4f26f46e4c9f414dc648c6245ff92cf7db"
+      url "https://files.pythonhosted.org/packages/08/e1/3ee2096ebaeeb8c186d20ed16c8faf4a503913e5c9a0e14cd6b8ffc405a3/s3transfer-0.3.4.tar.gz"
+      sha256 "7fdddb4f22275cf1d32129e21f056337fd2a80b6ccef1664528145b72c49e6d2"
     end
 
     resource "SecretStorage" do
