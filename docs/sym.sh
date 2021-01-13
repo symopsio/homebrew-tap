@@ -172,7 +172,9 @@ installSessionManagerPlugin() {
     curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
     unzip sessionmanager-bundle.zip
     echo 'Installing session-manager-plugin...'
-    sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+    if ! sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin; then
+      echo "Installing session-manager-plugin plugin failed! sym-cli will still work, but SSH may not."
+    fi
     rm sessionmanager-bundle.zip
     rm -rf ./sessionmanager-bundle
   else
