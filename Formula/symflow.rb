@@ -1,11 +1,11 @@
 class Symflow < Formula
   desc "CLI to deploy Sym flows"
   homepage "https://docs.symops.com"
-  version "0.0.64a4"
+  version "0.1.0"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.0.64a4/sym-flow-cli-darwin-x64.tar.gz"
-    sha256 "d9c5f960806dd71869f9b20b4c9e80929a6bb0a5050f86d98dd2e0a732ea9cd3"
+    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.0/sym-flow-cli-darwin-x64.tar.gz"
+    sha256 "6cbf6ecef2cad98223fa738eb18b5544ef349252e8547b5dece4907c226e0a52"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Symflow < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/b9/60/43ece57f3ab68fee5de90379eb91084768a610bc5b49b5491de45096bd69/sym-flow-cli-0.0.62.tar.gz"
-    sha256 "cd1dd8ce8fa73f8654ac6bc66062bc9b6dbd619cf3d750758c062a025c54c611"
+    url "https://files.pythonhosted.org/packages/3f/14/7f3d0457183fa334561bf27d3ce7f8adc99e8f567d0f9d1b5defa1e3bac7/sym-flow-cli-0.1.0.tar.gz"
+    sha256 "9fa663f3b3280843e7f509bc57f24ef0577feaa3b5a96313cc6ca51ff793fbfd"
 
     bottle do
     end
@@ -71,6 +71,11 @@ class Symflow < Formula
     resource "click-option-group" do
       url "https://files.pythonhosted.org/packages/e5/cb/c5698a6434db57236cdab8852d0305ad71a033f29d8a769faabf35f96e29/click-option-group-0.5.2.tar.gz"
       sha256 "743733a0f564438b6b761f49ddf37d845f9a662294ecabe0e832e597208bcf31"
+    end
+
+    resource "colorama" do
+      url "https://files.pythonhosted.org/packages/82/75/f2a4c0c94c85e2693c229142eb448840fba0f9230111faa889d1f541d12d/colorama-0.4.3.tar.gz"
+      sha256 "e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"
     end
 
     resource "contextlib2" do
@@ -168,6 +173,11 @@ class Symflow < Formula
       sha256 "30cfdef28829dad64d6ea1ed08f8eff6aa115a77068926bcc9f5225d5a3246aa"
     end
 
+    resource "semver" do
+      url "https://files.pythonhosted.org/packages/31/a9/b61190916030ee9af83de342e101f192bbb436c59be20a4cb0cdb7256ece/semver-2.13.0.tar.gz"
+      sha256 "fa0fe2722ee1c3f57eac478820c3a5ae2f624af8264cbdf9000c980ff7f75e3f"
+    end
+
     resource "sentry-sdk" do
       url "https://files.pythonhosted.org/packages/0c/24/60edf9808f2461e108f5148b9093ec2de5957fe42502759804ac88b440d5/sentry-sdk-0.19.5.tar.gz"
       sha256 "737a094e49a529dd0fdcaafa9e97cf7c3d5eb964bd229821d640bc77f3502b3f"
@@ -184,8 +194,8 @@ class Symflow < Formula
     end
 
     resource "sym-cli" do
-      url "https://files.pythonhosted.org/packages/e5/e3/16e35c7a9de008b9a9445a87ef2dd569b7e32399726a4ebeaad21e906095/sym-cli-0.0.60.tar.gz"
-      sha256 "617ae9110ad2c4aef9b18151deb497f36d9033e74ff39aecb8f201c353c20e59"
+      url "https://files.pythonhosted.org/packages/24/10/b5f778aa1e9f1868684265ca3cb2c6ddbc5eef80ae310e15dd4b5720c47f/sym-cli-0.1.7.tar.gz"
+      sha256 "03034d2717d5e8d5576a42734ecda25413b3057db13f87814c278efbfa0c7509"
     end
 
     resource "urllib3" do
