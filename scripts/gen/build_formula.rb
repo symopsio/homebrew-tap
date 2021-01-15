@@ -34,8 +34,8 @@ class FormulaBuilder
           bottle :unneeded
 
           def install
-            lib.install "lib", "sym"
-            bin.write_exec_script lib/"sym"
+            lib.install "lib", "#{formula}"
+            bin.write_exec_script lib/"#{formula}"
           end
         else
           include Language::Python::Virtualenv

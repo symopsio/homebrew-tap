@@ -9,8 +9,8 @@ class Symflow < Formula
     bottle :unneeded
 
     def install
-      lib.install "lib", "sym"
-      bin.write_exec_script lib/"sym"
+      lib.install "lib", "symflow"
+      bin.write_exec_script lib/"symflow"
     end
   else
     include Language::Python::Virtualenv
