@@ -13,16 +13,26 @@ executors:
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
 commands:
-  run_script:
+  run_sym_script:
     steps:
       - checkout:
           path: ~/project
       - run:
-          name: Run script
+          name: Run sym installer
           command: |
             cat ~/project/docs/sym.sh | bash
             export PATH="$HOME/.local/bin:$PATH"
             sym version
+  run_symflow_script:
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: Run symflow installer
+          command: |
+            cat ~/project/docs/symflow.sh | bash
+            export PATH="$HOME/.local/bin:$PATH"
+            symflow version
 
 jobs:
   test_install_script:
@@ -32,7 +42,7 @@ jobs:
     executor:
       name: << parameters.executor >>
     steps:
-      - run_script
+      - run_symflow_script
 
 workflows:
   test:
