@@ -1,11 +1,11 @@
 class Symflow < Formula
   desc "CLI to deploy Sym flows"
   homepage "https://docs.symops.com"
-  version "0.0.64a1"
+  version "0.0.64a4"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.0.64a1/sym-flow-cli-darwin-x64.tar.gz"
-    sha256 "2e4b015d9afeaa504272fd1c74314a965ed8ba2aeb3a10633d4e8406bd582a7a"
+    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.0.64a4/sym-flow-cli-darwin-x64.tar.gz"
+    sha256 "d9c5f960806dd71869f9b20b4c9e80929a6bb0a5050f86d98dd2e0a732ea9cd3"
     bottle :unneeded
 
     def install
