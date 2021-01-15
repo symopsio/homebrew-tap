@@ -1,11 +1,11 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.6"
+  version "0.1.7"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.6/sym-cli-darwin-x64.tar.gz"
-    sha256 "124404969985164b4e83cafa25c5f0750d894756ea427f0d115c82b320a35077"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.7/sym-cli-darwin-x64.tar.gz"
+    sha256 "2158a7fb6c0af087417852a93b0dbdea9ccd6302f39355f1b824718464d60a17"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Sym < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/d1/e9/2eefa0217c9cf75facc6cb7c2e937fd65a3ac3cd03410fd002211de61996/sym-cli-0.1.6.tar.gz"
-    sha256 "1f6bf4ccf4e0a847640f657dfb8492a2dfd07e4719413b74899575969db4a4cd"
+    url "https://files.pythonhosted.org/packages/24/10/b5f778aa1e9f1868684265ca3cb2c6ddbc5eef80ae310e15dd4b5720c47f/sym-cli-0.1.7.tar.gz"
+    sha256 "03034d2717d5e8d5576a42734ecda25413b3057db13f87814c278efbfa0c7509"
 
     bottle do
     end
