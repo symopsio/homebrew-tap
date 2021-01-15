@@ -1,11 +1,11 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.5"
+  version "0.1.6"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.5/sym-cli-darwin-x64.tar.gz"
-    sha256 "3af7bb5413bdc4609511319996dd058f379c9dc75e40c475218fabf5fc95d814"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.6/sym-cli-darwin-x64.tar.gz"
+    sha256 "124404969985164b4e83cafa25c5f0750d894756ea427f0d115c82b320a35077"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Sym < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/0b/3d/12fafd8239227e2bcda005313af0df23791a6ab7ecf021431fb7d52c0241/sym-cli-0.1.5.tar.gz"
-    sha256 "a7171b4b4db8e1f2d4314095cdad14b2535f27dfbece74445734f80e2a7c4c1c"
+    url "https://files.pythonhosted.org/packages/d1/e9/2eefa0217c9cf75facc6cb7c2e937fd65a3ac3cd03410fd002211de61996/sym-cli-0.1.6.tar.gz"
+    sha256 "1f6bf4ccf4e0a847640f657dfb8492a2dfd07e4719413b74899575969db4a4cd"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class Sym < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/4a/98/67ba637f47ec7462575da356bd8311c66768a1d8218e6c8f95a56546df0d/boto3-1.16.52.tar.gz"
-      sha256 "360a9f805b11f2e468d48815193c55278765fb30b64350893ab63236a5034726"
+      url "https://files.pythonhosted.org/packages/c9/65/c94f2db83968a9ad693442be09519e6780918658867da1fabb77bde2c6d8/boto3-1.16.55.tar.gz"
+      sha256 "b5052144034e490358c659d0e480c17a4e604fd3aee9a97ddfe6e361a245a4a5"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/60/ac/11043c6ae96212550e1907ab27453c66fb5abf480bdbd7db58f08ea2710b/botocore-1.19.52.tar.gz"
-      sha256 "dc5ec23deadbe9327d3c81d03fddf80805c549059baabd80dea605941fe6a221"
+      url "https://files.pythonhosted.org/packages/84/0c/52990a6d6839e6dfea058b1840b8b6ed917c20351ad8d7a875321f368b25/botocore-1.19.55.tar.gz"
+      sha256 "b34327d84b3bb5620fb54603677a9a973b167290c2c1e7ab69c4a46b201c6d46"
     end
 
     resource "certifi" do
@@ -104,8 +104,8 @@ class Sym < Formula
     end
 
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/38/39/003c46d4ea907a50f927c3f35bc9ef1f95117e2e225c34bb3890f0e2c975/policyuniverse-1.3.2.20210111.tar.gz"
-      sha256 "f073e4c29baedb12ef20814a2ce0e04e350037bbdbaed8c3288bbe453e4ec76f"
+      url "https://files.pythonhosted.org/packages/ff/ba/9b87fe2c09502489708325c1ea118c1ab2d238678ed4bb6655c64f63ce23/policyuniverse-1.3.2.20210114.tar.gz"
+      sha256 "0b10539f56485faab4381bbed5ac38f71aef2c0baccf637ed4b9acf281944ab9"
     end
 
     resource "portalocker" do
