@@ -1,16 +1,16 @@
 class Symflow < Formula
   desc "CLI to deploy Sym flows"
   homepage "https://docs.symops.com"
-  version "0.0.62"
+  version "0.0.64a4"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.0.62/sym-flow-cli-darwin-x64.tar.gz"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.0.64a4/sym-flow-cli-darwin-x64.tar.gz"
+    sha256 "d9c5f960806dd71869f9b20b4c9e80929a6bb0a5050f86d98dd2e0a732ea9cd3"
     bottle :unneeded
 
     def install
-      lib.install "lib", "sym"
-      bin.write_exec_script lib/"sym"
+      lib.install "lib", "symflow"
+      bin.write_exec_script lib/"symflow"
     end
   else
     include Language::Python::Virtualenv
