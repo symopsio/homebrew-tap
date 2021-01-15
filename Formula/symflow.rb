@@ -1,11 +1,11 @@
 class Symflow < Formula
   desc "CLI to deploy Sym flows"
   homepage "https://docs.symops.com"
-  version "0.1.1"
+  version "0.1.2"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.1/sym-flow-cli-darwin-x64.tar.gz"
-    sha256 "7458dab0c0edde761decda2826f32e583f5be48b6ddfd041fa01fbedaddbb816"
+    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.2/sym-flow-cli-darwin-x64.tar.gz"
+    sha256 "310102db9050f8b117de2678430765714e9b951efbec1108e0d4779480e66b34"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Symflow < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/3f/0a/1bf8583f36efee47c7325bcb8523cfb4be1e4031c0303d373e2b90ad5803/sym-flow-cli-0.1.1.tar.gz"
-    sha256 "438f78e32868f0cd5652cb5955b9d0ec31296706ab7d6fd23e79f359474f51a7"
+    url "https://files.pythonhosted.org/packages/ac/1a/a36db9d38a1698d286905bd209000a7124b111aa25fd4ad558bee092e442/sym-flow-cli-0.1.2.tar.gz"
+    sha256 "65d765d506866f704d9dfd7134a27ee9cfcb9af329aac957c57a98b64747ecbb"
 
     bottle do
     end
@@ -34,13 +34,13 @@ class Symflow < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/c9/65/c94f2db83968a9ad693442be09519e6780918658867da1fabb77bde2c6d8/boto3-1.16.55.tar.gz"
-      sha256 "b5052144034e490358c659d0e480c17a4e604fd3aee9a97ddfe6e361a245a4a5"
+      url "https://files.pythonhosted.org/packages/86/1d/597aca0170904c593f115f8e7849884e802d07e9f2f1f9944e87cc989934/boto3-1.16.56.tar.gz"
+      sha256 "47151ed571c316458f4931cd2422995ba0c9f6818c5df7d75f49fc845208e42e"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/84/0c/52990a6d6839e6dfea058b1840b8b6ed917c20351ad8d7a875321f368b25/botocore-1.19.55.tar.gz"
-      sha256 "b34327d84b3bb5620fb54603677a9a973b167290c2c1e7ab69c4a46b201c6d46"
+      url "https://files.pythonhosted.org/packages/15/d9/283513a699a15546b273b9848def711bcc90f8d7f86765f04cc6ea5cd6e2/botocore-1.19.56.tar.gz"
+      sha256 "01496e4c2c06aab79689f2c345a0e2cceb5fe1da7858a7e7df189bcf97703223"
     end
 
     resource "certifi" do
@@ -194,8 +194,8 @@ class Symflow < Formula
     end
 
     resource "sym-cli" do
-      url "https://files.pythonhosted.org/packages/24/10/b5f778aa1e9f1868684265ca3cb2c6ddbc5eef80ae310e15dd4b5720c47f/sym-cli-0.1.7.tar.gz"
-      sha256 "03034d2717d5e8d5576a42734ecda25413b3057db13f87814c278efbfa0c7509"
+      url "https://files.pythonhosted.org/packages/55/72/b1e8118b6d3e45236b83554dcc9ec3d251a22cf15c6fa4b3360ba1f4042d/sym-cli-0.1.8.tar.gz"
+      sha256 "40e1e8d8fb3f4112181aa1c4c0c6abe416671bd99df5ced48ea6ce5842c036c4"
     end
 
     resource "urllib3" do
