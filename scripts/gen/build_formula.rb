@@ -1,11 +1,17 @@
-require "active_support"
-require "active_support/core_ext"
+require 'active_support'
+require 'active_support/core_ext'
 
 class FormulaBuilder
   FORMULAE = {
-    "sym" => "CLI to perform privileged operations with Sym",
-    "sym-flow" => "CLI to deploy Sym flows"
-  }
+    'sym' => {
+      desc: 'CLI to perform privileged operations with Sym',
+      cli: 'sym-cli'
+    },
+    'symflow' => {
+      desc: 'CLI to deploy Sym flows',
+      cli: 'sym-flow-cli'
+    }
+  }.freeze
 
   attr_reader :formula, :version
 
@@ -18,7 +24,7 @@ class FormulaBuilder
   def output!
     puts <<~RUBY
       class #{formula.classify} < Formula
-        desc "#{FORMULAE[formula]}"
+        desc "#{FORMULAE[formula][:desc]}"
         homepage "https://docs.symops.com"
         version "#{version}"
 
@@ -58,8 +64,8 @@ class FormulaBuilder
   private
 
   def check!
-    if !FORMULAE.include?(formula)
-      STDERR.puts "Invalid formula #{formula}"
+    unless FORMULAE.include?(formula)
+      warn "Invalid formula #{formula}"
       exit 1
     end
   end
@@ -80,7 +86,7 @@ class FormulaBuilder
     deps
       .except(cli_name)
       .values
-      .map {|d| d.gsub(/^\s\s/, "    ") }
+      .map { |d| d.gsub(/^\s\s/, '    ') }
       .join("\n\n")
   end
 
@@ -92,13 +98,13 @@ class FormulaBuilder
         .split("\n\n").map do |d|
           [d.match(/"(.*)"/)[1], d]
         end.to_h.tap do |ds|
-          STDERR.puts "Found deps: #{ds.keys}"
+          warn "Found deps: #{ds.keys}"
         end
     end
   end
 
   def cli_name
-    "#{@formula}-cli"
+    FORMULAE[formula][:cli]
   end
 end
 
