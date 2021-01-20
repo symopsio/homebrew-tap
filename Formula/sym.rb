@@ -1,11 +1,11 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.9"
+  version "0.1.10"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.9/sym-cli-darwin-x64.tar.gz"
-    sha256 "3494e223585c73bd32afb8b1f0b4d027eb6beefbd22b61867bca90d51384db1b"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.10/sym-cli-darwin-x64.tar.gz"
+    sha256 "1b45b9ff5fddbd880aa17ed058493fd845189a0cbad2d329b56db1c448ced262"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Sym < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/40/a4/17a8e424e08830fea7f8138be729ab135c63576dcf7809d05c3913e56784/sym-cli-0.1.9.tar.gz"
-    sha256 "12b80fbe9ccf0319c71e6acc825537160869dd0af3477c8fb48470d270634491"
+    url "https://files.pythonhosted.org/packages/f3/73/e13e5e6282e7faa51d09acb11691188d2a7b46f279456944a0239282c75d/sym-cli-0.1.10.tar.gz"
+    sha256 "cb0736db18f6ad23ecfe7769f4a3ecc1791f46cb344a87c7ec3ef04b75fe62c8"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class Sym < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/86/1d/597aca0170904c593f115f8e7849884e802d07e9f2f1f9944e87cc989934/boto3-1.16.56.tar.gz"
-      sha256 "47151ed571c316458f4931cd2422995ba0c9f6818c5df7d75f49fc845208e42e"
+      url "https://files.pythonhosted.org/packages/0d/e0/d1c11b391a4753741eb061e05b9390d39a6b01fb31ccb60ff189c01270d4/boto3-1.16.57.tar.gz"
+      sha256 "4a499cc2f53dd557a88c6db6a552748a2abd83ffeda70ceb71dc8db39a027314"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/15/d9/283513a699a15546b273b9848def711bcc90f8d7f86765f04cc6ea5cd6e2/botocore-1.19.56.tar.gz"
-      sha256 "01496e4c2c06aab79689f2c345a0e2cceb5fe1da7858a7e7df189bcf97703223"
+      url "https://files.pythonhosted.org/packages/4c/09/3627fe82aa27e49463bf03019e2e4e39a8c2a419421e96de7bb88a053284/botocore-1.19.57.tar.gz"
+      sha256 "c756d65ffa989c5c0e92178175e41abf7b18ad19b2fe2e82e192f085e264e03a"
     end
 
     resource "certifi" do
@@ -124,8 +124,8 @@ class Sym < Formula
     end
 
     resource "PyYAML" do
-      url "https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz"
-      sha256 "b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"
+      url "https://files.pythonhosted.org/packages/b5/fd/15638de2da0a5aa91c095718444624aa565f766fc178249ca6faa372f71a/PyYAML-5.4.tar.gz"
+      sha256 "3c49e39ac034fd64fd576d63bb4db53cda89b362768a67f07749d55f128ac18a"
     end
 
     resource "requests" do
