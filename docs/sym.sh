@@ -118,7 +118,8 @@ ensurePython38() {
     elif hasCommand brew; then
       brew install python@3.8
     else
-      die 'Please install Python 3.8'
+      echo -e "Sym depends on a modern version of Python.\nWe can manage this install for you, but need you to first install a tool called pyenv.\nPlease visit https://github.com/pyenv/pyenv-installer."
+      die "Could not install Python. See the above instructions or manually install Python 3.8."
     fi
   fi
 }
