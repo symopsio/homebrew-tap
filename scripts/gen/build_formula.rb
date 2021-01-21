@@ -27,17 +27,9 @@ class FormulaBuilder
         desc "#{FORMULAE[formula][:desc]}"
         homepage "https://docs.symops.com"
         version "#{version}"
+        option "with-source", "Build from source instead of using binary"
 
-        if OS.mac?
-          url "#{url}"
-          sha256 "#{sha}"
-          bottle :unneeded
-
-          def install
-            lib.install "lib", "#{formula}"
-            bin.write_exec_script lib/"#{formula}"
-          end
-        else
+        if build.with? "source"
           include Language::Python::Virtualenv
 
           #{top_block.strip}
@@ -51,6 +43,21 @@ class FormulaBuilder
 
           def install
             virtualenv_install_with_resources
+          end
+        else
+          bottle :unneeded
+
+          if OS.mac?
+            url "#{url("darwin")}"
+            sha256 "#{sha("darwin")}"
+          else
+            url "#{url("linux")}"
+            sha256 "#{sha("linux")}"
+          end
+
+          def install
+            lib.install "lib", "#{formula}"
+            bin.write_exec_script lib/"#{formula}"
           end
         end
 
@@ -70,12 +77,12 @@ class FormulaBuilder
     end
   end
 
-  def url
-    "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-darwin-x64.tar.gz"
+  def url(platform)
+    "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-#{platform}-x64.tar.gz"
   end
 
-  def sha
-    `curl -L #{url} | shasum -a 256`.strip.split(/\s/).first
+  def sha(platform)
+    `curl -L #{url(platform)} | shasum -a 256`.strip.split(/\s/).first
   end
 
   def top_block
