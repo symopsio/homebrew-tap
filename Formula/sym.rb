@@ -1,11 +1,11 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.10"
+  version "0.1.11"
 
   if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.10/sym-cli-darwin-x64.tar.gz"
-    sha256 "1b45b9ff5fddbd880aa17ed058493fd845189a0cbad2d329b56db1c448ced262"
+    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-darwin-x64.tar.gz"
+    sha256 "3f0c5ca495436d3025324d17f4a3eaa1c11ac9513c602b169abef3f71a5b8101"
     bottle :unneeded
 
     def install
@@ -15,8 +15,8 @@ class Sym < Formula
   else
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/f3/73/e13e5e6282e7faa51d09acb11691188d2a7b46f279456944a0239282c75d/sym-cli-0.1.10.tar.gz"
-    sha256 "cb0736db18f6ad23ecfe7769f4a3ecc1791f46cb344a87c7ec3ef04b75fe62c8"
+    url "https://files.pythonhosted.org/packages/bd/2d/9c53fdd0219b483b5d432e505d9d77cec6fec08cc42840e5f5025db91ab4/sym-cli-0.1.11.tar.gz"
+    sha256 "ecc49ae4c6dc75d4fc3096734d4a1fbbb3cd567ae290579ede540ae1c1501879"
 
     bottle do
     end
@@ -124,8 +124,8 @@ class Sym < Formula
     end
 
     resource "PyYAML" do
-      url "https://files.pythonhosted.org/packages/b5/fd/15638de2da0a5aa91c095718444624aa565f766fc178249ca6faa372f71a/PyYAML-5.4.tar.gz"
-      sha256 "3c49e39ac034fd64fd576d63bb4db53cda89b362768a67f07749d55f128ac18a"
+      url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
+      sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
     end
 
     resource "requests" do
