@@ -42,6 +42,7 @@ jobs:
     executor:
       name: << parameters.executor >>
     steps:
+      - run_sym_script
       - run_symflow_script
 
 workflows:
