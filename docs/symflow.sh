@@ -189,8 +189,8 @@ installWithDeb() {
     echo 'Unable to install session-manager-plugin on linux without dpkg.'
     return 1
   fi
-  curl -L -o $TMP_SYM/sym-flow-cli-darwin-x64.pkg "https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg"
-  sudo installer -pkg $TMP_SYM/sym-flow-cli-darwin-x64.pkg -target /
+  curl -L -o $TMP_SYM/sym-flow-cli-linux-x64.deb "https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-linux-x64.deb"
+  sudo dpkg -i $TMP_SYM/sym-flow-cli-linux-x64.deb
 }
 
 
