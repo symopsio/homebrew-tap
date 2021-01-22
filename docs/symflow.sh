@@ -212,5 +212,5 @@ success 'Successfully installed symflow.'
 
 if ! hasCommand symflow; then
   success 'Please restart your terminal, or run the following command to add `symflow` to your path in this terminal:'
-  echo -e "\texport PATH='\$HOME/.local/bin:\$PATH'"
+  echo -e "\texport PATH=\"\$HOME/.local/bin:\$PATH\""
 fi

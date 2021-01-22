@@ -241,5 +241,5 @@ success 'Successfully installed sym.'
 
 if ! hasCommand sym; then
   success 'Please restart your terminal, or run the following command to add `sym` to your path in this terminal:'
-  echo -e "\texport PATH='\$HOME/.local/bin:\$PATH'"
+  echo -e "\texport PATH=\"\$HOME/.local/bin:\$PATH\""
 fi
