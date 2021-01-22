@@ -95,6 +95,8 @@ semverLT() {
 
 # Sym Stuff
 
+TMP_SYM=/tmp/sym
+
 die() {
   printf "\e[31m%s\e[0m\n" "$@" >&2
   exit 1
@@ -112,6 +114,16 @@ getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
+ensureCommandLineTools() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    xcode-select --install >/dev/null 2>&1
+  fi
+}
+
+ensureSymTmp() {
+  mkdir -p $TMP_SYM
+}
+
 ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
     if hasCommand pyenv; then
@@ -127,7 +139,7 @@ ensurePython38() {
 }
 
 installWithPipx() {
-  LOG_DIR=/tmp/logs/<%= pypi %>/pipx
+  LOG_DIR=$TMP_SYM/logs/<%= pypi %>/pipx
   mkdir -p "$LOG_DIR"
 
   echo "Using python path $(getPythonPath)"
@@ -155,23 +167,44 @@ installWithPipx() {
 
 installWithBrew() {
   if ! hasCommand brew; then
-    echo '`brew` not present, falling back to `pipx`.'
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      echo "We couldn't find brew on your path, but we strongly recommend you install it!"
+    fi
     return 1
   fi
   brew install symopsio/tap/<%= formula %>
   brew upgrade symopsio/tap/<%= formula %> >/dev/null 2>&1
 }
 
+installWithPkg() {
+  if ! hasCommand installer; then
+    return 1
+  fi
+  curl -L -o $TMP_SYM/<%= pypi %>-darwin-x64.pkg "https://github.com/symopsio/<%= pypi %>-releases/releases/latest/download/<%= pypi %>-darwin-x64.pkg"
+  sudo installer -pkg $TMP_SYM/<%= pypi %>-darwin-x64.pkg -target /
+}
+
+installWithDeb() {
+  if ! hasCommand dpkg; then
+    echo 'Unable to install session-manager-plugin on linux without dpkg.'
+    return 1
+  fi
+  curl -L -o $TMP_SYM/<%= pypi %>-darwin-x64.pkg "https://github.com/symopsio/<%= pypi %>-releases/releases/latest/download/<%= pypi %>-darwin-x64.pkg"
+  sudo installer -pkg $TMP_SYM/<%= pypi %>-darwin-x64.pkg -target /
+}
+
 <%= extra_functions %>
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  installWithBrew ||
-    installWithPipx ||
-    die 'Could not install <%= formula %>. Please send us any error messages printed above.'
-else
+# Let's do this!
+
+ensureSymTmp
+ensureCommandLineTools
+
+installWithBrew ||
+  installWithPkg ||
+  installWithDeb ||
   installWithPipx ||
-    die 'Could not install <%= formula %>. Please send us any error messages printed above.'
-fi
+  die 'Could not install <%= formula %>. Please send us any error messages printed above.'
 
 <%= extra_installs %>
 

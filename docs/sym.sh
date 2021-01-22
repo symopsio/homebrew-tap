@@ -95,6 +95,8 @@ semverLT() {
 
 # Sym Stuff
 
+TMP_SYM=/tmp/sym
+
 die() {
   printf "\e[31m%s\e[0m\n" "$@" >&2
   exit 1
@@ -112,6 +114,16 @@ getPythonPath() {
   command -v python3.8 || command -v python3 || command -v python
 }
 
+ensureCommandLineTools() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    xcode-select --install >/dev/null 2>&1
+  fi
+}
+
+ensureSymTmp() {
+  mkdir -p $TMP_SYM
+}
+
 ensurePython38() {
   if semverLT "$($(getPythonPath) --version | cut -c8-)" "3.8.0"; then
     if hasCommand pyenv; then
@@ -127,7 +139,7 @@ ensurePython38() {
 }
 
 installWithPipx() {
-  LOG_DIR=/tmp/logs/sym-cli/pipx
+  LOG_DIR=$TMP_SYM/logs/sym-cli/pipx
   mkdir -p "$LOG_DIR"
 
   echo "Using python path $(getPythonPath)"
@@ -155,46 +167,71 @@ installWithPipx() {
 
 installWithBrew() {
   if ! hasCommand brew; then
-    echo '`brew` not present, falling back to `pipx`.'
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      echo "We couldn't find brew on your path, but we strongly recommend you install it!"
+    fi
     return 1
   fi
   brew install symopsio/tap/sym
   brew upgrade symopsio/tap/sym >/dev/null 2>&1
 }
 
+installWithPkg() {
+  if ! hasCommand installer; then
+    return 1
+  fi
+  curl -L -o $TMP_SYM/sym-cli-darwin-x64.pkg "https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg"
+  sudo installer -pkg $TMP_SYM/sym-cli-darwin-x64.pkg -target /
+}
+
+installWithDeb() {
+  if ! hasCommand dpkg; then
+    echo 'Unable to install session-manager-plugin on linux without dpkg.'
+    return 1
+  fi
+  curl -L -o $TMP_SYM/sym-cli-darwin-x64.pkg "https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg"
+  sudo installer -pkg $TMP_SYM/sym-cli-darwin-x64.pkg -target /
+}
+
 installSessionManagerPlugin() {
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  if hasCommand session-manager-plugin; then
+    echo 'session-manager-plugin already installed!'
+    return
+  fi
+
+  if [[ "$OSTYPE" == "linux"* ]]; then
     if hasCommand dpkg; then
-      curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-      sudo dpkg -i session-manager-plugin.deb
-      rm session-manager-plugin.deb
+      curl -L -o $TMP_SYM/session-manager-plugin.deb "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb"
+      sudo dpkg -i $TMP_SYM/session-manager-plugin.deb
     else
-      echo 'Unable to install session-manager-plugin on linux without dpkg.'
+      echo 'Unable to install session-manager-plugin without dpkg. Please install dpkg and try again.'
+      return 1
     fi
   elif [[ "$OSTYPE" == "darwin"* ]]; then
-    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
-    unzip sessionmanager-bundle.zip
+    curl -L -o $TMP_SYM/sessionmanager-bundle.zip "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip"
+    unzip -d $TMP_SYM $TMP_SYM/sessionmanager-bundle.zip
     echo 'Installing session-manager-plugin...'
-    if ! sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin; then
-      echo "Installing session-manager-plugin plugin failed! sym-cli will still work, but SSH may not."
+    if ! sudo $TMP_SYM/sessionmanager-bundle/install; then
+      echo "Installing session-manager-plugin plugin failed!"
+      return 1
     fi
-    rm sessionmanager-bundle.zip
-    rm -rf ./sessionmanager-bundle
   else
-    echo 'Unable to install session-manager-plugin on this operation system.'
+    echo 'Unable to automatically install session-manager-plugin.'
     return 1
   fi
 }
 
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  installWithBrew ||
-    installWithPipx ||
-    die 'Could not install sym. Please send us any error messages printed above.'
-else
+# Let's do this!
+
+ensureSymTmp
+ensureCommandLineTools
+
+installWithBrew ||
+  installWithPkg ||
+  installWithDeb ||
   installWithPipx ||
-    die 'Could not install sym. Please send us any error messages printed above.'
-fi
+  die 'Could not install sym. Please send us any error messages printed above.'
 
 installSessionManagerPlugin ||
   die "Successfully installed sym-cli but could not install session-manager-plugin. \`sym ssh\` won't work.\nTo fix, please follow the instructions listed at: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
