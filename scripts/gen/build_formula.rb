@@ -25,6 +25,9 @@ class FormulaBuilder
 
   def output!
     puts <<~RUBY
+      # frozen_string_literal: true
+      # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
+
       class #{formula.classify} < Formula
         desc "#{FORMULAE[formula][:desc]}"
         homepage "https://docs.symops.com"
