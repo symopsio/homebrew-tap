@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'active_support/core_ext'
 
@@ -8,7 +10,7 @@ class FormulaBuilder
       cli: 'sym-cli'
     },
     'symflow' => {
-      desc: 'CLI to deploy Sym flows',
+      desc: 'CLI to deploy Sym Flows',
       cli: 'sym-flow-cli'
     }
   }.freeze
@@ -23,6 +25,9 @@ class FormulaBuilder
 
   def output!
     puts <<~RUBY
+      # frozen_string_literal: true
+      # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
+
       class #{formula.classify} < Formula
         desc "#{FORMULAE[formula][:desc]}"
         homepage "https://docs.symops.com"
@@ -48,16 +53,16 @@ class FormulaBuilder
           bottle :unneeded
 
           if OS.mac?
-            url "#{url("darwin")}"
-            sha256 "#{sha("darwin")}"
+            url "#{url('darwin')}"
+            sha256 "#{sha('darwin')}"
           else
-            url "#{url("linux")}"
-            sha256 "#{sha("linux")}"
+            url "#{url('linux')}"
+            sha256 "#{sha('linux')}"
           end
 
           def install
-            lib.install "lib", "#{formula}"
-            bin.write_exec_script lib/"#{formula}"
+            (lib/"#{formula}").install "lib", "#{formula}"
+            bin.write_exec_script lib/"#{formula}"/"#{formula}"
           end
         end
 
@@ -115,4 +120,4 @@ class FormulaBuilder
   end
 end
 
-FormulaBuilder.new(*ARGV).output!
+FormulaBuilder.new(*ARGV).output! if __FILE__ == $PROGRAM_NAME

@@ -139,7 +139,7 @@ ensurePython38() {
 }
 
 installWithPipx() {
-  LOG_DIR=$TMP_SYM/logs/sym-flow-cli/pipx
+  LOG_DIR=$TMP_SYM/logs/<%= pypi %>/pipx
   mkdir -p "$LOG_DIR"
 
   echo "Using python path $(getPythonPath)"
@@ -150,14 +150,14 @@ installWithPipx() {
   # Make sure pipx binaries will be on the PATH
   $(getPythonPath) -m pipx ensurepath >"$LOG_DIR/ensurepath" 2>&1
 
-  echo "Installing symflow (takes around a minute)"
-  $(getPythonPath) -m pipx uninstall sym-flow-cli >"$LOG_DIR/uninstall" 2>&1
-  if $(getPythonPath) -m pipx install sym-flow-cli --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
-    $(getPythonPath) -m pipx upgrade --force sym-flow-cli >"$LOG_DIR/upgrade" 2>&1
-    success "symflow version $($HOME/.local/bin/symflow version) installed!"
+  echo "Installing <%= formula %> (takes around a minute)"
+  $(getPythonPath) -m pipx uninstall <%= pypi %> >"$LOG_DIR/uninstall" 2>&1
+  if $(getPythonPath) -m pipx install <%= pypi %> --force --python "$(getPythonPath)" >"$LOG_DIR/install" 2>&1; then
+    $(getPythonPath) -m pipx upgrade --force <%= pypi %> >"$LOG_DIR/upgrade" 2>&1
+    success "<%= formula %> version $($HOME/.local/bin/<%= formula %> version) installed!"
   else
-    if hasCommand symflow; then
-      die "Sym has been manually installed to $(which symflow). Please uninstall that version and try again."
+    if hasCommand <%= formula %>; then
+      die "Sym has been manually installed to $(which <%= formula %>). Please uninstall that version and try again."
     else
       echo "Installing Sym with pipx failed."
       return 1
@@ -172,16 +172,16 @@ installWithBrew() {
     fi
     return 1
   fi
-  brew install symopsio/tap/symflow
-  brew upgrade symopsio/tap/symflow >/dev/null 2>&1
+  brew install symopsio/tap/<%= formula %>
+  brew upgrade symopsio/tap/<%= formula %> >/dev/null 2>&1
 }
 
 installWithPkg() {
   if ! hasCommand installer; then
     return 1
   fi
-  curl -L -o $TMP_SYM/sym-flow-cli-darwin-x64.pkg "https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg"
-  sudo installer -pkg $TMP_SYM/sym-flow-cli-darwin-x64.pkg -target /
+  curl -L -o $TMP_SYM/<%= pypi %>-darwin-x64.pkg "https://github.com/symopsio/<%= pypi %>-releases/releases/latest/download/<%= pypi %>-darwin-x64.pkg"
+  sudo installer -pkg $TMP_SYM/<%= pypi %>-darwin-x64.pkg -target /
 }
 
 installWithDeb() {
@@ -189,11 +189,11 @@ installWithDeb() {
     echo 'Unable to install session-manager-plugin on linux without dpkg.'
     return 1
   fi
-  curl -L -o $TMP_SYM/sym-flow-cli-linux-x64.deb "https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-linux-x64.deb"
-  sudo dpkg -i $TMP_SYM/sym-flow-cli-linux-x64.deb
+  curl -L -o $TMP_SYM/<%= pypi %>-linux-x64.deb "https://github.com/symopsio/<%= pypi %>-releases/releases/latest/download/<%= pypi %>-linux-x64.deb"
+  sudo dpkg -i $TMP_SYM/<%= pypi %>-linux-x64.deb
 }
 
-
+<%= extra_functions %>
 
 # Let's do this!
 
@@ -204,13 +204,13 @@ installWithBrew ||
   installWithPkg ||
   installWithDeb ||
   installWithPipx ||
-  die 'Could not install symflow. Please send us any error messages printed above.'
+  die 'Could not install <%= formula %>. Please send us any error messages printed above.'
 
+<%= extra_installs %>
 
+success 'Successfully installed <%= formula %>.'
 
-success 'Successfully installed symflow.'
-
-if ! hasCommand symflow; then
-  success 'Please restart your terminal, or run the following command to add `symflow` to your path in this terminal:'
+if ! hasCommand <%= formula %>; then
+  success 'Please restart your terminal, or run the following command to add `<%= formula %>` to your path in this terminal:'
   echo -e "\texport PATH=\"\$HOME/.local/bin:\$PATH\""
 fi
