@@ -10,7 +10,7 @@ class FormulaBuilder
       cli: 'sym-cli'
     },
     'symflow' => {
-      desc: 'CLI to deploy Sym flows',
+      desc: 'CLI to deploy Sym Flows',
       cli: 'sym-flow-cli'
     }
   }.freeze
@@ -61,8 +61,8 @@ class FormulaBuilder
           end
 
           def install
-            lib.install "lib", "#{formula}"
-            bin.write_exec_script lib/"#{formula}"
+            (lib/"#{formula}").install "lib", "#{formula}"
+            bin.write_exec_script lib/"#{formula}"/"#{formula}"
           end
         end
 
