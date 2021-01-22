@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support'
 require 'active_support/core_ext'
 
@@ -48,11 +50,11 @@ class FormulaBuilder
           bottle :unneeded
 
           if OS.mac?
-            url "#{url("darwin")}"
-            sha256 "#{sha("darwin")}"
+            url "#{url('darwin')}"
+            sha256 "#{sha('darwin')}"
           else
-            url "#{url("linux")}"
-            sha256 "#{sha("linux")}"
+            url "#{url('linux')}"
+            sha256 "#{sha('linux')}"
           end
 
           def install
@@ -115,4 +117,4 @@ class FormulaBuilder
   end
 end
 
-FormulaBuilder.new(*ARGV).output!
+FormulaBuilder.new(*ARGV).output! if __FILE__ == $PROGRAM_NAME
