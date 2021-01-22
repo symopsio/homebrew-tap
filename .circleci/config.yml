@@ -20,7 +20,7 @@ commands:
       - run:
           name: Run sym installer
           command: |
-            cat ~/project/docs/sym.sh | bash
+            cat ~/project/docs/sym.sh | bash -x
             export PATH="$HOME/.local/bin:$PATH"
             sym version
   run_symflow_script:
@@ -30,7 +30,7 @@ commands:
       - run:
           name: Run symflow installer
           command: |
-            cat ~/project/docs/symflow.sh | bash
+            cat ~/project/docs/symflow.sh | bash -x
             export PATH="$HOME/.local/bin:$PATH"
             symflow version
 
