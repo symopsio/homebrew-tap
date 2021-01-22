@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# THIS SCRIPT IS GENERATED. DO NOT EDIT DIRECTLY.
+
 # https://github.com/cloudflare/semver_bash/blob/master/semver.sh
 semverParseInto() {
   local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
