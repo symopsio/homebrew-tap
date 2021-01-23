@@ -1,22 +1,17 @@
+# frozen_string_literal: true
+# THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
+
 class Symflow < Formula
-  desc "CLI to deploy Sym flows"
+  desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "0.1.2"
+  version "0.1.8"
+  option "with-source", "Build from source instead of using binary"
 
-  if OS.mac?
-    url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.2/sym-flow-cli-darwin-x64.tar.gz"
-    sha256 "310102db9050f8b117de2678430765714e9b951efbec1108e0d4779480e66b34"
-    bottle :unneeded
-
-    def install
-      lib.install "lib", "symflow"
-      bin.write_exec_script lib/"symflow"
-    end
-  else
+  if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/ac/1a/a36db9d38a1698d286905bd209000a7124b111aa25fd4ad558bee092e442/sym-flow-cli-0.1.2.tar.gz"
-    sha256 "65d765d506866f704d9dfd7134a27ee9cfcb9af329aac957c57a98b64747ecbb"
+    url "https://files.pythonhosted.org/packages/72/2e/da373abd6f4a14840fbf1bc82a08c9c793042185c24036fcfdca89bff4c9/sym-flow-cli-0.1.8.tar.gz"
+    sha256 "d765df6b726821491f7a5aec92472ce13bc30699bbf597aad12912d64ca9604f"
 
     bottle do
     end
@@ -34,13 +29,13 @@ class Symflow < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/86/1d/597aca0170904c593f115f8e7849884e802d07e9f2f1f9944e87cc989934/boto3-1.16.56.tar.gz"
-      sha256 "47151ed571c316458f4931cd2422995ba0c9f6818c5df7d75f49fc845208e42e"
+      url "https://files.pythonhosted.org/packages/e4/00/a0e3d95ecbd78f3a7bc89cce4c94c2fca4820536f513bf8aba35b36bb79b/boto3-1.16.59.tar.gz"
+      sha256 "550a513315194292651bb6cc96e94185bfc4dc6b299c3cf1594882bdd16b3905"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/15/d9/283513a699a15546b273b9848def711bcc90f8d7f86765f04cc6ea5cd6e2/botocore-1.19.56.tar.gz"
-      sha256 "01496e4c2c06aab79689f2c345a0e2cceb5fe1da7858a7e7df189bcf97703223"
+      url "https://files.pythonhosted.org/packages/b9/87/c28866fd15cb87d893048ff16d08b179db9a1b8f5119c22562b564ff59ad/botocore-1.19.59.tar.gz"
+      sha256 "33959aa19cb6d336c47495c871b00d8670de0023b53bbbbd25790ba0bc5cefe9"
     end
 
     resource "certifi" do
@@ -129,8 +124,8 @@ class Symflow < Formula
     end
 
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/ff/ba/9b87fe2c09502489708325c1ea118c1ab2d238678ed4bb6655c64f63ce23/policyuniverse-1.3.2.20210114.tar.gz"
-      sha256 "0b10539f56485faab4381bbed5ac38f71aef2c0baccf637ed4b9acf281944ab9"
+      url "https://files.pythonhosted.org/packages/0b/5d/4f9444006d85522861b7739885f48c1b6eed46f6bb993cd60d4a9e324b9c/policyuniverse-1.3.3.20210114.tar.gz"
+      sha256 "fa59b9413fb69e7131c238578d7325d8fdc2642caed1ca2a4795305e0d849c3e"
     end
 
     resource "portalocker" do
@@ -149,8 +144,8 @@ class Symflow < Formula
     end
 
     resource "PyYAML" do
-      url "https://files.pythonhosted.org/packages/64/c2/b80047c7ac2478f9501676c988a5411ed5572f35d1beff9cae07d321512c/PyYAML-5.3.1.tar.gz"
-      sha256 "b8eac752c5e14d3eca0e6dd9199cd627518cb5ec06add0de9d32baeee6fe645d"
+      url "https://files.pythonhosted.org/packages/a0/a4/d63f2d7597e1a4b55aa3b4d6c5b029991d3b824b5bd331af8d4ab1ed687d/PyYAML-5.4.1.tar.gz"
+      sha256 "607774cbba28732bfa802b54baa7484215f530991055bb562efbed5b2f20a45e"
     end
 
     resource "requests" do
@@ -210,6 +205,21 @@ class Symflow < Formula
 
     def install
       virtualenv_install_with_resources
+    end
+  else
+    bottle :unneeded
+
+    if OS.mac?
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.8/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "d417f17e578d0fcefd8862d6ccc29969b693cb30fdda88c14a1eac162fe29551"
+    else
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.8/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "84eb27a5e65ec3736d9f55fb21d7b97044c9665eae90831ae65f3c40c9552a82"
+    end
+
+    def install
+      (lib/"symflow").install "lib", "symflow"
+      bin.write_exec_script lib/"symflow"/"symflow"
     end
   end
 
