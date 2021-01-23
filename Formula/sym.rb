@@ -4,14 +4,14 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.11"
+  version "0.1.14"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/0b/c6/6a40aa61967a30566b3996c22d122a44bc90834c5759f623b98b9a3a359f/sym-cli-0.1.13.tar.gz"
-    sha256 "88a5ca1a58ee3620618aa132724c560d17991c9825f8e6f9c5172427f03d7d69"
+    url "https://files.pythonhosted.org/packages/2d/ae/4609ac76194c92506bf93772343966ad8acaf35337ca65587768f0716eef/sym-cli-0.1.14.tar.gz"
+    sha256 "e4a3687f3fb53758bc726179703d14e245e41e149f838498454b6bfa4eebb09d"
 
     bottle do
     end
@@ -170,11 +170,11 @@ class Sym < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-darwin-x64.tar.gz"
-      sha256 "3f0c5ca495436d3025324d17f4a3eaa1c11ac9513c602b169abef3f71a5b8101"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.14/sym-cli-darwin-x64.tar.gz"
+      sha256 "9ab37a5b8553c4587127aeead49e4d1d1624ddf6d666d6f4b1bbc657e854f8a3"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-linux-x64.tar.gz"
-      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.14/sym-cli-linux-x64.tar.gz"
+      sha256 "c35e841e9c91ac8482b64c07f008801fc9231111842f94f377c5acf6dfddf656"
     end
 
     def install
