@@ -15,8 +15,6 @@ executors:
 commands:
   run_sym_script:
     steps:
-      - checkout:
-          path: ~/project
       - run:
           name: Run sym installer
           command: |
@@ -25,8 +23,6 @@ commands:
             sym version
   run_symflow_script:
     steps:
-      - checkout:
-          path: ~/project
       - run:
           name: Run symflow installer
           command: |
@@ -42,6 +38,8 @@ jobs:
     executor:
       name: << parameters.executor >>
     steps:
+      - checkout:
+          path: ~/project
       - run_sym_script
       - run_symflow_script
 

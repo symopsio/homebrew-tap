@@ -1,22 +1,17 @@
+# frozen_string_literal: true
+# THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
+
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
   version "0.1.11"
+  option "with-source", "Build from source instead of using binary"
 
-  if OS.mac?
-    url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-darwin-x64.tar.gz"
-    sha256 "3f0c5ca495436d3025324d17f4a3eaa1c11ac9513c602b169abef3f71a5b8101"
-    bottle :unneeded
-
-    def install
-      lib.install "lib", "sym"
-      bin.write_exec_script lib/"sym"
-    end
-  else
+  if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/bd/2d/9c53fdd0219b483b5d432e505d9d77cec6fec08cc42840e5f5025db91ab4/sym-cli-0.1.11.tar.gz"
-    sha256 "ecc49ae4c6dc75d4fc3096734d4a1fbbb3cd567ae290579ede540ae1c1501879"
+    url "https://files.pythonhosted.org/packages/0b/c6/6a40aa61967a30566b3996c22d122a44bc90834c5759f623b98b9a3a359f/sym-cli-0.1.13.tar.gz"
+    sha256 "88a5ca1a58ee3620618aa132724c560d17991c9825f8e6f9c5172427f03d7d69"
 
     bottle do
     end
@@ -29,13 +24,13 @@ class Sym < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/0d/e0/d1c11b391a4753741eb061e05b9390d39a6b01fb31ccb60ff189c01270d4/boto3-1.16.57.tar.gz"
-      sha256 "4a499cc2f53dd557a88c6db6a552748a2abd83ffeda70ceb71dc8db39a027314"
+      url "https://files.pythonhosted.org/packages/e4/00/a0e3d95ecbd78f3a7bc89cce4c94c2fca4820536f513bf8aba35b36bb79b/boto3-1.16.59.tar.gz"
+      sha256 "550a513315194292651bb6cc96e94185bfc4dc6b299c3cf1594882bdd16b3905"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/4c/09/3627fe82aa27e49463bf03019e2e4e39a8c2a419421e96de7bb88a053284/botocore-1.19.57.tar.gz"
-      sha256 "c756d65ffa989c5c0e92178175e41abf7b18ad19b2fe2e82e192f085e264e03a"
+      url "https://files.pythonhosted.org/packages/b9/87/c28866fd15cb87d893048ff16d08b179db9a1b8f5119c22562b564ff59ad/botocore-1.19.59.tar.gz"
+      sha256 "33959aa19cb6d336c47495c871b00d8670de0023b53bbbbd25790ba0bc5cefe9"
     end
 
     resource "certifi" do
@@ -104,8 +99,8 @@ class Sym < Formula
     end
 
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/ff/ba/9b87fe2c09502489708325c1ea118c1ab2d238678ed4bb6655c64f63ce23/policyuniverse-1.3.2.20210114.tar.gz"
-      sha256 "0b10539f56485faab4381bbed5ac38f71aef2c0baccf637ed4b9acf281944ab9"
+      url "https://files.pythonhosted.org/packages/0b/5d/4f9444006d85522861b7739885f48c1b6eed46f6bb993cd60d4a9e324b9c/policyuniverse-1.3.3.20210114.tar.gz"
+      sha256 "fa59b9413fb69e7131c238578d7325d8fdc2642caed1ca2a4795305e0d849c3e"
     end
 
     resource "portalocker" do
@@ -170,6 +165,21 @@ class Sym < Formula
 
     def install
       virtualenv_install_with_resources
+    end
+  else
+    bottle :unneeded
+
+    if OS.mac?
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-darwin-x64.tar.gz"
+      sha256 "3f0c5ca495436d3025324d17f4a3eaa1c11ac9513c602b169abef3f71a5b8101"
+    else
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.11/sym-cli-linux-x64.tar.gz"
+      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    end
+
+    def install
+      (lib/"sym").install "lib", "sym"
+      bin.write_exec_script lib/"sym"/"sym"
     end
   end
 
