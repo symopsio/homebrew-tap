@@ -4,14 +4,14 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.14"
+  version "0.1.15"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/2d/ae/4609ac76194c92506bf93772343966ad8acaf35337ca65587768f0716eef/sym-cli-0.1.14.tar.gz"
-    sha256 "e4a3687f3fb53758bc726179703d14e245e41e149f838498454b6bfa4eebb09d"
+    url "https://files.pythonhosted.org/packages/5e/2f/a015ffef85d7b99f7d55210b0899a463c78cb11c8d4e885656be2e7f310a/sym-cli-0.1.15.tar.gz"
+    sha256 "6cdaab131d71b18d15ac904288603b8fe8a90f09de47086e2403ab9a1ea058c6"
 
     bottle do
     end
@@ -104,8 +104,8 @@ class Sym < Formula
     end
 
     resource "portalocker" do
-      url "https://files.pythonhosted.org/packages/df/48/62cf97ff7d2233e7db29dfb83f1584e26289e88af8af39de1a76629ac487/portalocker-2.0.0.tar.gz"
-      sha256 "14487eed81aa914127edf0284e29c7ca8842c05bb33d96dc7e4bdb47282d26e4"
+      url "https://files.pythonhosted.org/packages/2a/1f/7fff00e9dc7253ac5f975f307115bfbaf02c94e8da5d56fc85a32ad115f3/portalocker-2.1.0.tar.gz"
+      sha256 "0cc50438bdbf0c9534859a010e7d62dc9e021481ff1f240a14fe351229a8a442"
     end
 
     resource "pycparser" do
@@ -170,11 +170,11 @@ class Sym < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.14/sym-cli-darwin-x64.tar.gz"
-      sha256 "9ab37a5b8553c4587127aeead49e4d1d1624ddf6d666d6f4b1bbc657e854f8a3"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.15/sym-cli-darwin-x64.tar.gz"
+      sha256 "033e70a90af3a5b6929ee1692e4ab242b5548c0261c2a5c284347e8dc4c53ef4"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.14/sym-cli-linux-x64.tar.gz"
-      sha256 "c35e841e9c91ac8482b64c07f008801fc9231111842f94f377c5acf6dfddf656"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.15/sym-cli-linux-x64.tar.gz"
+      sha256 "f8846dea81f39968c6123ab562aeea4151337dce93d8ef0d4e3c3784d23402c5"
     end
 
     def install
