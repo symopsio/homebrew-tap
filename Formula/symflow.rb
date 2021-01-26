@@ -4,14 +4,14 @@
 class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "0.1.10"
+  version "0.1.11"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/39/dc/f786bdac8153bcf796322bbb89fec5bf61245177c1fec5deea1a2782d7f8/sym-flow-cli-0.1.10.tar.gz"
-    sha256 "0a872f3e3af1e084236aafba7f7d2c5a0404c4c52a6d2249493837037b2926a7"
+    url "https://files.pythonhosted.org/packages/7e/2e/b6bd52c57190ead5dc2ff5f178031ccb28070aa0d8ac36da78ff691cf07f/sym-flow-cli-0.1.11.tar.gz"
+    sha256 "59cc10fc6da4a1b943a318e3f28021117dac789698e97083ed71160cddcb7068"
 
     bottle do
     end
@@ -215,11 +215,11 @@ class Symflow < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.10/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "c75b20e6371548a2f61cd262739a7afdf7e7887523ee46f2e601bcf3625c6105"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.11/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "1bef0fe31c89de358e8e8e204bb5d3f81e8789b2c94da160f787471f468c24f5"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.10/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "a6e5482efbe3f275a452fc24d78a099e0fc9ab20a60c54d909fb6d1c27b3ac92"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v0.1.11/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "49191df2b684b131889d9d7deb81ac9df01167062722477eeab94935af25bae6"
     end
 
     def install
