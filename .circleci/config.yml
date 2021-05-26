@@ -29,6 +29,20 @@ commands:
             cat ~/project/docs/symflow.sh | bash -x
             export PATH="$HOME/.local/bin:$PATH"
             symflow version
+  test_sym_formula:
+    steps:
+      - run:
+          name: Test sym Formula
+          command: |
+            brew install ~/project/Formula/sym.rb
+            sym version
+  test_symflow_formula:
+    steps:
+      - run:
+          name: Test symflow Formula
+          command: |
+            brew install ~/project/Formula/symflow.rb
+            symflow version
 
 jobs:
   test_install_script:
