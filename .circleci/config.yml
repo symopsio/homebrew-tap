@@ -56,6 +56,14 @@ jobs:
           path: ~/project
       - run_sym_script
       - run_symflow_script
+  test_formulas:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_sym_formula
+      - test_symflow_formula
 
 workflows:
   test:
@@ -64,3 +72,4 @@ workflows:
           matrix:
             parameters:
               executor: ["macos", "python"]
+      - test_formulas
