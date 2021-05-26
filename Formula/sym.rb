@@ -4,14 +4,14 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.30"
+  version "0.1.33"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/ca/15/803fe0d7bb53ee7b93f7fddf3d12a3481d69ecf1787ec7910a7c4b9cd880/sym-cli-0.1.30.tar.gz"
-    sha256 "1e051fd40daa65f31ef0c39dbbcf6002aaa98031cfbf627773cf03f60b972b1b"
+    url "https://files.pythonhosted.org/packages/ed/07/31d3305fd8c0a94df73773a058575c2cc6e6c39eefc907a11a6a6381d8d1/sym-cli-0.1.33.tar.gz"
+    sha256 "92c8c1b57291dd677a40ae20d368a622bba3968df0de3028203ccc261cf20d12"
 
     bottle do
     end
@@ -19,18 +19,23 @@ class Sym < Formula
     depends_on "python@3.8"
 
     resource "analytics-python" do
-      url "https://files.pythonhosted.org/packages/6d/ae/affa8190ad884f9654483201f6fe71465bd59263b3365c0e3b544cd36203/analytics-python-1.2.9.tar.gz"
-      sha256 "f3d1ca27cb277da67c10d71a5c9c593d2a9ec99109e31409ab771b44821a86bf"
+      url "https://files.pythonhosted.org/packages/cf/53/02dd86545bef7bb2a0001152a35de404dcace4feca8e0198d3a6a0a70ebd/analytics-python-1.3.1.tar.gz"
+      sha256 "a658651c9e77ac716780b302be9619f590a9017122e484f220859ab5bccd8408"
+    end
+
+    resource "backoff" do
+      url "https://files.pythonhosted.org/packages/55/52/5c209d0e9f1ad857573be96b285626d5e081d86dd50d7617ff0874685dd4/backoff-1.10.0.tar.gz"
+      sha256 "b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/b5/35/8bed4e22b8b30ee6275f9dbc8a1a73adce75be06a862254d3d5312654960/boto3-1.17.58.tar.gz"
-      sha256 "4caf01511a07e229855b964d43ddbc6b3db1fd88a3747a4a7ca6d398ce04f3d3"
+      url "https://files.pythonhosted.org/packages/e2/b2/25e3672636acdf3efc22abc5ff127b9dfb31c7c0ec6de60f336e2dc3fd62/boto3-1.17.80.tar.gz"
+      sha256 "5a30ba8be76bc73ca32b9ac2d344271a3f2c04a95fb52ffa95238b8caf82f06f"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/22/dc/ba42e3e135efaad56e595c0ae3eb7d66d9c2d112879dc8b7c9ba26c21ee8/botocore-1.20.58.tar.gz"
-      sha256 "2830596e0d92d82abaf78a7926e49a3b7a80c93cdc75e95717a1dd4ea9027283"
+      url "https://files.pythonhosted.org/packages/8c/69/9a808ab754f4c3ec7d56ddb7ef90dabebd65c89f5b4f5ef2989bb4f7e7e0/botocore-1.20.80.tar.gz"
+      sha256 "a67923f9faa47833f13b4f3a3fc9a7f12499a58f51982faad4ddcc9132e59a1e"
     end
 
     resource "certifi" do
@@ -54,8 +59,8 @@ class Sym < Formula
     end
 
     resource "click-option-group" do
-      url "https://files.pythonhosted.org/packages/e5/cb/c5698a6434db57236cdab8852d0305ad71a033f29d8a769faabf35f96e29/click-option-group-0.5.2.tar.gz"
-      sha256 "743733a0f564438b6b761f49ddf37d845f9a662294ecabe0e832e597208bcf31"
+      url "https://files.pythonhosted.org/packages/3c/86/5de6d909d9dcc85627a178788ec3e8c3ef81cda175badb48ad0bb582628d/click-option-group-0.5.3.tar.gz"
+      sha256 "a6e924f3c46b657feb5b72679f7e930f8e5b224b766ab35c91ae4019b4e0615e"
     end
 
     resource "colorama" do
@@ -69,8 +74,8 @@ class Sym < Formula
     end
 
     resource "decorator" do
-      url "https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz"
-      sha256 "6f201a6c4dac3d187352661f508b9364ec8091217442c9478f1f83c003a0f060"
+      url "https://files.pythonhosted.org/packages/4f/51/15a4f6b8154d292e130e5e566c730d8ec6c9802563d58760666f1818ba58/decorator-5.0.9.tar.gz"
+      sha256 "72ecfba4320a893c53f9706bebb2d55c270c1e51a28789361aa93e4a21319ed5"
     end
 
     resource "idna" do
@@ -98,9 +103,14 @@ class Sym < Formula
       sha256 "1746d3ac913d449a090caf11e9e4af00e26c3f7f7e81027872192b2398b98675"
     end
 
+    resource "monotonic" do
+      url ""
+      sha256 ""
+    end
+
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/eb/47/14a65ed83d203da66c2aa2dec2661846cd5adb1163ca734542bd44773264/policyuniverse-1.3.4.20210402.tar.gz"
-      sha256 "f40ef95b0b73db8891f4ce9a9d25260ed332f48b0f72b515a2481ff7cad0fca2"
+      url "https://files.pythonhosted.org/packages/5d/90/174ef7fb8e57d3f12dbd5c86cd966741f5fd3a556cd06b92044485774d94/policyuniverse-1.3.5.20210525.tar.gz"
+      sha256 "2a2bd69adaef520d7ba7c3106edf3cfb36179b8454b98a4be35f7ce797c004a7"
     end
 
     resource "portalocker" do
@@ -149,8 +159,13 @@ class Sym < Formula
     end
 
     resource "six" do
-      url "https://files.pythonhosted.org/packages/6b/34/415834bfdafca3c5f451532e8a8d9ba89a21c9743a0c59fbd0205c7f9426/six-1.15.0.tar.gz"
-      sha256 "30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"
+      url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
+      sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
+    end
+
+    resource "sym-shared-cli" do
+      url "https://files.pythonhosted.org/packages/99/93/13f605a264018649e1ef3e65fd82b9ce0feea029dee8bc570f13488df0ba/sym-shared-cli-0.1.8.tar.gz"
+      sha256 "689b74127b1263a667a5d46d7292cde827722e8ccbc579ae9aabc2f59e275c02"
     end
 
     resource "urllib3" do
@@ -170,11 +185,11 @@ class Sym < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.30/sym-cli-darwin-x64.tar.gz"
-      sha256 "b4d3a9a47d33455f6d604ebb23f9825c5fa2af7412816337c1f3361c5005f561"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.33/sym-cli-darwin-x64.tar.gz"
+      sha256 "e73a33573da8f9f7551eec508331a40ea4bb02f006b833d88fc4953bf5057477"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.30/sym-cli-linux-x64.tar.gz"
-      sha256 "e2073f72d54bb46607677bbed2028b1d420e5836ec175b8fcf1b76924b769ac5"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.33/sym-cli-linux-x64.tar.gz"
+      sha256 "5b0baaa05e4f7d5a8f1f6114a8a3b061eeeabace165395040663388c7dddd9ff"
     end
 
     def install
