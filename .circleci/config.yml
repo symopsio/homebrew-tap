@@ -29,6 +29,20 @@ commands:
             cat ~/project/docs/symflow.sh | bash -x
             export PATH="$HOME/.local/bin:$PATH"
             symflow version
+  test_sym_formula:
+    steps:
+      - run:
+          name: Test sym Formula
+          command: |
+            brew install --formula ~/project/Formula/sym.rb
+            sym version
+  test_symflow_formula:
+    steps:
+      - run:
+          name: Test symflow Formula
+          command: |
+            brew install --formula ~/project/Formula/symflow.rb
+            symflow version
 
 jobs:
   test_install_script:
@@ -42,6 +56,14 @@ jobs:
           path: ~/project
       - run_sym_script
       - run_symflow_script
+  test_formulas:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_sym_formula
+      - test_symflow_formula
 
 workflows:
   test:
@@ -50,3 +72,4 @@ workflows:
           matrix:
             parameters:
               executor: ["macos", "python"]
+      - test_formulas
