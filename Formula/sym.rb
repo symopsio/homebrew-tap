@@ -4,14 +4,14 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.1.40"
+  version "0.1.41"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/3d/8a/d8afa759070f1b28bacdfa825e722cde74e16f5df482696ece88800ca5bb/sym-cli-0.1.40.tar.gz"
-    sha256 "4ddd4b586688b3113d718dde434c5d2f195acc0084c581d1c0fc305e048db275"
+    url "https://files.pythonhosted.org/packages/9a/4c/9c1a264d4ebd419bb54dd5c89b9725484564c9aebd975ab20b1c586186e7/sym-cli-0.1.41.tar.gz"
+    sha256 "98dd92b1c0fd2bae06d4858f09fb29efe7c87adbbc91ef05d6ebd131c00a59da"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class Sym < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/3b/98/7cef27b0b39aef484392eab59892f113c94b814d2ff07a23a2da2a24f706/boto3-1.18.51.tar.gz"
-      sha256 "98279095b1d08ee6d8d587f2c66fda6d560ad3046e98cd140c1aa8e1ed018c70"
+      url "https://files.pythonhosted.org/packages/3f/f2/8ea8d8753df82cc7d444644e5666f45c87b1531575055e3c73731aa4cede/boto3-1.18.53.tar.gz"
+      sha256 "4c20f183b680f6b02f70fb32b03df8b52ab9e0fc7a48dc309c159babaf5c9497"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/40/44/f735ca1c3cdd79a24ebeef4d4b6c1093efa457b4f1ad091ad8aa2f839426/botocore-1.21.51.tar.gz"
-      sha256 "17a10dd33334e7e3aaa4e12f66317284f96bb53267e20bc877a187c442681772"
+      url "https://files.pythonhosted.org/packages/55/ae/2b64ecc8d088db37cb4d50908ba4c2636ce96a99d72ec0104e2ec077a4d2/botocore-1.21.53.tar.gz"
+      sha256 "650604ca5231b819d64430c6b2d1748646bab1095a02fb81bad99cd59f6f6cf5"
     end
 
     resource "certifi" do
@@ -185,11 +185,11 @@ class Sym < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.40/sym-cli-darwin-x64.tar.gz"
-      sha256 "87d59883972591cc2b48619a4d2c5e3bfd28670ba558fe1b9840c70319bf91a3"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.41/sym-cli-darwin-x64.tar.gz"
+      sha256 "ea9b12e4d959460c594b44629ac8cf2bf60dfa292e3cc8083244c36528809378"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.40/sym-cli-linux-x64.tar.gz"
-      sha256 "cdd59048dae65c58a01053bc9b7b41cc1d6318fcde0900ed62f21544bd6ffee4"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.1.41/sym-cli-linux-x64.tar.gz"
+      sha256 "1ae5ce64f02b04108f0f8dfd104296db90428515625bc15ae694fb875a419576"
     end
 
     def install
