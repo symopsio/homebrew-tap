@@ -4,14 +4,14 @@
 class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.2.0"
+  version "1.2.1"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/91/85/b8194d6262a40cb4c628891b0b3229892aeca7644a6a40b7729ca328b6c8/sym-flow-cli-1.2.0.tar.gz"
-    sha256 "952482679e6a0558614dab11062219aa7a2a0b60dc44ecc893ddbda0f6e45deb"
+    url "https://files.pythonhosted.org/packages/3c/37/a33d8e81fc5845f66c03a27789ec3f464d695cbdf2f0696294205f376517/sym-flow-cli-1.2.1.tar.gz"
+    sha256 "51e024f290736d23770e22ea231416dcd6943a29e749adc380adb1d7585f9363"
 
     bottle do
     end
@@ -109,8 +109,8 @@ class Symflow < Formula
     end
 
     resource "Faker" do
-      url "https://files.pythonhosted.org/packages/8f/fe/43a071b6aeb6d41e00856c286de24e91312dde292f87259a547b52d60449/Faker-9.3.1.tar.gz"
-      sha256 "cdd9e9af2fba5c96ee2ec4ac8419bba458e26b58a2b98c1f6467ee66096bee52"
+      url "https://files.pythonhosted.org/packages/1a/c5/fcd03e5b87c199da0821228bf0625244cbc0cab39eb52a7a830213ac16eb/Faker-9.5.0.tar.gz"
+      sha256 "4650bbd3c3df3a5ad9b2506000589cd7360b3d4ae5553faf89f593d08a590e4c"
     end
 
     resource "idna" do
@@ -310,11 +310,11 @@ class Symflow < Formula
     bottle :unneeded
 
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.2.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "051c911895e231fb1352101de07cc92d8e683799dd50955dd2ea6a6c104796d0"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.2.1/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "b9952bc29749316a87a82302838e3d886d0ee42741e98e9e69ff682539da5a5c"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.2.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "def44dcd4855a8d93bfd9702bb95f07a1345f462055f1a0375d1bfbeafad896b"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.2.1/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "47cb5d5148bf2bf0c93d536142b1b0c74c2548effb4bbf21f3c755096b037053"
     end
 
     def install
