@@ -50,8 +50,6 @@ class FormulaBuilder
             virtualenv_install_with_resources
           end
         else
-          bottle :unneeded
-
           if OS.mac?
             url "#{url('darwin')}"
             sha256 "#{sha('darwin')}"
