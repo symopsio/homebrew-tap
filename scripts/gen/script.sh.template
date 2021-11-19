@@ -200,11 +200,26 @@ installWithDeb() {
 ensureSymTmp
 ensureCommandLineTools
 
-installWithBrew ||
+if [[ -z "${CI}" ]]; then
+  # If we're not on CI, try `brew` first
+  installWithBrew ||
+    installWithPkg ||
+    installWithDeb ||
+    installWithPipx ||
+    die 'Could not install <%= formula %>. Please send us any error messages printed above.'
+else
+  # If on CI, avoid `brew` if we can, because it's slooow.
+  export HOMEBREW_NO_INSTALL_CLEANUP=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
+
   installWithPkg ||
-  installWithDeb ||
-  installWithPipx ||
-  die 'Could not install <%= formula %>. Please send us any error messages printed above.'
+    installWithDeb ||
+    installWithPipx ||
+    installWithBrew ||
+    die 'Could not install <%= formula %>. Please send us any error messages printed above.'
+fi
+
+
 
 <%= extra_installs %>
 
