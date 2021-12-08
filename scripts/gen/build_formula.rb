@@ -15,7 +15,7 @@ class FormulaBuilder
     }
   }.freeze
 
-  attr_reader :formula, :version, at
+  attr_reader :formula, :version, :at
 
   def initialize(formula, version, at)
     @formula = formula
