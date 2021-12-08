@@ -15,11 +15,12 @@ class FormulaBuilder
     }
   }.freeze
 
-  attr_reader :formula, :version
+  attr_reader :formula, :version, at
 
-  def initialize(formula, version)
+  def initialize(formula, version, at)
     @formula = formula
     @version = version
+    @at = at.blank? ? "" : "AT#{at}" # for versioned formulas
     check!
   end
 
@@ -28,7 +29,7 @@ class FormulaBuilder
       # frozen_string_literal: true
       # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-      class #{formula.classify} < Formula
+      class #{formula.classify}#{at} < Formula
         desc "#{FORMULAE[formula][:desc]}"
         homepage "https://docs.symops.com"
         version "#{version}"
