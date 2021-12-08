@@ -4,14 +4,14 @@
 class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.3.2"
+  version "1.3.3"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/5a/87/c719a0cb0095074cc7dc680ee1a9c236884c3d54bb063b893cbce447ac95/sym-flow-cli-1.3.2.tar.gz"
-    sha256 "8afa590e10b504d1182482f0a0e570faab4f100c571203391f24d11288a700c2"
+    url "https://files.pythonhosted.org/packages/ae/98/969a3013581ee36d6ea21e57f5446613629ada4b07068c7f1afe83b8c143/sym-flow-cli-1.3.3.tar.gz"
+    sha256 "a97808d885f787c28bb86036e071cb543f522ee0f950a990040067aeb2ccca8e"
 
     bottle do
     end
@@ -44,13 +44,13 @@ class Symflow < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/66/94/0971da15bbe6aadc5ff9597e17a7575a2258e933a55850fca1438452bd19/boto3-1.20.17.tar.gz"
-      sha256 "41ea196ff71ee0255ad164790319ec158fd5048de915173e8b21226650a0512f"
+      url "https://files.pythonhosted.org/packages/95/a7/413caa923eff54277fa48f312c2202441ed8ce57c5bf135af9b700e0994d/boto3-1.20.21.tar.gz"
+      sha256 "2fb05cbe81b9ce11d9394fc6c4ffa5fd1cceb114dc1d2887dc61081707e44522"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/a9/32/b5dca477a9c11c3ce3a18881fe0d065fcc851d9b7ef45b429ed5a89fec4f/botocore-1.23.17.tar.gz"
-      sha256 "a9753b5220b5cc1bb8078086dc8ee10aa7da482b279dd0347965e9145a557003"
+      url "https://files.pythonhosted.org/packages/7b/e6/b3aaa252218b0d4c6699de08d1daf94f90f320e3389e46b1286e18410c37/botocore-1.23.21.tar.gz"
+      sha256 "d7f8e82cba38aa1e66015cab0a5ca3204503e90afc4695e97228e28329a14c04"
     end
 
     resource "certifi" do
@@ -64,8 +64,8 @@ class Symflow < Formula
     end
 
     resource "charset-normalizer" do
-      url "https://files.pythonhosted.org/packages/2f/39/5d8ff929409113e9ff402e405a7c7880ab1fa6f118a4ab72443976a01711/charset-normalizer-2.0.8.tar.gz"
-      sha256 "735e240d9a8506778cd7a453d97e817e536bb1fc29f4f6961ce297b9c7a917b0"
+      url "https://files.pythonhosted.org/packages/68/e4/e014e7360fc6d1ccc507fe0b563b4646d00e0d4f9beec4975026dd15850b/charset-normalizer-2.0.9.tar.gz"
+      sha256 "b0b883e8e874edfdece9c28f314e3dd5badf067342e42fb162203335ae61aa2c"
     end
 
     resource "click" do
@@ -109,8 +109,8 @@ class Symflow < Formula
     end
 
     resource "Faker" do
-      url "https://files.pythonhosted.org/packages/97/28/7a088e10e6654835d2423f12aec34aae16fe24c392106823dbe4c25ca7b8/Faker-9.9.0.tar.gz"
-      sha256 "7227703a3db36ed8241108547544445f45aa45db2f3f63e885cb9b5699383f0e"
+      url "https://files.pythonhosted.org/packages/8c/d7/75b2629546c8d676bc3db1d91670bdb1452024e2813e8cd1162b125f1809/Faker-10.0.0.tar.gz"
+      sha256 "530690ad12a2a054071af95fc8a354c5fd57b5e7707053a9662f40f14a87b68e"
     end
 
     resource "idna" do
@@ -313,11 +313,11 @@ class Symflow < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.2/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "4f21067d601f27559102c11eae5d9d47198a1e34d2dc0e24746f7671a5a5c029"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.3/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "080a9020dad29efeada1bb9994ae6371fca1d68f685374f6d36110f2f268a6b3"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.2/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "533dc11b855531361e5389d5b035ea55ae0c4513dfca2d3670ddd70f371853dc"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.3/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "affe72134de94dd825d57744743ea71615759d6860c06fdc1659f11b8cfd3240"
     end
 
     def install
