@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class SymflowAT1 < Formula
+class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.3.5"
+  version "1.3.6"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/65/c5/15f16ca73cf02a186681aba9cab59cc50de3c8b155501e4d21338f2c2c73/sym-flow-cli-1.3.5.tar.gz"
-    sha256 "cc257c50087070877c06523cf16ccc049f78ba52e7798f7564f28cbf04db1df8"
+    url "https://files.pythonhosted.org/packages/77/8d/7a2f97bc2fb58357612ead664b8aa5a210b2bcd75e61b3c07174014bfa68/sym-flow-cli-1.3.6.tar.gz"
+    sha256 "4d53e9b3af978192ee6d819f33db2abaa2c81921149c3568f4dd569bcf690f77"
 
     bottle do
     end
@@ -313,11 +313,11 @@ class SymflowAT1 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.5/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "99d17b610e6c171893aa79abb09faafb1e53a767dac1dd3e0301d2dda8a30211"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.6/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "461a2b7f1165182156c983f971b8f8f230816ec3056e0cadf9c0b883466e7152"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.5/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "6542781c4a541b3038cb3823f9ba181bcbd6b479f48fa632a4d3a02edd6ffed4"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.6/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "a35d651066622a4cbf5b93f44a05f6764b96b4faad77994336e1a5895486b92d"
     end
 
     def install
