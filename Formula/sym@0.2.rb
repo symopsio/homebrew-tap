@@ -4,14 +4,14 @@
 class SymAT02 < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.2.5"
+  version "0.2.6"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/43/ab/9545d1450f39885b48b7a0059ffd8b397515bfb50ebdfdaf64cb3bcfd66c/sym-cli-0.2.5.tar.gz"
-    sha256 "5392a3a9cc7d02aa1a0783f0494306ef4bbb082e153fc159cec4d489ba67583a"
+    url "https://files.pythonhosted.org/packages/ef/cf/fcb2cd68b878055f9f8e159a53684c07d50c1935c611c8ac4c2d579a5aaa/sym-cli-0.2.6.tar.gz"
+    sha256 "181d1e1eea5c9a593488b7c9a845e7378aa44a7e996199c2c26a262f01490f05"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class SymAT02 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/b5/03/40d91be5244e4050967f9a8dde92f623fc76264e459c60660c067ff4341c/boto3-1.20.53.tar.gz"
-      sha256 "96f50e95bded5612ac8bd116d5d56a0cce4868870177805cb974d1f4f0a24b73"
+      url "https://files.pythonhosted.org/packages/43/3f/a101f08cc93930b03ac06baf0d5f1b7c7ab0cdd76127bbb37e8dc9b7fe72/boto3-1.21.0.tar.gz"
+      sha256 "cc40566dec3f48611a82ace07b29489848e9bd35a51e3e992d1902a3c037e9fc"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/9c/b6/862c348029cc60c5d524f240dd46fba40fd0233a0b86f0827a1c6aa10fb0/botocore-1.23.53.tar.gz"
-      sha256 "7a628bc8bb2573fbc77709c9e7a02061b750f6ebb8e961562de658eda98e140d"
+      url "https://files.pythonhosted.org/packages/02/8c/f3f6ce40815587d03996d956fd9b2de16b16e430e4bfe0bc9bf37e917453/botocore-1.24.0.tar.gz"
+      sha256 "47723cef6112f451630bf2446cfd6be2782cc1d6b1b92acb12ff00797588c5f3"
     end
 
     resource "certifi" do
@@ -49,8 +49,8 @@ class SymAT02 < Formula
     end
 
     resource "charset-normalizer" do
-      url "https://files.pythonhosted.org/packages/e8/e8/b6cfd28fb430b2ec9923ad0147025bf8bbdf304b1eb3039b69f1ce44ed6e/charset-normalizer-2.0.11.tar.gz"
-      sha256 "98398a9d69ee80548c762ba991a4728bfc3836768ed226b3945908d1a688371c"
+      url "https://files.pythonhosted.org/packages/56/31/7bcaf657fafb3c6db8c787a865434290b726653c912085fbd371e9b92e1c/charset-normalizer-2.0.12.tar.gz"
+      sha256 "2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597"
     end
 
     resource "click" do
@@ -188,11 +188,11 @@ class SymAT02 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.5/sym-cli-darwin-x64.tar.gz"
-      sha256 "99f30bf1f51162ac395f76090c1c4b85a9829a7c98ff14558d91ff0ada741f72"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.6/sym-cli-darwin-x64.tar.gz"
+      sha256 "50e14766b747641b8fc18f6b23281c4d14fbdfe176e268648e3ba3fd3d981404"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.5/sym-cli-linux-x64.tar.gz"
-      sha256 "97b26e3c08430fa5f21ea1cd8162388a0a74c2583946d81a65526cccb8a39bd5"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.6/sym-cli-linux-x64.tar.gz"
+      sha256 "1f9770e20ec6098134d1c60ec2e701d3f407f83cc0f56fa5b20dc5e6db3f7491"
     end
 
     def install
