@@ -67,7 +67,6 @@ jobs:
 
 workflows:
   test:
-    # Meaningless change
     jobs:
       - test_install_script:
           matrix:
