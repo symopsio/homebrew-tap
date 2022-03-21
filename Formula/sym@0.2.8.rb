@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class SymAT02 < Formula
+class SymAT028 < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
   version "0.2.8"

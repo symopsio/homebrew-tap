@@ -4,14 +4,14 @@
 class SymAT0 < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.2.8-rc.1"
+  version "0.2.8"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/15/48/d443ecdb77f1ed42a2ec1ae4c89597663f57a57f7f1072c3f7e7ff3cd726/sym-cli-0.2.7.tar.gz"
-    sha256 "17f9965f4335effcfa3d1487733ecb98e82af016ded5be5fe54b73a30811cbe2"
+    url "https://files.pythonhosted.org/packages/38/e5/59eea67208f9c761788d1ee8b89916eb9f8a89cb71ce96d757be7df9f88e/sym-cli-0.2.8.tar.gz"
+    sha256 "314989f03ac2c73c79b01df9dbb9431fb4f22fa484c2a72028b57088cf10a1f8"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class SymAT0 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/08/fe/64c6e7d074ca4368949f82e1c8db236184ba13380c893c3c82fe32292c16/boto3-1.21.21.tar.gz"
-      sha256 "6fa0622f308cfd1da758966fc98b52fbd74b80606d14586c8ad82c7a6c4f32d0"
+      url "https://files.pythonhosted.org/packages/c6/b3/78537c46ed86cf2b66910714e1f8aa33f916758001bbc09b5618efc03021/boto3-1.21.23.tar.gz"
+      sha256 "44a30268702c78aa355a0044fa7fea5f1e7e7c125ad029196028787eea003c2e"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/68/56/c4858a29beb127d95cebe5889251fac4e059513c51452c66cb4660d61bee/botocore-1.24.21.tar.gz"
-      sha256 "7e976cfd0a61601e74624ef8f5246b40a01f2cce73a011ef29cf80a6e371d0fa"
+      url "https://files.pythonhosted.org/packages/58/0f/17ea085010d395b497bc432d5a4feb6a67a23a3e5081deadaf2e34840660/botocore-1.24.23.tar.gz"
+      sha256 "1c8a77809dd59bf4084780ea1785c38d0ebcacd385d83fb7f6ad81648bbb22dc"
     end
 
     resource "certifi" do
@@ -54,8 +54,8 @@ class SymAT0 < Formula
     end
 
     resource "click" do
-      url "https://files.pythonhosted.org/packages/27/6f/be940c8b1f1d69daceeb0032fee6c34d7bd70e3e649ccac0951500b4720e/click-7.1.2.tar.gz"
-      sha256 "d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"
+      url "https://files.pythonhosted.org/packages/dd/cf/706c1ad49ab26abed0b77a2f867984c1341ed7387b8030a6aa914e2942a0/click-8.0.4.tar.gz"
+      sha256 "8458d7b1287c5fb128c90e23381cf99dcde74beaf6c7ff6384ce84d6fe090adb"
     end
 
     resource "click-option-group" do
@@ -169,8 +169,8 @@ class SymAT0 < Formula
     end
 
     resource "sym-shared-cli" do
-      url "https://files.pythonhosted.org/packages/aa/36/6f24c0f5bfaccf84cb0680689ac2becdbb46202abd8c7d925b7aac3f9f71/sym-shared-cli-0.2.0.tar.gz"
-      sha256 "24a0ebeda9e8cbe86b7cb584eb5d143a76d2d8a9963dcd95ebb21258d3d7d892"
+      url "https://files.pythonhosted.org/packages/48/f5/cfd096c9ce370cf70c197f02115aec5fd991b54315e296bb29bc2bd3aa36/sym-shared-cli-0.2.2.tar.gz"
+      sha256 "42e36d24c4e7ea1981998f3b0e461254982651682924301085f3d9a20e64bac6"
     end
 
     resource "urllib3" do
@@ -188,11 +188,11 @@ class SymAT0 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.8-rc.1/sym-cli-darwin-x64.tar.gz"
-      sha256 "8250c73a07f255cd0b3a67f431dfd5ee2e2576ee079485c2118881b7253e8bf8"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.8/sym-cli-darwin-x64.tar.gz"
+      sha256 "34a43df89e0b45edb790f7323a77181d336183df1ef661bd18b4df9f1ec4047f"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.8-rc.1/sym-cli-linux-x64.tar.gz"
-      sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.2.8/sym-cli-linux-x64.tar.gz"
+      sha256 "1cb68e3c73ea5241f9f16d2225292a82e4b8cb67b0057cf759b17a860a8fdd7e"
     end
 
     def install
