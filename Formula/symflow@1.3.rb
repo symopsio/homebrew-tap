@@ -4,14 +4,14 @@
 class SymflowAT13 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.3.14"
+  version "1.3.15"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/0c/a2/8123d3700d7f16bbc29f01f8507d7c2cd872b5f21e5503e95a94cce30dd3/sym-flow-cli-1.3.14.tar.gz"
-    sha256 "0377f114ccf0d328e8d2179ac7aaa87673ba4bfb80b8e0ab2cca734ea450f1f2"
+    url "https://files.pythonhosted.org/packages/80/52/521ace119dcc11dc48a09406c58883fda8977a94fc3351c4f2424690d101/sym-flow-cli-1.3.15.tar.gz"
+    sha256 "8fefe723dc1f4145286290720c9a824e4c4faa720d1f86e18d94a42923d33797"
 
     bottle do
     end
@@ -34,8 +34,8 @@ class SymflowAT13 < Formula
     end
 
     resource "beautifulsoup4" do
-      url "https://files.pythonhosted.org/packages/a1/69/daeee6d8f22c997e522cdbeb59641c4d31ab120aba0f2c799500f7456b7e/beautifulsoup4-4.10.0.tar.gz"
-      sha256 "c23ad23c521d818955a4151a67d81580319d4bf548d3d49f4223ae041ff98891"
+      url "https://files.pythonhosted.org/packages/e8/b0/cd2b968000577ec5ce6c741a54d846dfa402372369b8b6861720aa9ecea7/beautifulsoup4-4.11.1.tar.gz"
+      sha256 "ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"
     end
 
     resource "blessed" do
@@ -44,13 +44,13 @@ class SymflowAT13 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/91/1b/7e84cbce4b22e837375e137e77eb1e7b24554a907ef9743b7f923b201ab8/boto3-1.21.30.tar.gz"
-      sha256 "f0af8f4ef5fe6353c794cd3cce627d469a618b58ace7ca75a63cfd719df615ce"
+      url "https://files.pythonhosted.org/packages/28/ce/23133724b50af6332c460f9c5745296b172c121b5ceef4c8c1c67598d1a1/boto3-1.21.37.tar.gz"
+      sha256 "013ba57295f05da141e364191dd46f4086e8fe3eb83a3cd09730eeb684ffbab3"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/32/bc/ef79f0598110dc884bf8dddd9907cc3da241b140591fe3bbc20556d60119/botocore-1.24.30.tar.gz"
-      sha256 "af4bdc51eeecbe9fdcdadbed9ad58c5c91380ef30f3560022bbc2ee1d78f0ad6"
+      url "https://files.pythonhosted.org/packages/63/81/15d714937a265aea46c1b07a51e60113e683f43ba65ed0f41f79d51ce924/botocore-1.24.37.tar.gz"
+      sha256 "70c48c4ae3c2b9ec0ca025385979d01f4c7dae4d9a61c82758d4cf7caa7082cd"
     end
 
     resource "certifi" do
@@ -69,8 +69,8 @@ class SymflowAT13 < Formula
     end
 
     resource "click" do
-      url "https://files.pythonhosted.org/packages/ba/1c/9490d7fd88dd612f2f6ced0fac0560f160d434f28bf3f2fe4173d6b79cae/click-8.1.1.tar.gz"
-      sha256 "7ab900e38149c9872376e8f9b5986ddcaf68c0f413cf73678a0bca5547e6f976"
+      url "https://files.pythonhosted.org/packages/42/e1/4cb2d3a2416bcd871ac93f12b5616f7755a6800bccae05e5a99d3673eb69/click-8.1.2.tar.gz"
+      sha256 "479707fe14d9ec9a0757618b7a100a0ae4c4e236fac5b7f80ca68028141a1a72"
     end
 
     resource "click-log" do
@@ -179,8 +179,8 @@ class SymflowAT13 < Formula
     end
 
     resource "prompt-toolkit" do
-      url "https://files.pythonhosted.org/packages/37/34/c34c376882305c5051ed7f086daf07e68563d284015839bfb74d6e61d402/prompt_toolkit-3.0.28.tar.gz"
-      sha256 "9f1cd16b1e86c2968f2519d7fb31dd9d669916f515612c269d14e9ed52b51650"
+      url "https://files.pythonhosted.org/packages/59/68/4d80f22e889ea34f20483ae3d4ca3f8d15f15264bcfb75e52b90fb5aefa5/prompt_toolkit-3.0.29.tar.gz"
+      sha256 "bd640f60e8cecd74f0dc249713d433ace2ddc62b65ee07f96d358e0b152b6ea7"
     end
 
     resource "py" do
@@ -264,8 +264,8 @@ class SymflowAT13 < Formula
     end
 
     resource "soupsieve" do
-      url "https://files.pythonhosted.org/packages/e1/25/a3005eedafb34e1258458e8a4b94900a60a41a2b4e459e0e19631648a2a0/soupsieve-2.3.1.tar.gz"
-      sha256 "b8d49b1cd4f037c7082a9683dfa1801aa2597fb11c3a1155b7a5b94829b4f1f9"
+      url "https://files.pythonhosted.org/packages/3b/3d/a7865440c393baf403899d79e724ad0a9805199962917745d9277f1db40e/soupsieve-2.3.2.tar.gz"
+      sha256 "0bcc6d7432153063e3df09c3ac9442af3eba488715bfcad6a4c38ccb2a523124"
     end
 
     resource "sym-shared-cli" do
@@ -313,11 +313,11 @@ class SymflowAT13 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.14/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "61e8a8ee24761abbd6fef6b5a57c490700321c37c8e092be2f461f1d1ce74c96"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.15/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "bd8df59d94024efd29eef199a54583902396efd4243791b820b771411c2b193a"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.14/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "bc95da71609cadf23f51d6ac9e6bc6e5166dfd700223d937ef9098f9584d8697"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.3.15/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "10f65d07510ade781c90802b9df5d841ea22d308bd1fea7f03424e752b0912f1"
     end
 
     def install
