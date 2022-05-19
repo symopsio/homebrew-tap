@@ -4,14 +4,14 @@
 class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.4.0"
+  version "1.5.0"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/e5/59/413fd361b9a0873854fa122bffdb657a16fcc9401c0a42b8e0c30bc2d418/sym-flow-cli-1.4.0.tar.gz"
-    sha256 "ea9a00311d4f8beaf47672128b9ef5e4273da5c33e3f86b648965375e28bd310"
+    url "https://files.pythonhosted.org/packages/76/72/b9c11d799ea0cfe6c2193e009bf7b21f5b078476306ea232a6b75e3a107e/sym-flow-cli-1.5.0.tar.gz"
+    sha256 "e773734cec107496e8e46f1a932ac4969ae0dbf6a9d76337024e35af9f0bbe34"
 
     bottle do
     end
@@ -21,6 +21,11 @@ class Symflow < Formula
     resource "analytics-python" do
       url "https://files.pythonhosted.org/packages/32/a5/08555aee01e65bfbfba971e4ce993a3fef0aaf965d5e10d872785d883aeb/analytics-python-1.4.0.tar.gz"
       sha256 "a65141ab6e47db396f5bc5708b1db93ff9a99882d81fe808228afd5ebb6dfe5f"
+    end
+
+    resource "appdirs" do
+      url "https://files.pythonhosted.org/packages/d7/d8/05696357e0311f5b5c316d7b95f46c669dd9c15aaeecbb48c7d0aeb88c40/appdirs-1.4.4.tar.gz"
+      sha256 "7d5d0167b2b1ba821647616af46a749d1c653740dd0d2415100fe26e27afdf41"
     end
 
     resource "attrs" do
@@ -44,18 +49,18 @@ class Symflow < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/a0/82/9be482fbb20ec0512428e31d3d20a1d55952bd2ea4aaf314af394e60e12f/boto3-1.22.1.tar.gz"
-      sha256 "096ff3255c1327f14e63d29d7bed4900cc350d42916498c5cc37a90a7051d3dc"
+      url "https://files.pythonhosted.org/packages/35/48/95c25e937796ea8921b59ae2617aebecedc1cab2f395506bd30a03658a27/boto3-1.23.4.tar.gz"
+      sha256 "29ced93acdc0e624fb7b1c235aad2e1dd3cae7aafdf90b9009b4c5274775248a"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/4a/30/d27e967f849033a228d387ad3e9becb4afacaedeab072f5e00ca01cd4562/botocore-1.25.1.tar.gz"
-      sha256 "ede020a3ee2ed1110b415af4bbd57b7275df66bbc96d20aa6310cabf0c5cfe36"
+      url "https://files.pythonhosted.org/packages/cb/6c/55146a070dc2aa988f4a23cf377f75b156d1ea3ebac8363dec7d3d3201c6/botocore-1.26.4.tar.gz"
+      sha256 "b818986c2dde395f117829d7206f775f5bfb37ef84eb05c94d3952f8e3d7fe8d"
     end
 
     resource "certifi" do
-      url "https://files.pythonhosted.org/packages/6c/ae/d26450834f0acc9e3d1f74508da6df1551ceab6c2ce0766a593362d6d57f/certifi-2021.10.8.tar.gz"
-      sha256 "78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872"
+      url "https://files.pythonhosted.org/packages/07/10/75277f313d13a2b74fc56e29239d5c840c2bf09f17bf25c02b35558812c6/certifi-2022.5.18.1.tar.gz"
+      sha256 "9c5705e395cd70084351dd8ad5c41e65655e08ce46f2ec9cf6c2c08390f71eb7"
     end
 
     resource "cffi" do
@@ -69,8 +74,8 @@ class Symflow < Formula
     end
 
     resource "click" do
-      url "https://files.pythonhosted.org/packages/42/e1/4cb2d3a2416bcd871ac93f12b5616f7755a6800bccae05e5a99d3673eb69/click-8.1.2.tar.gz"
-      sha256 "479707fe14d9ec9a0757618b7a100a0ae4c4e236fac5b7f80ca68028141a1a72"
+      url "https://files.pythonhosted.org/packages/59/87/84326af34517fca8c58418d148f2403df25303e02736832403587318e9e8/click-8.1.3.tar.gz"
+      sha256 "7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"
     end
 
     resource "click-log" do
@@ -109,8 +114,8 @@ class Symflow < Formula
     end
 
     resource "Faker" do
-      url "https://files.pythonhosted.org/packages/f9/7e/ba30716609a86016159a8cebf6718b0bbc82ac988dbe58ef1795949cddc2/Faker-13.6.0.tar.gz"
-      sha256 "0d5425894e098410b64aaade38a81074fa30163076251118523adf5bb44f8346"
+      url "https://files.pythonhosted.org/packages/5f/83/17b69d1fb2104be9f11624e29d53c084932c0c88a6a87a81d534916eb11c/Faker-13.11.1.tar.gz"
+      sha256 "cad1f69d72a68878cd67855140b6fe3e44c11628971cd838595d289c98bc45de"
     end
 
     resource "idna" do
@@ -141,6 +146,16 @@ class Symflow < Formula
     resource "jmespath" do
       url "https://files.pythonhosted.org/packages/06/7e/44686b986ef9ca6069db224651baaa8300b93af2a085a5b135997bf659b3/jmespath-1.0.0.tar.gz"
       sha256 "a490e280edd1f57d6de88636992d05b71e97d69a26a19f058ecf7d304474bf5e"
+    end
+
+    resource "Mako" do
+      url "https://files.pythonhosted.org/packages/50/ec/1d687348f0954bda388bfd1330c158ba8d7dea4044fc160e74e080babdb9/Mako-1.2.0.tar.gz"
+      sha256 "9a7c7e922b87db3686210cf49d5d767033a41d4010b284e747682c92bddd8b39"
+    end
+
+    resource "MarkupSafe" do
+      url "https://files.pythonhosted.org/packages/1d/97/2288fe498044284f39ab8950703e88abbac2abbdf65524d576157af70556/MarkupSafe-2.1.1.tar.gz"
+      sha256 "7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"
     end
 
     resource "mistune" do
@@ -194,13 +209,13 @@ class Symflow < Formula
     end
 
     resource "pydantic" do
-      url "https://files.pythonhosted.org/packages/60/a3/23a8a9378ff06853bda6527a39fe317b088d760adf41cf70fc0f6110e485/pydantic-1.9.0.tar.gz"
-      sha256 "742645059757a56ecd886faf4ed2441b9c0cd406079c2b4bee51bcc3fbcd510a"
+      url "https://files.pythonhosted.org/packages/d0/a5/e4a25a0becf35530a3d90459a88855743e942f2e502da49ca5b10aa78568/pydantic-1.9.1.tar.gz"
+      sha256 "1ed987c3ff29fff7fd8c3ea3a3ea877ad310aae2ef9889a119e22d3f2db0691a"
     end
 
     resource "pyparsing" do
-      url "https://files.pythonhosted.org/packages/31/df/789bd0556e65cf931a5b87b603fcf02f79ff04d5379f3063588faaf9c1e4/pyparsing-3.0.8.tar.gz"
-      sha256 "7bf433498c016c4314268d95df76c81b842a4cb2b276fa3312cfb1e1d85f6954"
+      url "https://files.pythonhosted.org/packages/71/22/207523d16464c40a0310d2d4d8926daffa00ac1f5b1576170a32db749636/pyparsing-3.0.9.tar.gz"
+      sha256 "2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"
     end
 
     resource "pytest" do
@@ -209,8 +224,8 @@ class Symflow < Formula
     end
 
     resource "pytest-factoryboy" do
-      url "https://files.pythonhosted.org/packages/17/6c/7afac72bfbaa8837da995fcbc2c116a38267b3c49cd6665f3bf80241adb7/pytest-factoryboy-2.1.0.tar.gz"
-      sha256 "23bc562ab32cc39eddfbbbf70e618a1b30e834a4cfa451c4bedc36216f0a7b19"
+      url "https://files.pythonhosted.org/packages/95/80/1e1814b812f89c497c3f563273e72c8ce6de8e4be0f86f8059f46e9a64cb/pytest-factoryboy-2.3.0.tar.gz"
+      sha256 "9b5eb43d579fcb1bdc756e4428dabb9b99019f02175e07cadc23ee8036692b43"
     end
 
     resource "python-dateutil" do
@@ -313,11 +328,11 @@ class Symflow < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.4.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "54e07ca42d8ceed31d3117d45c831702bee4bdcb132513732098f3ba8a9edc4b"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.5.0/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "3a2e09d241ed801b3fb3590c663a052f88123154324f9e2a1631e6acb243feb5"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.4.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "d1171dddf7146948ade3ce4f8f62387e0915f1b6c9572a195a14ac81c4d0a10a"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.5.0/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "2d74419a97917503fb9503ee430eba85be8dc30bd1326c46458fc6948caddebb"
     end
 
     def install
