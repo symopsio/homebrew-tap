@@ -4,14 +4,14 @@
 class Symflow < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.7.2"
+  version "1.8.0"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/82/0a/b87f9f297eff4b305e1a428af031997b91273ef262f3d0b7b17ed0d0f54f/sym-flow-cli-1.7.2.tar.gz"
-    sha256 "c0e5330837df1a1d6c49ce8fe361d357d611c713d0ca6d363256e41cbd3e75a9"
+    url "https://files.pythonhosted.org/packages/d7/f8/5169b71be5283e9a2a01b1bdef3bbdb1e1b75ce2ae11f0da235fa71e2b94/sym-flow-cli-1.8.0.tar.gz"
+    sha256 "8ba617b0a7741a9a9fea384f7972c1aaa324659df7bc137b354e2d7100c2b1a3"
 
     bottle do
     end
@@ -44,13 +44,13 @@ class Symflow < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/d4/fe/47f0c6e8d1efab228acf54592dfffd903708d9d343932e4ee75ceac43d6a/boto3-1.24.24.tar.gz"
-      sha256 "375f3276f257d1b7be8b3101427778e4e865a06ba35d3853d619b5559895a07a"
+      url "https://files.pythonhosted.org/packages/c7/d4/4a6b0abaa55b939dbac8eceab9e28f393edf7bb5100ebdd9109f50ae414a/boto3-1.24.29.tar.gz"
+      sha256 "c6f419a79c816297646d228dd07599859df6ee701c6f65a6dd4a35015269eb38"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/10/04/8ff7149d8b43cf75e15e117bb85ca36965721c0c2ee3c55539a103961976/botocore-1.27.24.tar.gz"
-      sha256 "e3038a19cc442c16bdf05afd34a2b7717b3fe2ed50b3847472eb9e730cf4691a"
+      url "https://files.pythonhosted.org/packages/80/95/cc777fce0f15a29fc32e3670881e14e875a48619bd88d0974257703bfa10/botocore-1.27.29.tar.gz"
+      sha256 "7bbd1ef1ef0083d5def197d40cf557509f5fd80d5d0f29e1ae32857832592bc7"
     end
 
     resource "certifi" do
@@ -174,8 +174,8 @@ class Symflow < Formula
     end
 
     resource "portalocker" do
-      url "https://files.pythonhosted.org/packages/dc/60/9646b57d473d38fd23af22f18dce6baa4d591f37024e0c3dcd2d66814d50/portalocker-2.4.0.tar.gz"
-      sha256 "a648ad761b8ea27370cb5915350122cd807b820d2193ed5c9cc28f163df637f4"
+      url "https://files.pythonhosted.org/packages/28/b5/ee15a73d2d1e3e4f8ed9cf46b8c590317fa182b5c50ab5149e0c66866f25/portalocker-2.5.1.tar.gz"
+      sha256 "ae8e9cc2660da04bf41fa1a0eef7e300bb5e4a5869adfb1a6d8551632b559b2b"
     end
 
     resource "prompt-toolkit" do
@@ -313,11 +313,11 @@ class Symflow < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.7.2/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "63d32ba53a900b997e7253d65bc43e920987d32f81ae7ba6f371e8c7259c5cec"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.0/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "f55798f8d9599cebe76c6f594ead91a61a1b65b9d31fe0dd6e192bfca5cf5598"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.7.2/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "df51b042e3c12ce737d6636216ffb6a553e8ec6ce6fee7cbfc6d9c82bc702d4e"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.0/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "ec593b6318018304467e511960994854ce87bd827acc717d5a6ed3ed76c2aca0"
     end
 
     def install
