@@ -4,14 +4,14 @@
 class SymflowAT1 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.8.1"
+  version "1.8.2"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/c5/dd/c59228f86e5cc21b084e1fdc1b15ea8d45536dd6895ed538bd073545ce3e/sym-flow-cli-1.8.1.tar.gz"
-    sha256 "813b60c12722de28e29ec523ad7ead09c1c534d6547daa93a899c84308a21bdf"
+    url "https://files.pythonhosted.org/packages/d6/10/0dfcde342f7af374be111e4e3d7490b614c3a6e8f7339d1e621f56c9e846/sym-flow-cli-1.8.2.tar.gz"
+    sha256 "cccb1f5fa8d4bc3045b2989bad42f7c2c69859d6cab105aa8c6648fd9f22481e"
 
     bottle do
     end
@@ -44,13 +44,13 @@ class SymflowAT1 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/e0/59/31744ddafe33d6d716f4ad522e7c3d15a74a1d0cd4556b34a36e29868962/boto3-1.24.31.tar.gz"
-      sha256 "de067346942c6d1730b513783385620519b8b2935f5b0ee2e66d565ffb57ce12"
+      url "https://files.pythonhosted.org/packages/40/36/41f4a54070314d899cef60a0c43e69a10929d68642bf2f1ae7c28017cddd/boto3-1.24.37.tar.gz"
+      sha256 "c5f0b44a77d01d6f714f91f181b1e0819fed9b99423234cd4c2cce6704e915b3"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/2a/0b/510886b331aad78d62cadcee155eaed0176e4e238cd9b454ab428e2bd424/botocore-1.27.31.tar.gz"
-      sha256 "b0cc79fb5a37a0e2b6befe86efd027b92101d819f1fdc56cfff39f2eb239f232"
+      url "https://files.pythonhosted.org/packages/b6/f2/e3f57019830a6a85109c7842babf930bfad80fa4978dce915c9bc1e8c725/botocore-1.27.37.tar.gz"
+      sha256 "c73988eff91897fe840ae6a9b459705e3086bc7f62f37a12999a7f4564002f63"
     end
 
     resource "certifi" do
@@ -109,8 +109,8 @@ class SymflowAT1 < Formula
     end
 
     resource "Faker" do
-      url "https://files.pythonhosted.org/packages/57/0f/86e6547c58ad55b4e087d28367f2a8e251c6dd559cf5fb27a9a659bae84b/Faker-13.15.0.tar.gz"
-      sha256 "a126fa66f54e65a67f913dcc698c9d023def7277882536bde2968fcac701bfd5"
+      url "https://files.pythonhosted.org/packages/60/78/d6a75e9b58f22659c9e46b24a7d601c2d738b719b53b542f14248ab6177d/Faker-13.15.1.tar.gz"
+      sha256 "7c3f8ee807d3916415568169a172bf0893ea9cc3371ab55e4e5f5170d2185bea"
     end
 
     resource "idna" do
@@ -229,8 +229,8 @@ class SymflowAT1 < Formula
     end
 
     resource "readchar" do
-      url "https://files.pythonhosted.org/packages/8d/ff/33df88cee8ab693302288fc7d2983e561bf7d78439b844407c976d52fa73/readchar-3.0.5.tar.gz"
-      sha256 "d1f5b71e98c37b7f3b695fba9db978ab84f4f8a0ed879653d83e1d90a4c482c0"
+      url "https://files.pythonhosted.org/packages/97/3d/9bf5358600a34dd6d19db30624ecbe385296480b5307c2ff6518a8a31e86/readchar-3.1.0.tar.gz"
+      sha256 "9023c957164e9c5a5cf7c39122a013ed78162d9360b4cb9cfdd492a3238f7634"
     end
 
     resource "requests" do
@@ -289,8 +289,8 @@ class SymflowAT1 < Formula
     end
 
     resource "urllib3" do
-      url "https://files.pythonhosted.org/packages/25/36/f056e5f1389004cf886bb7a8514077f24224238a7534497c014a6b9ac770/urllib3-1.26.10.tar.gz"
-      sha256 "879ba4d1e89654d9769ce13121e0f94310ea32e8d2f8cf587b77c08bbcdb30d6"
+      url "https://files.pythonhosted.org/packages/6d/d5/e8258b334c9eb8eb78e31be92ea0d5da83ddd9385dc967dd92737604d239/urllib3-1.26.11.tar.gz"
+      sha256 "ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a"
     end
 
     resource "validators" do
@@ -313,11 +313,11 @@ class SymflowAT1 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.1/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "943446a0b9349c34c3f1638bb8f9d8b4ced576edf6b58e7125c283df55cce3ff"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.2/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "35dc0e29bc6c4dcb77f3589f7a0807e868e6a4c0c133eaa48b39c1a2117e4cc4"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.1/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "9fa116cb00995a58b4ac783c1e9e5b779d1955f257c5784fddc170b8f3b546ca"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.8.2/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "63858958b19f31189c15afa6708f72b6d6b8dc3fc9b4797b02dcac6adb57ec06"
     end
 
     def install
