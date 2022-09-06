@@ -3,7 +3,7 @@ version: 2.1
 executors:
   python:
     docker:
-      - image: cimg/python:3.8.5
+      - image: cimg/python:3.8.11
   macos:
     macos:
       xcode: "12.5.1"
@@ -45,18 +45,12 @@ commands:
             symflow version
 
 jobs:
-  test_install_script_macos:
+  test_install_script:
+    parameters:
+      executor:
+        type: string
     executor:
-      name: "macos"
-    steps:
-      - checkout:
-          path: ~/project
-      - run_sym_script
-      - run_symflow_script
-  test_install_script_python:
-    executor:
-      name: "python"
-      tag: "3.8.11"
+      name: << parameters.executor >>
     steps:
       - checkout:
           path: ~/project
@@ -74,6 +68,8 @@ jobs:
 workflows:
   test:
     jobs:
-      - test_install_script_macos
-      - test_install_script_python
+      - test_install_script:
+          matrix:
+            parameters:
+              executor: ["macos", "python"]
       - test_formulas
