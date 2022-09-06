@@ -68,8 +68,9 @@ jobs:
 workflows:
   test:
     jobs:
-      - test_install_script:
-          matrix:
-            parameters:
-              executor: ["macos", "python"]
+      - test_install_script_macos:
+          executor: "macos"
+      - test_install_script_python:
+          executor: "python"
+          tag: "3.8.11"
       - test_formulas
