@@ -46,9 +46,6 @@ commands:
 
 jobs:
   test_install_script_macos:
-    parameters:
-      executor:
-        type: string
     executor:
       name: "macos"
     steps:
@@ -57,9 +54,6 @@ jobs:
       - run_sym_script
       - run_symflow_script
   test_install_script_python:
-    parameters:
-      executor:
-        type: string
     executor:
       name: "python"
       tag: "3.8.11"
