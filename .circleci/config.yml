@@ -45,12 +45,24 @@ commands:
             symflow version
 
 jobs:
-  test_install_script:
+  test_install_script_macos:
     parameters:
       executor:
         type: string
     executor:
-      name: << parameters.executor >>
+      name: "macos"
+    steps:
+      - checkout:
+          path: ~/project
+      - run_sym_script
+      - run_symflow_script
+  test_install_script_python:
+    parameters:
+      executor:
+        type: string
+    executor:
+      name: "python"
+      tag: "3.8.11"
     steps:
       - checkout:
           path: ~/project
@@ -68,9 +80,6 @@ jobs:
 workflows:
   test:
     jobs:
-      - test_install_script:
-          executor: "macos"
-      - test_install_script:
-          executor: "python"
-          tag: "3.8.11"
+      - test_install_script_macos
+      - test_install_script_python
       - test_formulas
