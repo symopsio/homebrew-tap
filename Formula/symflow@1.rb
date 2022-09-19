@@ -4,14 +4,14 @@
 class SymflowAT1 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "1.9.0"
+  version "1.10.0"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/cb/55/18e2f7e8990c59bce85471cc36c65dce60edeac477fdf976b6bcb5eb205d/sym-flow-cli-1.9.0.tar.gz"
-    sha256 "09c66ffc3feb65c928dc0fdf3d741a5948de9e8a12c3868a28e3e0e205cb1180"
+    url "https://files.pythonhosted.org/packages/9b/0b/57f1b43a8b36831d7f2250983a58314ced0ba52e2113899e46b44dcf08dd/sym-flow-cli-1.10.0.tar.gz"
+    sha256 "f04610a0c9321ff4d1ba140a3f13d85f1909e847fc0d458a8a096047f08c121a"
 
     bottle do
     end
@@ -44,18 +44,18 @@ class SymflowAT1 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/af/88/0aa54a60d9627bef23b9fe7c3f76c4761064d5f331edd92a2071e4cba358/boto3-1.24.67.tar.gz"
-      sha256 "2b9309a98fd7264788ff1d1b19146406cc4191e53ed9a03aca03e8837303fae2"
+      url "https://files.pythonhosted.org/packages/f7/38/087f3b8b39b733efd2eabf8c52b7adcf62cc3631eda6254b8837d43c0469/boto3-1.24.75.tar.gz"
+      sha256 "7bfa2242df9b1fa73e17f4d7f79f6b22560f55d5da2e27e578e585ef6e4b14a7"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/57/60/e307245349b8914d423064f53dca3f8a81dac6a7fe69972797067a909314/botocore-1.27.67.tar.gz"
-      sha256 "b00894d2eee8a795ecedf9f4cbc454fa449a7bb11af1390c7414755243f90610"
+      url "https://files.pythonhosted.org/packages/25/0b/120defe296687689d90b61ebec3ff85ae15e770a52e5f3f3ee019315233a/botocore-1.27.75.tar.gz"
+      sha256 "f8b1da2b41e88c58db51db0c6eff6ca564258948ce4a5ac7e96ac35a469b0d4f"
     end
 
     resource "certifi" do
-      url "https://files.pythonhosted.org/packages/cc/85/319a8a684e8ac6d87a1193090e06b6bbb302717496380e225ee10487c888/certifi-2022.6.15.tar.gz"
-      sha256 "84c85a9078b11105f04f3036a9482ae10e4621616db313fe045dd24743a0820d"
+      url "https://files.pythonhosted.org/packages/ca/48/88ec470f8b68319b6782ca3a0570789886ad5ca24c1af2f3771699135baa/certifi-2022.9.14.tar.gz"
+      sha256 "36973885b9542e6bd01dea287b2b4b3b21236307c56324fcc3f1160f2d655ed5"
     end
 
     resource "cffi" do
@@ -114,8 +114,8 @@ class SymflowAT1 < Formula
     end
 
     resource "idna" do
-      url "https://files.pythonhosted.org/packages/62/08/e3fc7c8161090f742f504f40b1bccbfc544d4a4e09eb774bf40aafce5436/idna-3.3.tar.gz"
-      sha256 "9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"
+      url "https://files.pythonhosted.org/packages/8b/e1/43beb3d38dba6cb420cefa297822eac205a277ab43e5ba5d5c46faf96438/idna-3.4.tar.gz"
+      sha256 "814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"
     end
 
     resource "immutables" do
@@ -229,8 +229,8 @@ class SymflowAT1 < Formula
     end
 
     resource "readchar" do
-      url "https://files.pythonhosted.org/packages/0d/d0/b2e51526b0e5119bda179de13827302d1b67d433cf3893fa713945316fff/readchar-4.0.2.tar.gz"
-      sha256 "ddfc13ffb36cac89e5e9f40b7527e268c905b6d7e1b6201424721a7455ef077c"
+      url "https://files.pythonhosted.org/packages/75/d1/eddb559d5911fd889f2ec0de052a88edd0fa8fc4746f29da0d384d29e10e/readchar-4.0.3.tar.gz"
+      sha256 "1d920d0e9ab76ec5d42192a68d15af2562663b5dfbf4a67cf9eba520e1ca57e6"
     end
 
     resource "requests" do
@@ -303,11 +303,6 @@ class SymflowAT1 < Formula
       sha256 "c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"
     end
 
-    resource "wheel" do
-      url "https://files.pythonhosted.org/packages/c0/6c/9f840c2e55b67b90745af06a540964b73589256cb10cc10057c87ac78fc2/wheel-0.37.1.tar.gz"
-      sha256 "e9a504e793efbca1b8e0e9cb979a249cf4a0a7b5b8c9e8b65a5e39d49529c1c4"
-    end
-
     resource "xattr" do
       url "https://files.pythonhosted.org/packages/91/ac/5898d1811abc88c3710317243168feff61ce12be220b9c92ee045ecd66c4/xattr-0.9.9.tar.gz"
       sha256 "09cb7e1efb3aa1b4991d6be4eb25b73dc518b4fe894f0915f5b0dcede972f346"
@@ -318,11 +313,11 @@ class SymflowAT1 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.9.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "72536c1b852ea2da978b3a1504de59064ead3553d253c01205031796299c1f83"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.10.0/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "ef078a46bc5f01c3dab42ddb954a9e4b645c7430252d6461c6c54a0da624eb57"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.9.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "ddcc7c72b7cc4e49951fdf852b82fc08b33dbd6cac178a8e5ff599dfffa4159b"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v1.10.0/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "6c440fb07b53ecb47952af4d4fb686e8f9d5fdadbc956f21a51e8246fdd64511"
     end
 
     def install
