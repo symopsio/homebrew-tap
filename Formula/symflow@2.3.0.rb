@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class SymflowAT2 < Formula
+class SymflowAT230 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
   version "2.3.0"
@@ -49,8 +49,8 @@ class SymflowAT2 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/c6/00/10887890aabc23c6f02f614cb7baaa9b83bb2c4b59256588fc332d19d645/boto3-1.24.87.tar.gz"
-      sha256 "3dd7ed74d1d29dd8094a078be86ed61c45de6638fe18856f7a1ff9282b4d929e"
+      url "https://files.pythonhosted.org/packages/ec/70/ba30f441dea215acdffd5bde2ddd9655466056d0db9108dadf03569c4b31/boto3-1.24.86.tar.gz"
+      sha256 "59e9c39c867b5fd0575a50d8fafdf72c823c5510254a8615dff24f1584408121"
     end
 
     resource "botocore" do
