@@ -30,22 +30,28 @@ commands:
       - run:
           name: Test symflow pipx install
           command: |
-            echo "Installing pipx with pip"
+            echo "=== Installing pipx with pip"
             python3 -m pip install pipx
             pipx ensurepath
 
-            echo "Installing symflow with pipx"
-            pipx install sym-flow-cli
+            echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
             source ~/.bash_profile
+
+            echo "=== Installing symflow with pipx"
+            pipx install sym-flow-cli
+
             symflow version
       - run:
           name: Test sym pip install
           command: |
-            echo "Installing pipx with pip"
+            echo "=== Installing pipx with pip"
             python3 -m pip install pipx
             pipx ensurepath
 
-            echo "Installing sym with pipx"
+            echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
+            source ~/.bash_profile
+
+            echo "=== Installing symflow with pipx"
             pipx install sym-cli
             sym version
   test_pipx_install_ubuntu:
