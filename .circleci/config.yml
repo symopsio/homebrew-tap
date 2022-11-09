@@ -128,8 +128,14 @@ jobs:
 workflows:
   test:
     jobs:
-      - test_install_script:
+      - test_pip_install:
+          matrix:
+            parameters:
+              executor: ["macos", "ubuntu"]
+      - test_pipx_install:
           matrix:
             parameters:
               executor: ["macos", "ubuntu"]
       - test_brew_install
+      - test_macos_package_install
+      - test_dpkg_install
