@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  python:
+  ubuntu:
     docker:
       - image: cimg/python:3.8.11
   macos:
@@ -13,63 +13,183 @@ executors:
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
 commands:
-  run_sym_script:
+  test_pip_install_macos:
     steps:
       - run:
-          name: Run sym installer
+          name: Test symflow pip install
           command: |
-            cat ~/project/docs/sym.sh | bash -x
-            export PATH="$HOME/.local/bin:$PATH"
-            sym version
-  run_symflow_script:
-    steps:
-      - run:
-          name: Run symflow installer
-          command: |
-            cat ~/project/docs/symflow.sh | bash -x
-            export PATH="$HOME/.local/bin:$PATH"
+            python3 -m pip install sym-flow-cli
             symflow version
-  test_sym_formula:
-    steps:
       - run:
-          name: Test sym Formula
+          name: Test sym pip install
           command: |
-            brew install --formula ~/project/Formula/sym.rb
+            python3 -m pip install sym-cli
             sym version
-  test_symflow_formula:
+  test_pip_install_ubuntu:
     steps:
       - run:
-          name: Test symflow Formula
+          name: Test symflow pip install
+          command: |
+            pip install sym-flow-cli
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            pip install sym-cli
+            sym version
+  test_pipx_install_macos:
+    steps:
+      - run:
+          name: Test symflow pipx install
+          command: |
+            echo "=== Installing pipx with pip"
+            # Note: this is the only difference between macOS and ubuntu, in the macOS image
+            # for some reason we need to call pip as a python3 module specifically. However,
+            # this causes the ubuntu version to fail. This is why they're separate.
+            python3 -m pip install pipx
+            pipx ensurepath
+
+            echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
+            source ~/.bash_profile
+
+            echo "=== Installing symflow with pipx"
+            pipx install sym-flow-cli
+
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            echo "=== Installing pipx with pip"
+            python3 -m pip install pipx
+            pipx ensurepath
+
+            echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
+            source ~/.bash_profile
+
+            echo "=== Installing symflow with pipx"
+            pipx install sym-cli
+            sym version
+  test_pipx_install_ubuntu:
+    steps:
+      - run:
+          name: Test symflow pipx install
+          command: |
+            echo "Installing pipx with pip"
+            pip install pipx
+            pipx ensurepath
+
+            echo "Installing symflow with pipx"
+            pipx install sym-flow-cli
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            echo "Installing pipx with pip"
+            pip install pipx
+            pipx ensurepath
+
+            echo "Installing sym with pipx"
+            pipx install sym-cli
+            sym version
+  test_macos_package_install:
+    steps:
+      - run:
+          name: Test symflow macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg
+            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            symflow version
+      - run:
+          name: Test sym macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg
+            sudo installer -pkg sym-cli-darwin-x64.pkg -target /
+            sym version
+  test_dpkg_install:
+    steps:
+      - run:
+          name: Test symflow dpkg install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-linux-x64.deb
+            sudo dpkg -i sym-flow-cli-linux-x64.deb
+            symflow version
+      - run:
+          name: Test sym dpkg install
+          command: |
+            curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-linux-x64.deb
+            sudo dpkg -i sym-cli-linux-x64.deb
+            sym version
+  test_brew_install:
+    steps:
+      - run:
+          name: Test symflow brew Formula
           command: |
             brew install --formula ~/project/Formula/symflow.rb
             symflow version
+      - run:
+          name: Test sym brew Formula
+          command: |
+            brew install --formula ~/project/Formula/sym.rb
+            sym version
 
 jobs:
-  test_install_script:
-    parameters:
-      executor:
-        type: string
-    executor:
-      name: << parameters.executor >>
-    steps:
-      - checkout:
-          path: ~/project
-      - run_sym_script
-      - run_symflow_script
-  test_formulas:
+  test_brew_install:
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_sym_formula
-      - test_symflow_formula
+      - test_brew_install
+  test_pip_install_macos:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pip_install_macos
+  test_pip_install_ubuntu:
+    executor:
+      name: ubuntu
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pip_install_ubuntu
+  test_pipx_install_ubuntu:
+    executor:
+      name: ubuntu
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pipx_install_ubuntu
+  test_pipx_install_macos:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pipx_install_macos
+  test_macos_package_install:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_macos_package_install
+  test_dpkg_install:
+    executor:
+      name: ubuntu
+    steps:
+      - checkout:
+          path: ~/project
+      - test_dpkg_install
 
 workflows:
   test:
     jobs:
-      - test_install_script:
-          matrix:
-            parameters:
-              executor: ["macos", "python"]
-      - test_formulas
+      - test_pip_install_macos
+      - test_pip_install_ubuntu
+      - test_brew_install
+      - test_macos_package_install
+      - test_dpkg_install
+      - test_pipx_install_ubuntu
+      - test_pipx_install_macos
