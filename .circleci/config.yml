@@ -13,7 +13,7 @@ executors:
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
 commands:
-  test_pip_install:
+  test_pip_install_macos:
     steps:
       - run:
           name: Test symflow pip install
@@ -25,12 +25,27 @@ commands:
           command: |
             python3 -m pip install sym-cli
             sym version
+  test_pip_install_ubuntu:
+    steps:
+      - run:
+          name: Test symflow pip install
+          command: |
+            pip install sym-flow-cli
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            pip install sym-cli
+            sym version
   test_pipx_install_macos:
     steps:
       - run:
           name: Test symflow pipx install
           command: |
             echo "=== Installing pipx with pip"
+            # Note: this is the only difference between macOS and ubuntu, in the macOS image
+            # for some reason we need to call pip as a python3 module specifically. However,
+            # this causes the ubuntu version to fail. This is why they're separate.
             python3 -m pip install pipx
             pipx ensurepath
 
@@ -125,16 +140,20 @@ jobs:
       - checkout:
           path: ~/project
       - test_brew_install
-  test_pip_install:
-    parameters:
-      executor:
-        type: string
+  test_pip_install_macos:
     executor:
-      name: << parameters.executor >>
+      name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_pip_install
+      - test_pip_install_macos
+  test_pip_install_ubuntu:
+    executor:
+      name: ubuntu
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pip_install_ubuntu
   test_pipx_install_ubuntu:
     executor:
       name: ubuntu
@@ -167,10 +186,8 @@ jobs:
 workflows:
   test:
     jobs:
-      - test_pip_install:
-          matrix:
-            parameters:
-              executor: ["macos", "ubuntu"]
+      - test_pip_install_macos
+      - test_pip_install_ubuntu
       - test_brew_install
       - test_macos_package_install
       - test_dpkg_install
