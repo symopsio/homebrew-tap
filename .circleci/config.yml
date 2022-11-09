@@ -36,6 +36,7 @@ commands:
 
             echo "Installing symflow with pipx"
             pipx install sym-flow-cli
+            source ~/.bash_profile
             symflow version
       - run:
           name: Test sym pip install
