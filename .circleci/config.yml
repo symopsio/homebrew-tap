@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  python:
+  ubuntu:
     docker:
       - image: cimg/python:3.8.11
   macos:
@@ -13,39 +13,84 @@ executors:
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
 commands:
-  run_sym_script:
+  test_pip_install:
     steps:
       - run:
-          name: Run sym installer
+          name: Test symflow pip install
           command: |
-            cat ~/project/docs/sym.sh | bash -x
-            export PATH="$HOME/.local/bin:$PATH"
-            sym version
-  run_symflow_script:
-    steps:
-      - run:
-          name: Run symflow installer
-          command: |
-            cat ~/project/docs/symflow.sh | bash -x
-            export PATH="$HOME/.local/bin:$PATH"
+            pip install sym-flow-cli
             symflow version
-  test_sym_formula:
-    steps:
       - run:
-          name: Test sym Formula
+          name: Test sym pip install
           command: |
-            brew install --formula ~/project/Formula/sym.rb
+            pip install sym-cli
             sym version
-  test_symflow_formula:
+  test_pipx_install:
     steps:
       - run:
-          name: Test symflow Formula
+          name: Test symflow pipx install
+          command: |
+            pip install pipx
+            python -m pipx ensurepath
+            pipx install sym-flow-cli
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            pip install pipx
+            python -m pipx ensurepath
+            pipx install sym-cli
+            sym version
+  test_macos_package_install:
+    steps:
+      - run:
+          name: Test symflow macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg
+            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            symflow version
+      - run:
+          name: Test sym macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg
+            sudo installer -pkg sym-cli-darwin-x64.pkg -target /
+            sym version
+  test_dpkg_install:
+    steps:
+      - run:
+          name: Test symflow dpkg install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-linux-x64.deb
+            sudo dpkg -i sym-flow-cli-linux-x64.deb
+            symflow version
+      - run:
+          name: Test sym dpkg install
+          command: |
+            curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-linux-x64.deb
+            sudo dpkg -i sym-cli-linux-x64.deb
+            sym version
+  test_brew_install:
+    steps:
+      - run:
+          name: Test symflow brew Formula
           command: |
             brew install --formula ~/project/Formula/symflow.rb
             symflow version
+      - run:
+          name: Test sym brew Formula
+          command: |
+            brew install --formula ~/project/Formula/sym.rb
+            sym version
 
 jobs:
-  test_install_script:
+  test_brew_install:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_brew_install
+  test_pip_install:
     parameters:
       executor:
         type: string
@@ -54,16 +99,31 @@ jobs:
     steps:
       - checkout:
           path: ~/project
-      - run_sym_script
-      - run_symflow_script
-  test_formulas:
+      - test_pip_install
+  test_pipx_install:
+    parameters:
+      executor:
+        type: string
+    executor:
+      name: << parameters.executor >>
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pipx_install
+  test_macos_package_install:
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_sym_formula
-      - test_symflow_formula
+      - test_macos_package_install
+  test_dpkg_install:
+    executor:
+      name: ubuntu
+    steps:
+      - checkout:
+          path: ~/project
+      - test_dpkg_install
 
 workflows:
   test:
@@ -71,5 +131,5 @@ workflows:
       - test_install_script:
           matrix:
             parameters:
-              executor: ["macos", "python"]
-      - test_formulas
+              executor: ["macos", "ubuntu"]
+      - test_brew_install
