@@ -18,28 +18,34 @@ commands:
       - run:
           name: Test symflow pip install
           command: |
-            pip install sym-flow-cli
+            python3 -m pip install sym-flow-cli
             symflow version
       - run:
           name: Test sym pip install
           command: |
-            pip install sym-cli
+            python3 -m pip install sym-cli
             sym version
   test_pipx_install:
     steps:
       - run:
           name: Test symflow pipx install
           command: |
-            pip install pipx
-            python -m pipx ensurepath
-            pipx install sym-flow-cli
+            echo "Installing pipx with pip"
+            python3 -m pip install pipx
+            python3 -m pipx ensurepath
+
+            echo "Installing symflow with pipx"
+            python3 -m pipx install sym-flow-cli
             symflow version
       - run:
           name: Test sym pip install
           command: |
-            pip install pipx
-            python -m pipx ensurepath
-            pipx install sym-cli
+            echo "Installing pipx with pip"
+            python3 -m pip install pipx
+            python3 -m pipx ensurepath
+
+            echo "Installing sym with pipx"
+            python3 -m pipx install sym-cli
             sym version
   test_macos_package_install:
     steps:
