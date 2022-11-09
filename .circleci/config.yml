@@ -25,7 +25,7 @@ commands:
           command: |
             python3 -m pip install sym-cli
             sym version
-  test_pipx_install:
+  test_pipx_install_macos:
     steps:
       - run:
           name: Test symflow pipx install
@@ -46,6 +46,28 @@ commands:
 
             echo "Installing sym with pipx"
             python3 -m pipx install sym-cli
+            sym version
+  test_pipx_install_ubuntu:
+    steps:
+      - run:
+          name: Test symflow pipx install
+          command: |
+            echo "Installing pipx with pip"
+            pip install pipx
+            pipx ensurepath
+
+            echo "Installing symflow with pipx"
+            pipx install sym-flow-cli
+            symflow version
+      - run:
+          name: Test sym pip install
+          command: |
+            echo "Installing pipx with pip"
+            pip install pipx
+            pipx ensurepath
+
+            echo "Installing sym with pipx"
+            pipx install sym-cli
             sym version
   test_macos_package_install:
     steps:
@@ -106,16 +128,20 @@ jobs:
       - checkout:
           path: ~/project
       - test_pip_install
-  test_pipx_install:
-    parameters:
-      executor:
-        type: string
+  test_pipx_install_ubuntu:
     executor:
-      name: << parameters.executor >>
+      name: ubuntu
     steps:
       - checkout:
           path: ~/project
-      - test_pipx_install
+      - test_pipx_install_ubuntu
+  test_pipx_install_macos:
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_pipx_install_macos
   test_macos_package_install:
     executor:
       name: macos
@@ -138,10 +164,8 @@ workflows:
           matrix:
             parameters:
               executor: ["macos", "ubuntu"]
-      - test_pipx_install:
-          matrix:
-            parameters:
-              executor: ["macos", "ubuntu"]
       - test_brew_install
       - test_macos_package_install
       - test_dpkg_install
+      - test_pipx_install_ubuntu
+      - test_pipx_install_macos
