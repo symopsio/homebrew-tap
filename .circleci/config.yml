@@ -32,20 +32,20 @@ commands:
           command: |
             echo "Installing pipx with pip"
             python3 -m pip install pipx
-            python3 -m pipx ensurepath
+            pipx ensurepath
 
             echo "Installing symflow with pipx"
-            python3 -m pipx install sym-flow-cli
+            pipx install sym-flow-cli
             symflow version
       - run:
           name: Test sym pip install
           command: |
             echo "Installing pipx with pip"
             python3 -m pip install pipx
-            python3 -m pipx ensurepath
+            pipx ensurepath
 
             echo "Installing sym with pipx"
-            python3 -m pipx install sym-cli
+            pipx install sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
