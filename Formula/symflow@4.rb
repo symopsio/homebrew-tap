@@ -4,14 +4,14 @@
 class SymflowAT4 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "4.3.4"
+  version "4.3.5"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/d8/d7/b3448f1362bedbb4bc775bd9be711934b3d5484d41cc7786b1f50a4e5e34/sym-flow-cli-4.3.4.tar.gz"
-    sha256 "d556a853f422aa0b0b47ead2938a25e8c4e4d6fff89eaf35e5b2f7c424b8ce8f"
+    url "https://files.pythonhosted.org/packages/8d/a1/5e7f412f71340b0d0d86abd590d6a65a85ff4eaf00fc5a32f7e4732804c2/sym-flow-cli-4.3.5.tar.gz"
+    sha256 "57b23e659875ee9f888a3337e5b3b495266f3a932cffebb5c4a5149fb24242be"
 
     bottle do
     end
@@ -38,24 +38,19 @@ class SymflowAT4 < Formula
       sha256 "b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"
     end
 
-    resource "beautifulsoup4" do
-      url "https://files.pythonhosted.org/packages/e8/b0/cd2b968000577ec5ce6c741a54d846dfa402372369b8b6861720aa9ecea7/beautifulsoup4-4.11.1.tar.gz"
-      sha256 "ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"
-    end
-
     resource "blessed" do
       url "https://files.pythonhosted.org/packages/e5/ad/97453480e7bdfce94f05a983cf7ad7f1d90239efee53d5af28e622f0367f/blessed-1.19.1.tar.gz"
       sha256 "9a0d099695bf621d4680dd6c73f6ad547f6a3442fbdbe80c4b1daa1edbc492fc"
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/c5/cd/03b451072f4b87afcd831e712e0dabe5ef3a84659b73ca0ca303e414b94b/boto3-1.26.7.tar.gz"
-      sha256 "a3a923d7086fee6df9cbd019dddbf6fd922cc0fd0fa898c6ef47b1e6d0aab80c"
+      url "https://files.pythonhosted.org/packages/64/69/575173ccf46eb5355185e5e91a43a86cf6a713d20787c178456ef97dde6a/boto3-1.26.12.tar.gz"
+      sha256 "73da24667fe1351cef0f402ee9cd4589a0a9d97b617caca3c25b5cdc38f9d62c"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/11/bb/85bf3146992bea7c46fe7ce4cf7b5e15ef69d6835c7251402ced2a5124e1/botocore-1.29.7.tar.gz"
-      sha256 "de553225b203dd4f1c991b9543f3232b08adb3da873ad05996f81928838ec813"
+      url "https://files.pythonhosted.org/packages/c5/61/2eaf9a88672abd7bfbc7cd1638b086ae817e7d776246ce308f7e5df26d10/botocore-1.29.12.tar.gz"
+      sha256 "fdae73306a41a30697be300bdecb1e0d560d453c6d748891856beb87e9f6573f"
     end
 
     resource "certifi" do
@@ -78,11 +73,6 @@ class SymflowAT4 < Formula
       sha256 "7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"
     end
 
-    resource "click-log" do
-      url "https://files.pythonhosted.org/packages/32/32/228be4f971e4bd556c33d52a22682bfe318ffe57a1ddb7a546f347a90260/click-log-0.4.0.tar.gz"
-      sha256 "3970f8570ac54491237bcdb3d8ab5e3eef6c057df29f8c3d1151a51a9c23b975"
-    end
-
     resource "click-option-group" do
       url "https://files.pythonhosted.org/packages/4c/29/ff7cd69825b5bfb48e39853b75d5dc2e98a581730f2b6c9c014188730755/click-option-group-0.5.5.tar.gz"
       sha256 "78ee474f07a0ca0ef6c0317bb3ebe79387aafb0c4a1e03b1d8b2b0be1e42fc78"
@@ -91,11 +81,6 @@ class SymflowAT4 < Formula
     resource "colorama" do
       url "https://files.pythonhosted.org/packages/82/75/f2a4c0c94c85e2693c229142eb448840fba0f9230111faa889d1f541d12d/colorama-0.4.3.tar.gz"
       sha256 "e96da0d330793e2cb9485e9ddfd918d456036c7149416295932478192f4436a1"
-    end
-
-    resource "contextlib2" do
-      url "https://files.pythonhosted.org/packages/c7/13/37ea7805ae3057992e96ecb1cffa2fa35c2ef4498543b846f90dd2348d8f/contextlib2-21.6.0.tar.gz"
-      sha256 "ab1e2bfe1d01d968e1b7e8d9023bc51ef3509bba217bb730cee3827e1ee82869"
     end
 
     resource "cryptography" do
@@ -109,8 +94,8 @@ class SymflowAT4 < Formula
     end
 
     resource "exceptiongroup" do
-      url "https://files.pythonhosted.org/packages/13/55/43ff6658a50a7f722d2f904810b42514c23a5d649d8a5d890cdc16b617de/exceptiongroup-1.0.1.tar.gz"
-      sha256 "73866f7f842ede6cb1daa42c4af078e2035e5f7607f0e2c762cc51bb31bbe7b2"
+      url "https://files.pythonhosted.org/packages/fa/e1/4f89a2608978a78876a76e69e82fa1fc5ce3fb346297eed2a51dd3df2dcf/exceptiongroup-1.0.4.tar.gz"
+      sha256 "bd14967b79cd9bdb54d97323216f8fdf533e278df937aa2a90089e7d6e06e5ec"
     end
 
     resource "factory-boy" do
@@ -119,8 +104,8 @@ class SymflowAT4 < Formula
     end
 
     resource "Faker" do
-      url "https://files.pythonhosted.org/packages/7b/b4/764f6f08c651b940c65554de0b435b1958ed47144918853bb6ecb52fd422/Faker-15.3.1.tar.gz"
-      sha256 "b9dd2fd9a9ac68a4e0c5040cd9e9bfaa099fa8dd15bae5f01f224a45431818d5"
+      url "https://files.pythonhosted.org/packages/06/2e/da6ed48b3e863d575605fed2c82f16d9ddf71f6d1b5f926e4f39889b2dcb/Faker-15.3.2.tar.gz"
+      sha256 "0094fe3340ad73c490d3ffccc59cc171b161acfccccd52925c70970ba23e6d6b"
     end
 
     resource "idna" do
@@ -144,8 +129,8 @@ class SymflowAT4 < Formula
     end
 
     resource "inquirer" do
-      url "https://files.pythonhosted.org/packages/e5/e3/cd77784d0cca9ab8b5be5a6cd4f72ffec407486207ce4f6edec3fc4b8ece/inquirer-2.10.0.tar.gz"
-      sha256 "d6bef9df4d0049fb93ed4e1c1df852e48287331d21e46ed6163b8b2290fc5cb5"
+      url "https://files.pythonhosted.org/packages/5e/e6/12d65e1a78168741cd9a3a1bd47ee609493fe0be92cb6c94d96991cc6ecd/inquirer-2.10.1.tar.gz"
+      sha256 "e9876258183e24f6e8c44136b04f6f2e18dd6684aee59b86a8057c50601a6523"
     end
 
     resource "jmespath" do
@@ -176,11 +161,6 @@ class SymflowAT4 < Formula
     resource "pluggy" do
       url "https://files.pythonhosted.org/packages/a1/16/db2d7de3474b6e37cbb9c008965ee63835bba517e22cdb8c35b5116b5ce1/pluggy-1.0.0.tar.gz"
       sha256 "4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"
-    end
-
-    resource "policy-sentry" do
-      url "https://files.pythonhosted.org/packages/e6/ac/58bf50d3e2807b44e061ab312d3064c4fcdf28d0df6537357a23c99cc3cf/policy_sentry-0.9.0.tar.gz"
-      sha256 "f820b40492dd22237774003d82a8bae6e7e361c271e877fe5460ff19559f075d"
     end
 
     resource "portalocker" do
@@ -233,11 +213,6 @@ class SymflowAT4 < Formula
       sha256 "51fda6bcc5ddbbb7063b2af7509e43bd84bfc32a4ff71349ec7847713882327b"
     end
 
-    resource "PyYAML" do
-      url "https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz"
-      sha256 "68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2"
-    end
-
     resource "readchar" do
       url "https://files.pythonhosted.org/packages/75/d1/eddb559d5911fd889f2ec0de052a88edd0fa8fc4746f29da0d384d29e10e/readchar-4.0.3.tar.gz"
       sha256 "1d920d0e9ab76ec5d42192a68d15af2562663b5dfbf4a67cf9eba520e1ca57e6"
@@ -253,11 +228,6 @@ class SymflowAT4 < Formula
       sha256 "2ed07d3866f523cc561bf4a00fc5535827981b117dd7876f036b0c1aca42c947"
     end
 
-    resource "schema" do
-      url "https://files.pythonhosted.org/packages/4e/e8/01e1b46d9e04cdaee91c9c736d9117304df53361a191144c8eccda7f0ee9/schema-0.7.5.tar.gz"
-      sha256 "f06717112c61895cabc4707752b88716e8420a8819d71404501e114f91043197"
-    end
-
     resource "semver" do
       url "https://files.pythonhosted.org/packages/31/a9/b61190916030ee9af83de342e101f192bbb436c59be20a4cb0cdb7256ece/semver-2.13.0.tar.gz"
       sha256 "fa0fe2722ee1c3f57eac478820c3a5ae2f624af8264cbdf9000c980ff7f75e3f"
@@ -271,11 +241,6 @@ class SymflowAT4 < Formula
     resource "six" do
       url "https://files.pythonhosted.org/packages/71/39/171f1c67cd00715f190ba0b100d606d440a28c93c7714febeca8b79af85e/six-1.16.0.tar.gz"
       sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
-    end
-
-    resource "soupsieve" do
-      url "https://files.pythonhosted.org/packages/f3/03/bac179d539362319b4779a00764e95f7542f4920084163db6b0fd4742d38/soupsieve-2.3.2.post1.tar.gz"
-      sha256 "fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"
     end
 
     resource "sym-shared-cli" do
@@ -323,11 +288,11 @@ class SymflowAT4 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v4.3.4/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "4eb5b5536a3c6e94a025b8af2f900cf2141415e89ac78fdf0a676cf6ca212e1d"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v4.3.5/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "196fd91ed1cb2b58087f119922f409034fab194348bc22416afb01197df36e3a"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v4.3.4/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "b5383356895e336e6f2af8bb7617a25c64517d358fe69fab50d5a10b6e1e37f1"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v4.3.5/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "5c8ef14cd7390aca7c43f28a458a552e7d6ae7fa9bb07400e2715fafc656589a"
     end
 
     def install
