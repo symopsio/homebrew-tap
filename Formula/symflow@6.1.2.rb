@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class SymflowAT61 < Formula
+class SymflowAT612 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
   version "6.1.2"
@@ -10,8 +10,8 @@ class SymflowAT61 < Formula
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/7a/e9/acdccbd8854a59ad8b38e92f34327f6984cd15cbb565bdbffc840e29e106/sym_flow_cli-6.1.1.tar.gz"
-    sha256 "4dccc12e0d134c57810c147d7365279010277613fd0756cf1c5c77a9e61f7b15"
+    url "https://files.pythonhosted.org/packages/a8/96/0958ac0c742f626f0ccb1f9d1650ee364b759ff87e316deab8be01ce288c/sym_flow_cli-6.1.2.tar.gz"
+    sha256 "0591de480d05fe77f71b29700cfcc536b6aa9d2390bec473e0f4ab4177432a06"
 
     bottle do
     end
@@ -79,8 +79,8 @@ class SymflowAT61 < Formula
     end
 
     resource "cryptography" do
-      url "https://files.pythonhosted.org/packages/12/e3/c46c274cf466b24e5d44df5d5cd31a31ff23e57f074a2bb30931a8c9b01a/cryptography-39.0.0.tar.gz"
-      sha256 "f964c7dcf7802d133e8dbd1565914fa0194f9d683d82411989889ecd701e8adf"
+      url "https://files.pythonhosted.org/packages/cc/98/8a258ab4787e6f835d350639792527d2eb7946ff9fc0caca9c3f4cf5dcfe/cryptography-3.4.8.tar.gz"
+      sha256 "94cc5ed4ceaefcbe5bf38c8fba6a21fc1d365bb8fb826ea1688e3370b2e24a1c"
     end
 
     resource "decorator" do
