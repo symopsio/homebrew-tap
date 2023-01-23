@@ -1,7 +1,3 @@
 # Symopsio Tap
 
-We document and recommend installing Sym with:
-
-`curl https://install.symops.io/sym.sh | bash`
-
-That script lives in `docs/sym.sh`. 
+Visit the [Sym Docs](https://docs.symops.com/docs/install-sym-flow-cli) for instructions on how to install `symflow` CLI.
