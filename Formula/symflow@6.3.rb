@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class SymflowAT6 < Formula
+class SymflowAT63 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
   version "6.3.0"
