@@ -4,33 +4,23 @@
 class SymflowAT64 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "6.4.0"
+  version "6.4.1"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/cd/84/d240601d0e4ce8bac2ef2eb427f73edb9cb95dbefd83ec6dff7c4575d12a/sym_flow_cli-6.4.0.tar.gz"
-    sha256 "14f3a0e98827fc5800031879fcc94e9aaaa9472f99c82ec49aed5788b4afdd86"
+    url "https://files.pythonhosted.org/packages/a6/e0/04adf7b8f75ddad1ff47f6960524e28dc41e498e467d75f0178789d4eae3/sym_flow_cli-6.4.1.tar.gz"
+    sha256 "02b0d672ba27d85b4c9415b1057291d00b7adcd059844de24eaafffe312b5bfd"
 
     bottle do
     end
 
     depends_on "python@3.8"
 
-    resource "analytics-python" do
-      url "https://files.pythonhosted.org/packages/32/a5/08555aee01e65bfbfba971e4ce993a3fef0aaf965d5e10d872785d883aeb/analytics-python-1.4.0.tar.gz"
-      sha256 "a65141ab6e47db396f5bc5708b1db93ff9a99882d81fe808228afd5ebb6dfe5f"
-    end
-
     resource "auth0-python" do
       url "https://files.pythonhosted.org/packages/79/06/3334c49f2fe98e6e19f31689fa3654372910c865428b2239720f4253ae60/auth0-python-3.24.1.tar.gz"
       sha256 "62c2e177b9517879bd8632da9eb7668aedd5775fddea87b0e0e1e9a89b9dd096"
-    end
-
-    resource "backoff" do
-      url "https://files.pythonhosted.org/packages/55/52/5c209d0e9f1ad857573be96b285626d5e081d86dd50d7617ff0874685dd4/backoff-1.10.0.tar.gz"
-      sha256 "b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"
     end
 
     resource "blessed" do
@@ -39,13 +29,13 @@ class SymflowAT64 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/69/48/5ed869a1d6d515962ec0f7446bdc4759f17e7ce8c1b047570643cb3eb8c8/boto3-1.26.59.tar.gz"
-      sha256 "7d9cebb507fc96e6eb429621ccb2e731b75e7bbb8d6d9f0cf0c08089ee3c1ab7"
+      url "https://files.pythonhosted.org/packages/93/42/c1f5f019b65ad457a0966737e10404bbfc64e69bfa974464f3a954ed1856/boto3-1.26.63.tar.gz"
+      sha256 "f688555dd427271e0493e6d166126ce76e1744dd89d626575ba7c2e62ba86e14"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/05/42/7fa8a5090a7381cfdea10f3bad3fea3c867e248caca1f8ee2e6722568db0/botocore-1.29.59.tar.gz"
-      sha256 "bc75d41c5eecf624a2f9875483135aa78088a50c8d29847793f92756697cfed5"
+      url "https://files.pythonhosted.org/packages/cd/6f/c824350f304f9f4541baafa11ece2258749a9e19eaedccdf6a6d414a5be7/botocore-1.29.63.tar.gz"
+      sha256 "710864600818b80c865334e12af729923e2886cc760685c614c0eae9cbbfdd4d"
     end
 
     resource "certifi" do
@@ -68,11 +58,6 @@ class SymflowAT64 < Formula
       sha256 "7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e"
     end
 
-    resource "click-option-group" do
-      url "https://files.pythonhosted.org/packages/4c/29/ff7cd69825b5bfb48e39853b75d5dc2e98a581730f2b6c9c014188730755/click-option-group-0.5.5.tar.gz"
-      sha256 "78ee474f07a0ca0ef6c0317bb3ebe79387aafb0c4a1e03b1d8b2b0be1e42fc78"
-    end
-
     resource "cryptography" do
       url "https://files.pythonhosted.org/packages/cc/98/8a258ab4787e6f835d350639792527d2eb7946ff9fc0caca9c3f4cf5dcfe/cryptography-3.4.8.tar.gz"
       sha256 "94cc5ed4ceaefcbe5bf38c8fba6a21fc1d365bb8fb826ea1688e3370b2e24a1c"
@@ -81,11 +66,6 @@ class SymflowAT64 < Formula
     resource "idna" do
       url "https://files.pythonhosted.org/packages/8b/e1/43beb3d38dba6cb420cefa297822eac205a277ab43e5ba5d5c46faf96438/idna-3.4.tar.gz"
       sha256 "814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"
-    end
-
-    resource "immutables" do
-      url "https://files.pythonhosted.org/packages/c3/bf/113933c9d098c58cee52c68a205cd449bcc331c32156267d337125780bf6/immutables-0.19.tar.gz"
-      sha256 "df17942d60e8080835fcc5245aa6928ef4c1ed567570ec019185798195048dcf"
     end
 
     resource "inflection" do
@@ -101,11 +81,6 @@ class SymflowAT64 < Formula
     resource "jmespath" do
       url "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz"
       sha256 "90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"
-    end
-
-    resource "monotonic" do
-      url "https://files.pythonhosted.org/packages/ea/ca/8e91948b782ddfbd194f323e7e7d9ba12e5877addf04fb2bf8fca38e86ac/monotonic-1.6.tar.gz"
-      sha256 "3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7"
     end
 
     resource "pkce" do
@@ -178,11 +153,6 @@ class SymflowAT64 < Formula
       sha256 "1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"
     end
 
-    resource "sym-shared-cli" do
-      url "https://files.pythonhosted.org/packages/08/c0/d33c02cdeb80ac088e20eca2df56fe5aa34c77b7251b01ad95bda44d4c83/sym_shared_cli-0.2.5.tar.gz"
-      sha256 "e87321fac0082b50e946593b2ab3af836475a85edd979101fe3582095daea897"
-    end
-
     resource "tabulate" do
       url "https://files.pythonhosted.org/packages/7a/53/afac341569b3fd558bf2b5428e925e2eb8753ad9627c1f9188104c6e0c4a/tabulate-0.8.10.tar.gz"
       sha256 "6c57f3f3dd7ac2782770155f3adb2db0b1a269637e42f27599925e64b114f519"
@@ -208,11 +178,11 @@ class SymflowAT64 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.4.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "2df3b510dd3320c5ae7754a37d76dc59e6516b3edbe8e67fe633f5b8b36f3aad"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.4.1/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "81c0be7d1be114bc54ac4363bf743f891203d72d04f953ac0ed6bee9c563ab82"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.4.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "ccf526c944c44eb3f6b0df26c368e0c1cdde9c09a2fcb2f9b7408319b4c7e5aa"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.4.1/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "58d80a287eec9758f9b1f5985277cb58c5014943617cb7a67509ee718112fb60"
     end
 
     def install
