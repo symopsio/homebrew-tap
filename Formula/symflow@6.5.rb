@@ -4,14 +4,14 @@
 class SymflowAT65 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "6.5.0"
+  version "6.5.1"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/58/4c/0e4dd8bf6f7485ddec1592ddbc120a57e3dea41ae128b88325921958dfc4/sym_flow_cli-6.5.0.tar.gz"
-    sha256 "bc81ff4610fff0c83ef766eb8c6b71b0889a93b10d4ff2b3ca7c7d1ce58fcc84"
+    url "https://files.pythonhosted.org/packages/a6/5f/86ff85583788241493e1d6490efdfbe5cc27643daec18607442e17f208c9/sym_flow_cli-6.5.1.tar.gz"
+    sha256 "ed1ce213869517fa3b69e290426dfb1202277ac57993535d0611047257bf18b2"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class SymflowAT65 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/34/21/73b77bf9eb850992b9b36e0d79d2bfb48f71b1892be2deeb0c6503a56441/boto3-1.26.66.tar.gz"
-      sha256 "ebea98f3054b467caf6c8aead9f0ef78395a78bce78b04db12fde452c02b3734"
+      url "https://files.pythonhosted.org/packages/c0/63/5dd782da5653528c35ca2ec7f44a41ec3121cda8701f14c6416912118dc6/boto3-1.26.69.tar.gz"
+      sha256 "eb8cde24a4c5755c35126e8cd460e6b51c63d04292419e7e95721232720c7e5b"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/f3/19/3c6522dc37d8b002a64dc19c777022de908552feb7d63ddd9caa49d739a2/botocore-1.29.66.tar.gz"
-      sha256 "4d1ac019e677cc39e615f9d473fa658ea22a8d906c1c562f9406b5d0cd854cbd"
+      url "https://files.pythonhosted.org/packages/db/31/720ac07bd096fdd24fbeb42111638b41fd220e618790b94ada77a6bd1f3e/botocore-1.29.69.tar.gz"
+      sha256 "7e1bebca013544fbc298cb58603bfccd5f71b49c720a5c33c07cf5dfc8145a1f"
     end
 
     resource "certifi" do
@@ -178,11 +178,11 @@ class SymflowAT65 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.5.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "50fbfa5b7887d59b70f0e5fd5eb367de348e6ad7958be8a418fe5bd6d5db7de8"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.5.1/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "1a51030ee3cfd89637f54dfa341e8f5730ba39e7c7505dad302f5bcc9535e0b9"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.5.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "8dc4f3f9bfd916a99e635d6bbba01eb402d0a5bc1a6be62879cdd08b1fe626ef"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v6.5.1/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "ea9b0c42f8ccaef46a082d097393131be908bc4c0a32c32c40c124139f7c469a"
     end
 
     def install
