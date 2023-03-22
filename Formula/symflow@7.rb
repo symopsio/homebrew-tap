@@ -4,7 +4,7 @@
 class SymflowAT7 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "7.0.0"
+  version "7.0.1"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
@@ -178,11 +178,11 @@ class SymflowAT7 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v7.0.0/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "4d703fc26b5e600ddf07e95fa56846791681cbe8d3c0ed15f22929dc3c3dee08"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v7.0.1/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "960186536dddd87fa934ea870aa77c2f2ab9f6c0931fcffc4616c2d4323b098b"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v7.0.0/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "c4be88ae94291c8aabea8e7371a151897a4709fae2c1b0794d5fc83f9bbb10dd"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v7.0.1/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "bb35a72ad62574c0c55f7539caf8ae69d7ad67010ce257a25f72a81f38f60513"
     end
 
     def install
