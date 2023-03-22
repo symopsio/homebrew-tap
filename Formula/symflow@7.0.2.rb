@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 # THIS FILE IS GENERATED. DO NOT EDIT DIRECTLY.
 
-class Symflow < Formula
+class SymflowAT702 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
   version "7.0.2"
@@ -10,8 +10,8 @@ class Symflow < Formula
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/e0/c1/6aef935699e9d915e12cc50d8ab9f315adb74c041f23bdc588b7295c7cbc/sym_flow_cli-7.0.1.tar.gz"
-    sha256 "5caf9fefcd7273d8640753b60b67d84c6a6bc490ea4bf7589398ff0f7426070d"
+    url "https://files.pythonhosted.org/packages/90/d4/956189fc3159f4bf2f44c5f27a87b3c7fb9c64c44e5a35b96a80ceab57b1/sym_flow_cli-7.0.2.tar.gz"
+    sha256 "b5ed50f80b2edc52ba2b211acdfa24b478490dbfc017e3e9e1d7dcf9006131ad"
 
     bottle do
     end
