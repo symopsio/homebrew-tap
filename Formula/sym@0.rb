@@ -4,14 +4,14 @@
 class SymAT0 < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.4.11"
+  version "0.5.0"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/08/0a/933838b391bf3f4f675940e1e832885498ea9556ab16d80acd4872a49d90/sym-cli-0.4.11.tar.gz"
-    sha256 "2c1fe2394dada61fd4de92921db50eade1d967a65d548d62acfeb0be6df4986c"
+    url "https://files.pythonhosted.org/packages/68/39/9c579f2fb2196666ada1d347713299065495d1bb4da59e1b6417e66ab936/sym_cli-0.5.0.tar.gz"
+    sha256 "6924276ca77f19f6e5710406052f1b76ec2d1d66874a97f8b796fa039e17fe1d"
 
     bottle do
     end
@@ -19,8 +19,8 @@ class SymAT0 < Formula
     depends_on "python@3.8"
 
     resource "analytics-python" do
-      url "https://files.pythonhosted.org/packages/32/a5/08555aee01e65bfbfba971e4ce993a3fef0aaf965d5e10d872785d883aeb/analytics-python-1.4.0.tar.gz"
-      sha256 "a65141ab6e47db396f5bc5708b1db93ff9a99882d81fe808228afd5ebb6dfe5f"
+      url "https://files.pythonhosted.org/packages/52/f2/6e06e01b5ed7806286e301287ebc0fda39e8b1da47a3cfa50eb62174d233/analytics-python-1.4.post1.tar.gz"
+      sha256 "b083e69c149c39e7ad17067f0e5c1742fbd15fdc469ade36c4d1ad5edf31ee5e"
     end
 
     resource "backoff" do
@@ -29,18 +29,18 @@ class SymAT0 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/d2/22/a2ac9f49e495bbc4a53cd11048dd0d8d9825d51b2b4d246df33660e47251/boto3-1.26.57.tar.gz"
-      sha256 "9c34ceac30a0672d2b6b030d459eb87f1a02d48f86f347fb4b054de85fb8a4b1"
+      url "https://files.pythonhosted.org/packages/76/40/5fac9b875f823ac8450a62d0436e2c6baea1d70dace760b9d1a9e1d58a3e/boto3-1.26.143.tar.gz"
+      sha256 "d973751c5ea2db7743f80ee8552043cace8f18a2472cae1ab93ffbfb6889b825"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/d0/89/4029d11264088b0baf48bd7acb0311581a9ee16ed306a84d3fde11b1faef/botocore-1.29.57.tar.gz"
-      sha256 "02078e37d6b3626794f821385f3357195d87610fa1b25355577ed5393f16f7b8"
+      url "https://files.pythonhosted.org/packages/1a/a2/7b5752267ae7cd17f2688a65636ffa93ad7b410a383621a1f24ab305b7b9/botocore-1.29.143.tar.gz"
+      sha256 "e5b8dd2fa750f0476667753dc018c2b14a542fec7e20edd3a7613b6d2df2c32a"
     end
 
     resource "certifi" do
-      url "https://files.pythonhosted.org/packages/37/f7/2b1b0ec44fdc30a3d31dfebe52226be9ddc40cd6c0f34ffc8923ba423b69/certifi-2022.12.7.tar.gz"
-      sha256 "35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3"
+      url "https://files.pythonhosted.org/packages/93/71/752f7a4dd4c20d6b12341ed1732368546bc0ca9866139fe812f6009d9ac7/certifi-2023.5.7.tar.gz"
+      sha256 "0f0d56dc5a6ad56fd4ba36484d6cc34451e1c6548c61daad8c320169f91eddc7"
     end
 
     resource "cffi" do
@@ -49,8 +49,8 @@ class SymAT0 < Formula
     end
 
     resource "charset-normalizer" do
-      url "https://files.pythonhosted.org/packages/96/d7/1675d9089a1f4677df5eb29c3f8b064aa1e70c1251a0a8a127803158942d/charset-normalizer-3.0.1.tar.gz"
-      sha256 "ebea339af930f8ca5d7a699b921106c6e29c617fe9606fa7baa043c1cdae326f"
+      url "https://files.pythonhosted.org/packages/ff/d7/8d757f8bd45be079d76309248845a04f09619a7b17d6dfc8c9ff6433cac2/charset-normalizer-3.1.0.tar.gz"
+      sha256 "34e0a2f9c370eb95597aae63bf85eb5e96826d81e3dcf88b8886012906f509b5"
     end
 
     resource "click" do
@@ -114,8 +114,8 @@ class SymAT0 < Formula
     end
 
     resource "policyuniverse" do
-      url "https://files.pythonhosted.org/packages/4d/f0/70508150bc8c650025c14437e220358a59ebe568721a495ec5c8e7167d40/policyuniverse-1.5.0.20220613.tar.gz"
-      sha256 "c66b1fb907750643a1987eb419b2112ae3f9c527c013429525f9fab989c9a2d7"
+      url "https://files.pythonhosted.org/packages/9c/e2/86945ceef2ce77a557ea9699e24e52c269afbd3e6f39db1934706ee85628/policyuniverse-1.5.1.20230526.tar.gz"
+      sha256 "f34435aa40800f7570364d296e53d69e2dea63ff0373662b38b0e33eb83fd8eb"
     end
 
     resource "portalocker" do
@@ -139,13 +139,13 @@ class SymAT0 < Formula
     end
 
     resource "requests" do
-      url "https://files.pythonhosted.org/packages/9d/ee/391076f5937f0a8cdf5e53b701ffc91753e87b07d66bae4a09aa671897bf/requests-2.28.2.tar.gz"
-      sha256 "98b1b2782e3c6c4904938b84c0eb932721069dfdb9134313beff7c83c2df24bf"
+      url "https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz"
+      sha256 "942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"
     end
 
     resource "s3transfer" do
-      url "https://files.pythonhosted.org/packages/e1/eb/e57c93d5cd5edf8c1d124c831ef916601540db70acd96fa21fe60cef1365/s3transfer-0.6.0.tar.gz"
-      sha256 "2ed07d3866f523cc561bf4a00fc5535827981b117dd7876f036b0c1aca42c947"
+      url "https://files.pythonhosted.org/packages/49/bd/def2ab4c04063a5e114963aae90bcd3e3aca821a595124358b3b00244407/s3transfer-0.6.1.tar.gz"
+      sha256 "640bb492711f4c0c0905e1f62b6aaeb771881935ad27884852411f8e9cacbca9"
     end
 
     resource "SecretStorage" do
@@ -174,8 +174,8 @@ class SymAT0 < Formula
     end
 
     resource "urllib3" do
-      url "https://files.pythonhosted.org/packages/c5/52/fe421fb7364aa738b3506a2d99e4f3a56e079c0a798e9f4fa5e14c60922f/urllib3-1.26.14.tar.gz"
-      sha256 "076907bf8fd355cde77728471316625a4d2f7e713c125f51953bb5b3eecf4f72"
+      url "https://files.pythonhosted.org/packages/e2/7d/539e6f0cf9f0b95b71dd701a56dae89f768cd39fd8ce0096af3546aeb5a3/urllib3-1.26.16.tar.gz"
+      sha256 "8f135f6502756bde6b2a9b28989df5fbe87c9970cecaa69041edcce7f0589b14"
     end
 
     resource "validators" do
@@ -188,11 +188,11 @@ class SymAT0 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.4.11/sym-cli-darwin-x64.tar.gz"
-      sha256 "818075d489402ca453852405e74159eaa4ff2a6451ee1071e070dcb80b088d6e"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.5.0/sym-cli-darwin-x64.tar.gz"
+      sha256 "663a8164f2360fc8af94bd05555a034c178d4eca4c505744a19b92f6feab574b"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.4.11/sym-cli-linux-x64.tar.gz"
-      sha256 "521df17fa95d4cea14a5fb7f42ff1ee9b1096593601afdeda8b8b5053cd8cfc8"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.5.0/sym-cli-linux-x64.tar.gz"
+      sha256 "73e6799a3e640dc48fa0b5e2ffe29e483ce417d4e7bcd9e709754f00545d0103"
     end
 
     def install
