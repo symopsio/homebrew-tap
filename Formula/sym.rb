@@ -4,7 +4,7 @@
 class Sym < Formula
   desc "CLI to perform privileged operations with Sym"
   homepage "https://docs.symops.com"
-  version "0.6.0"
+  version "0.6.1"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
@@ -188,11 +188,11 @@ class Sym < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.6.0/sym-cli-darwin-x64.tar.gz"
-      sha256 "fdcaf1a6756cef123ec9d7aa6bf9db53583de35c450c996cfaf03bc3108c7e26"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.6.1/sym-cli-darwin-x64.tar.gz"
+      sha256 "c06c3f3d6b82f98e5ad6e4a12ebf37c225f68668591d92dc364e0efa48bfacb8"
     else
-      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.6.0/sym-cli-linux-x64.tar.gz"
-      sha256 "cf82b1429ba870d3f9f6ca2926ce2f4884d7463460157a4d80ecf600df2c9aaf"
+      url "https://github.com/symopsio/sym-cli-releases/releases/download/v0.6.1/sym-cli-linux-x64.tar.gz"
+      sha256 "ed8b6e3478f5e306fce2f317a11c69980dac1edd5367b061fb78503ff192ccb4"
     end
 
     def install
