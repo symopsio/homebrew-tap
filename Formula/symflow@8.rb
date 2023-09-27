@@ -4,14 +4,14 @@
 class SymflowAT8 < Formula
   desc "CLI to deploy Sym Flows"
   homepage "https://docs.symops.com"
-  version "8.0.4"
+  version "8.0.7"
   option "with-source", "Build from source instead of using binary"
 
   if build.with? "source"
     include Language::Python::Virtualenv
 
-    url "https://files.pythonhosted.org/packages/ff/9b/ae81cceeea55b41b2a3bf9bc0db0fc5ee720d1898c4cd9ed55b4aa10b614/sym_flow_cli-8.0.4.tar.gz"
-    sha256 "80ff755f01577be1b42ccd407e12d51cc1a9834532258a477fe2c227dcddb2e8"
+    url "https://files.pythonhosted.org/packages/8f/2a/d4b379c4479f9841a1093379727afd214d7659313bf0870c985f5bf4bdda/sym_flow_cli-8.0.7.tar.gz"
+    sha256 "ef7f01f56d849fec61e89f07ff7789ec5ac718777d485533bc2bc0046833e0b1"
 
     bottle do
     end
@@ -29,13 +29,13 @@ class SymflowAT8 < Formula
     end
 
     resource "boto3" do
-      url "https://files.pythonhosted.org/packages/ea/e9/a0419a48465ace125bf55473416ba465aa26fba58b05f14b1122ce98737d/boto3-1.28.10.tar.gz"
-      sha256 "cb8af03f553f1c7db7137bc897785baeeaa97b8fde483eb1cdb1f1ef3cec9cb7"
+      url "https://files.pythonhosted.org/packages/0b/f9/4f6a88c9af69baa4f1d24515cc7fb8e96c9c22494c89c1e4838a02abcb82/boto3-1.28.55.tar.gz"
+      sha256 "2ceb644b1df7c3c8907913ab367a9900af79e271b4cfca37b542ec1fa142faf8"
     end
 
     resource "botocore" do
-      url "https://files.pythonhosted.org/packages/8f/6f/f0eb30793d6582d0ade2d98cc2de5cbf59eb9bc1c57e44d8a9741b3523e3/botocore-1.31.10.tar.gz"
-      sha256 "736a9412f405d6985570c4a87b533c2396dd8d4042d8c7a0ca14e73d4f1bcf9d"
+      url "https://files.pythonhosted.org/packages/a7/5b/2a2ba638537ce8eaadd1e78c24d52122a7b67d76680baabf07cc0f446bcf/botocore-1.31.55.tar.gz"
+      sha256 "21ba89c4df083338ec463d9c2a8cffca42a99f9ad5f24bcac1870393b216c5a7"
     end
 
     resource "certifi" do
@@ -54,8 +54,8 @@ class SymflowAT8 < Formula
     end
 
     resource "click" do
-      url "https://files.pythonhosted.org/packages/72/bd/fedc277e7351917b6c4e0ac751853a97af261278a4c7808babafa8ef2120/click-8.1.6.tar.gz"
-      sha256 "48ee849951919527a045bfe3bf7baa8a959c423134e1a5b98c05c20ba75a1cbd"
+      url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
+      sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
     end
 
     resource "cryptography" do
@@ -94,8 +94,8 @@ class SymflowAT8 < Formula
     end
 
     resource "portalocker" do
-      url "https://files.pythonhosted.org/packages/1f/f8/969e6f280201b40b31bcb62843c619f343dcc351dff83a5891530c9dd60e/portalocker-2.7.0.tar.gz"
-      sha256 "032e81d534a88ec1736d03f780ba073f047a06c478b06e2937486f334e955c51"
+      url "https://files.pythonhosted.org/packages/35/00/0f230921ba852226275762ea3974b87eeca36e941a13cd691ed296d279e5/portalocker-2.8.2.tar.gz"
+      sha256 "2b035aa7828e46c58e9b31390ee1f169b98e1066ab10b9a6a861fe7e25ee4f33"
     end
 
     resource "pycparser" do
@@ -104,8 +104,8 @@ class SymflowAT8 < Formula
     end
 
     resource "pydantic" do
-      url "https://files.pythonhosted.org/packages/11/07/106b00ae62297bb3c89b6fbeb571feaf7cbbf6b2ada0e513d756daafd4ce/pydantic-2.0.3.tar.gz"
-      sha256 "94f13e0dcf139a5125e88283fc999788d894e14ed90cf478bcc2ee50bd4fc630"
+      url "https://files.pythonhosted.org/packages/3b/9b/a7631bf35e55326fd74654fe6bd896478f47d65e97ca69e60ddb1b3823ee/pydantic-1.10.12.tar.gz"
+      sha256 "0fe8a415cea8f340e7a9af9c54fc71a649b43e8ca3cc732986116b3cb135d303"
     end
 
     resource "PyJWT" do
@@ -144,8 +144,8 @@ class SymflowAT8 < Formula
     end
 
     resource "s3transfer" do
-      url "https://files.pythonhosted.org/packages/49/bd/def2ab4c04063a5e114963aae90bcd3e3aca821a595124358b3b00244407/s3transfer-0.6.1.tar.gz"
-      sha256 "640bb492711f4c0c0905e1f62b6aaeb771881935ad27884852411f8e9cacbca9"
+      url "https://files.pythonhosted.org/packages/3f/ff/5fd9375f3fe467263cff9cad9746fd4c4e1399440ea9563091c958ff90b5/s3transfer-0.7.0.tar.gz"
+      sha256 "fd3889a66f5fe17299fe75b82eae6cf722554edca744ca5d5fe308b104883d2e"
     end
 
     resource "semver" do
@@ -154,8 +154,8 @@ class SymflowAT8 < Formula
     end
 
     resource "sentry-sdk" do
-      url "https://files.pythonhosted.org/packages/87/87/373b4f6cb536ecc22db4fd58972a5e8fcd818a30d70262ab434372faac38/sentry-sdk-1.28.1.tar.gz"
-      sha256 "dcd88c68aa64dae715311b5ede6502fd684f70d00a7cd4858118f0ba3153a3ae"
+      url "https://files.pythonhosted.org/packages/29/45/2c3558c8b47d8b763413c5bbaff68b8c9335e9fe8419a8bd85950aaaa3ec/sentry-sdk-1.31.0.tar.gz"
+      sha256 "6de2e88304873484207fed836388e422aeff000609b104c802749fd89d56ba5b"
     end
 
     resource "six" do
@@ -169,8 +169,8 @@ class SymflowAT8 < Formula
     end
 
     resource "typing-extensions" do
-      url "https://files.pythonhosted.org/packages/3c/8b/0111dd7d6c1478bf83baa1cab85c686426c7a6274119aceb2bd9d35395ad/typing_extensions-4.7.1.tar.gz"
-      sha256 "b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"
+      url "https://files.pythonhosted.org/packages/1f/7a/8b94bb016069caa12fc9f587b28080ac33b4fbb8ca369b98bc0a4828543e/typing_extensions-4.8.0.tar.gz"
+      sha256 "df8e4339e9cb77357558cbdbceca33c303714cf861d1eef15e1070055ae8b7ef"
     end
 
     resource "urllib3" do
@@ -188,11 +188,11 @@ class SymflowAT8 < Formula
     end
   else
     if OS.mac?
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v8.0.4/sym-flow-cli-darwin-x64.tar.gz"
-      sha256 "9140b71cae19c5965e76c3a84e3ffc07d4a3259ac9578ee3a6de25626a025d19"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v8.0.7/sym-flow-cli-darwin-x64.tar.gz"
+      sha256 "79054b13261fe42b167dbbbd14ece617dcc8716b6f0af9d09a4cd7c56babbe51"
     else
-      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v8.0.4/sym-flow-cli-linux-x64.tar.gz"
-      sha256 "2e03ac342ccd510d8eba36bd893071997f576ed2ebc36d3893051941ff75b226"
+      url "https://github.com/symopsio/sym-flow-cli-releases/releases/download/v8.0.7/sym-flow-cli-linux-x64.tar.gz"
+      sha256 "9758713ede44c4da476fe4c4c02f74d1b9b25c09c94f292e31ec31d36bc61895"
     end
 
     def install
