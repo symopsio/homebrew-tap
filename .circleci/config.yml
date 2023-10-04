@@ -27,7 +27,10 @@ commands:
       - run:
           name: Test sym pip install
           command: |
-            python3 -m pip install sym-cli
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+            
+            PIP_CONSTRAINT=constraints.txt python3 -m pip install sym-cli
             pyenv rehash
             sym version
   test_pip_install_ubuntu:
@@ -65,6 +68,9 @@ commands:
       - run:
           name: Test sym pip install
           command: |
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+            
             echo "=== Installing pipx with pip"
             python3 -m pip install pipx
             pyenv rehash
@@ -74,7 +80,7 @@ commands:
             source ~/.bash_profile
 
             echo "=== Installing symflow with pipx"
-            pipx install sym-cli
+            PIP_CONSTRAINT=constraints.txt pipx install sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
