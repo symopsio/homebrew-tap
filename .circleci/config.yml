@@ -91,12 +91,12 @@ commands:
             echo "Installing sym with pipx"
             pipx install sym-cli
             sym version
-  test_macos_package_install:
+  test_macos_package_install_x86_64:
     steps:
       - run:
-          name: Test symflow macOS package install
+          name: Test symflow (x86_64) macOS package install
           command: |
-            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x86_64.pkg
             sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
             symflow version
       - run:
@@ -105,6 +105,14 @@ commands:
             curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg
             sudo installer -pkg sym-cli-darwin-x64.pkg -target /
             sym version
+  test_macos_package_install_aarch64:
+    steps:
+      - run:
+          name: Test symflow (aarch64) macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-aarch64.pkg
+            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            symflow version
   test_dpkg_install:
     steps:
       - run:
@@ -168,13 +176,23 @@ jobs:
       - checkout:
           path: ~/project
       - test_pipx_install_macos
-  test_macos_package_install:
+  test_macos_package_install_x86_64:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_macos_package_install
+      - macos/install-rosetta
+      - test_macos_package_install_x86_64
+  test_macos_package_install_aarch64:
+    resource_class: macos.m1.medium.gen1
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_macos_package_install_aarch64
   test_dpkg_install:
     executor:
       name: ubuntu
