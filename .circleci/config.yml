@@ -30,13 +30,11 @@ commands:
           name: Test symflow pip install
           command: |
             python3 -m pip install sym-flow-cli
-            pyenv rehash
             symflow version
       - run:
           name: Test sym pip install
           command: |
-            python3 -m pip install sym-cli
-            pyenv rehash
+            python3.9 -m pip install sym-cli
             sym version
   test_pip_install_ubuntu:
     steps:
