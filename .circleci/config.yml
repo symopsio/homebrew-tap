@@ -207,7 +207,8 @@ workflows:
       - test_pip_install_macos
       - test_pip_install_ubuntu
       - test_brew_install
-      - test_macos_package_install
+      - test_macos_package_install_x86_64
+      - test_macos_package_install_aarch64
       - test_dpkg_install
       - test_pipx_install_ubuntu
       - test_pipx_install_macos
