@@ -12,6 +12,9 @@ executors:
       HOMEBREW_NO_AUTO_UPDATE: "1"
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
+orbs:
+  macos: circleci/macos@2.4.0
+
 commands:
   test_pip_install_macos:
     steps:
