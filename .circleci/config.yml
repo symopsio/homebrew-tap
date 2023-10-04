@@ -57,6 +57,14 @@ commands:
   test_pipx_install_macos:
     steps:
       - run:
+            name: Install Python 3.9
+            description: |
+              Forcibly install Python 3.9 to match the configuration of the previous version of the CircleCI macOS
+              executor we were using before migrating from Intel to Apple Silicon resources.
+            command: |
+              brew install python@3.9
+              brew link --overwrite python@3.9
+      - run:
           name: Test symflow pipx install
           command: |
             echo "=== Installing pipx with pip"
@@ -75,10 +83,13 @@ commands:
 
             symflow version
       - run:
-          name: Test sym pip install
-          command: |          
+          name: Test sym pipx install
+          command: |
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+
             echo "=== Installing pipx with pip"
-            python3 -m pip install pipx
+            python3.9 -m pip install pipx
             pyenv rehash
             pipx ensurepath
 
@@ -86,7 +97,7 @@ commands:
             source ~/.bash_profile
 
             echo "=== Installing symflow with pipx"
-            pipx install sym-cli
+            PIP_CONSTRAINT=constraints.txt pipx install sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
