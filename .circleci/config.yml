@@ -97,7 +97,7 @@ commands:
             source ~/.bash_profile
 
             echo "=== Installing symflow with pipx"
-            PIP_CONSTRAINT=constraints.txt pipx --python python3.9 install sym-cli
+            PIP_CONSTRAINT=constraints.txt pipx install --python python3.9 sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
