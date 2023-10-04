@@ -52,8 +52,7 @@ class FormulaBuilder
           end
         else
           if OS.mac?
-            url "#{url('darwin')}"
-            sha256 "#{sha('darwin')}"
+            #{macos_block.strip}
           else
             url "#{url('linux')}"
             sha256 "#{sha('linux')}"
@@ -81,12 +80,31 @@ class FormulaBuilder
     end
   end
 
-  def url(platform)
-    "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-#{platform}-x64.tar.gz"
+  def macos_block
+    if cli_name == 'sym-flow-cli'
+      <<~RUBY
+        if Hardware::CPU.arm?
+          url "#{url('darwin', 'aarch64')}"
+          sha256 "#{sha('darwin', 'aarch64')}"
+        else
+          url "#{url('darwin', 'x86_64')}"
+          sha256 "#{sha('darwin', 'x86_64')}"
+        end
+      RUBY
+    else
+      <<~RUBY
+        url "#{url('darwin')}"
+        sha256 "#{sha('darwin')}"
+      RUBY
+    end
   end
 
-  def sha(platform)
-    `curl -L #{url(platform)} | shasum -a 256`.strip.split(/\s/).first
+  def url(platform, arch = 'x64')
+    "https://github.com/symopsio/#{cli_name}-releases/releases/download/v#{version}/#{cli_name}-#{platform}-#{arch}.tar.gz"
+  end
+
+  def sha(platform, arch = 'x64')
+    `curl -L #{url(platform, arch)} | shasum -a 256`.strip.split(/\s/).first
   end
 
   def top_block
