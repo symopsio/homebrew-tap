@@ -35,7 +35,11 @@ commands:
       - run:
           name: Test sym pip install
           command: |
-            python3.9 -m pip install sym-cli
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+            
+            PIP_CONSTRAINT=constraints.txt python3.9 -m pip install sym-cli
+
             pyenv rehash
             sym version
   test_pip_install_ubuntu:
