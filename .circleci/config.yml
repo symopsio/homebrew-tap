@@ -21,7 +21,7 @@ commands:
       - run:
           name: Install Python 3.9
           description: |
-            Install Python 3.9, which was what was available in  the previous version of the CircleCI macOS executor
+            Install Python 3.9, which was what was available in the previous version of the CircleCI macOS executor
             we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
             `python3.9` directly; `python3` will continue to point to the system Python.
           command: |
@@ -59,7 +59,7 @@ commands:
       - run:
             name: Install Python 3.9
             description: |
-              Install Python 3.9, which was what was available in  the previous version of the CircleCI macOS executor
+              Install Python 3.9, which was what was available in the previous version of the CircleCI macOS executor
               we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
               `python3.9` directly; `python3` will continue to point to the system Python.
             command: |
