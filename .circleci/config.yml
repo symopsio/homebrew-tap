@@ -21,11 +21,11 @@ commands:
       - run:
           name: Install Python 3.9
           description: |
-            Forcibly install Python 3.9 to match the configuration of the previous version of the CircleCI macOS
-            executor we were using before migrating from Intel to Apple Silicon resources.
+            Install Python 3.9, which was what was available in  the previous version of the CircleCI macOS executor
+            we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
+            `python3.9` directly; `python3` will continue to point to the system Python.
           command: |
             brew install python@3.9
-            brew link --overwrite python@3.9
       - run:
           name: Test symflow pip install
           command: |
@@ -59,11 +59,11 @@ commands:
       - run:
             name: Install Python 3.9
             description: |
-              Forcibly install Python 3.9 to match the configuration of the previous version of the CircleCI macOS
-              executor we were using before migrating from Intel to Apple Silicon resources.
+              Install Python 3.9, which was what was available in  the previous version of the CircleCI macOS executor
+              we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
+              `python3.9` directly; `python3` will continue to point to the system Python.
             command: |
               brew install python@3.9
-              brew link --overwrite python@3.9
       - run:
           name: Test symflow pipx install
           command: |
