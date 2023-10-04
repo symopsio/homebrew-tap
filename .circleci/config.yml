@@ -19,6 +19,14 @@ commands:
   test_pip_install_macos:
     steps:
       - run:
+          name: Install Python 3.9.5
+          description: |
+            Forcibly install Python 3.9.5 to match the configuration of the previous version of the CircleCI macOS
+            executor we were using before migrating from Intel to Apple Silicon resources.
+          command: |
+            brew install python@3.9.5
+            brew link --overwrite python@3.9.5
+      - run:
           name: Test symflow pip install
           command: |
             python3 -m pip install sym-flow-cli
@@ -27,10 +35,7 @@ commands:
       - run:
           name: Test sym pip install
           command: |
-            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
-            echo 'cython < 3.0' > constraints.txt
-            
-            PIP_CONSTRAINT=constraints.txt python3 -m pip install sym-cli
+            python3 -m pip install sym-cli
             pyenv rehash
             sym version
   test_pip_install_ubuntu:
@@ -67,10 +72,7 @@ commands:
             symflow version
       - run:
           name: Test sym pip install
-          command: |
-            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
-            echo 'cython < 3.0' > constraints.txt
-            
+          command: |          
             echo "=== Installing pipx with pip"
             python3 -m pip install pipx
             pyenv rehash
@@ -80,7 +82,7 @@ commands:
             source ~/.bash_profile
 
             echo "=== Installing symflow with pipx"
-            PIP_CONSTRAINT=constraints.txt pipx install sym-cli
+            pipx install sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
@@ -110,7 +112,7 @@ commands:
           name: Test symflow (x86_64) macOS package install
           command: |
             curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x86_64.pkg
-            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            sudo installer -pkg sym-flow-cli-darwin-x86_64.pkg -target /
             symflow version
       - run:
           name: Test sym macOS package install
@@ -124,7 +126,7 @@ commands:
           name: Test symflow (aarch64) macOS package install
           command: |
             curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-aarch64.pkg
-            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            sudo installer -pkg sym-flow-cli-darwin-aarch64.pkg -target /
             symflow version
   test_dpkg_install:
     steps:
