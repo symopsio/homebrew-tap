@@ -145,6 +145,7 @@ commands:
 
 jobs:
   test_brew_install:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
@@ -152,6 +153,7 @@ jobs:
           path: ~/project
       - test_brew_install
   test_pip_install_macos:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
@@ -173,6 +175,7 @@ jobs:
           path: ~/project
       - test_pipx_install_ubuntu
   test_pipx_install_macos:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
