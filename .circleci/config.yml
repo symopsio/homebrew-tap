@@ -6,24 +6,41 @@ executors:
       - image: cimg/python:3.8.11
   macos:
     macos:
-      xcode: "12.5.1"
+      xcode: "14.2.0"
     environment:
       LANG: "en_US.UTF-8"
       HOMEBREW_NO_AUTO_UPDATE: "1"
       HOMEBREW_NO_INSTALL_CLEANUP: "1"
 
+orbs:
+  macos: circleci/macos@2.4.0
+
 commands:
   test_pip_install_macos:
     steps:
       - run:
+          name: Install Python 3.9
+          description: |
+            Install Python 3.9, which was what was available in the previous version of the CircleCI macOS executor
+            we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
+            `python3.9` directly; `python3` will continue to point to the system Python.
+          command: |
+            brew install python@3.9
+      - run:
           name: Test symflow pip install
           command: |
             python3 -m pip install sym-flow-cli
+            pyenv rehash
             symflow version
       - run:
           name: Test sym pip install
           command: |
-            python3 -m pip install sym-cli
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+            
+            PIP_CONSTRAINT=constraints.txt python3.9 -m pip install sym-cli
+
+            pyenv rehash
             sym version
   test_pip_install_ubuntu:
     steps:
@@ -40,6 +57,14 @@ commands:
   test_pipx_install_macos:
     steps:
       - run:
+            name: Install Python 3.9
+            description: |
+              Install Python 3.9, which was what was available in the previous version of the CircleCI macOS executor
+              we were using before migrating from Intel to Apple Silicon resources. It can be used by calling
+              `python3.9` directly; `python3` will continue to point to the system Python.
+            command: |
+              brew install python@3.9
+      - run:
           name: Test symflow pipx install
           command: |
             echo "=== Installing pipx with pip"
@@ -47,6 +72,7 @@ commands:
             # for some reason we need to call pip as a python3 module specifically. However,
             # this causes the ubuntu version to fail. This is why they're separate.
             python3 -m pip install pipx
+            pyenv rehash
             pipx ensurepath
 
             echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
@@ -57,17 +83,21 @@ commands:
 
             symflow version
       - run:
-          name: Test sym pip install
+          name: Test sym pipx install
           command: |
+            echo '=== Setting up Cython bug workaround: https://github.com/yaml/pyyaml/issues/601#issuecomment-1660180265'
+            echo 'cython < 3.0' > constraints.txt
+
             echo "=== Installing pipx with pip"
-            python3 -m pip install pipx
+            python3.9 -m pip install pipx
+            pyenv rehash
             pipx ensurepath
 
             echo "=== Sourcing ~/.bash_profile to apply PATH changes in this session"
             source ~/.bash_profile
 
             echo "=== Installing symflow with pipx"
-            pipx install sym-cli
+            PIP_CONSTRAINT=constraints.txt pipx install --python python3.9 sym-cli
             sym version
   test_pipx_install_ubuntu:
     steps:
@@ -91,13 +121,13 @@ commands:
             echo "Installing sym with pipx"
             pipx install sym-cli
             sym version
-  test_macos_package_install:
+  test_macos_package_install_x86_64:
     steps:
       - run:
-          name: Test symflow macOS package install
+          name: Test symflow (x86_64) macOS package install
           command: |
-            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x64.pkg
-            sudo installer -pkg sym-flow-cli-darwin-x64.pkg -target /
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-x86_64.pkg
+            sudo installer -pkg sym-flow-cli-darwin-x86_64.pkg -target /
             symflow version
       - run:
           name: Test sym macOS package install
@@ -105,6 +135,14 @@ commands:
             curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-darwin-x64.pkg
             sudo installer -pkg sym-cli-darwin-x64.pkg -target /
             sym version
+  test_macos_package_install_aarch64:
+    steps:
+      - run:
+          name: Test symflow (aarch64) macOS package install
+          command: |
+            curl -LO https://github.com/symopsio/sym-flow-cli-releases/releases/latest/download/sym-flow-cli-darwin-aarch64.pkg
+            sudo installer -pkg sym-flow-cli-darwin-aarch64.pkg -target /
+            symflow version
   test_dpkg_install:
     steps:
       - run:
@@ -134,6 +172,7 @@ commands:
 
 jobs:
   test_brew_install:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
@@ -141,6 +180,7 @@ jobs:
           path: ~/project
       - test_brew_install
   test_pip_install_macos:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
@@ -162,19 +202,30 @@ jobs:
           path: ~/project
       - test_pipx_install_ubuntu
   test_pipx_install_macos:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
       - test_pipx_install_macos
-  test_macos_package_install:
+  test_macos_package_install_x86_64:
+    resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_macos_package_install
+      - macos/install-rosetta
+      - test_macos_package_install_x86_64
+  test_macos_package_install_aarch64:
+    resource_class: macos.m1.medium.gen1
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - test_macos_package_install_aarch64
   test_dpkg_install:
     executor:
       name: ubuntu
@@ -189,7 +240,8 @@ workflows:
       - test_pip_install_macos
       - test_pip_install_ubuntu
       - test_brew_install
-      - test_macos_package_install
+      - test_macos_package_install_x86_64
+      - test_macos_package_install_aarch64
       - test_dpkg_install
       - test_pipx_install_ubuntu
       - test_pipx_install_macos
