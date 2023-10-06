@@ -52,7 +52,7 @@ class FormulaBuilder
           end
         else
           if OS.mac?
-            #{macos_block.strip}
+            #{indented_macos_block.strip}
           else
             url "#{url('linux')}"
             sha256 "#{sha('linux')}"
@@ -78,6 +78,10 @@ class FormulaBuilder
       warn "Invalid formula #{formula}"
       exit 1
     end
+  end
+
+  def indented_macos_block
+    macos_block.lines.map { |line| "      #{line}" }.join
   end
 
   def macos_block
