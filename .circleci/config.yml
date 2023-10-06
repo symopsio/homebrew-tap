@@ -157,13 +157,15 @@ commands:
             curl -LO https://github.com/symopsio/sym-cli-releases/releases/latest/download/sym-cli-linux-x64.deb
             sudo dpkg -i sym-cli-linux-x64.deb
             sym version
-  test_brew_install:
+  test_brew_install_symflow_cli:
     steps:
       - run:
           name: Test symflow brew Formula
           command: |
             brew install --formula ~/project/Formula/symflow.rb
             symflow version
+  test_brew_install_sym_cli:
+    steps:
       - run:
           name: Test sym brew Formula
           command: |
@@ -171,14 +173,23 @@ commands:
             sym version
 
 jobs:
-  test_brew_install:
+  test_brew_install_symflow_cli:
     resource_class: macos.m1.medium.gen1
     executor:
       name: macos
     steps:
       - checkout:
           path: ~/project
-      - test_brew_install
+      - test_brew_install_symflow_cli
+  test_brew_install_sym_cli:
+    resource_class: macos.m1.medium.gen1
+    executor:
+      name: macos
+    steps:
+      - checkout:
+          path: ~/project
+      - macos/install-rosetta
+      - test_brew_install_sym_cli
   test_pip_install_macos:
     resource_class: macos.m1.medium.gen1
     executor:
@@ -239,7 +250,8 @@ workflows:
     jobs:
       - test_pip_install_macos
       - test_pip_install_ubuntu
-      - test_brew_install
+      - test_brew_install_symflow_cli
+      - test_brew_install_sym_cli
       - test_macos_package_install_x86_64
       - test_macos_package_install_aarch64
       - test_dpkg_install
